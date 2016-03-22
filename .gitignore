@@ -7,9 +7,9 @@
 *.o
 *.so
 *.map
-images
-js
-css
+/images
+/js
+/css
 
 # Packages #
 ############

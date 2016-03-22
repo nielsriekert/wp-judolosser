@@ -1,0 +1,473 @@
+/*!
+Theme Name: Judo Losser
+Theme URI: judolosser.nl
+Description: Template voor Judo Losser
+Author: Niels Riekert	
+Version: 0
+*/
+
+@import 'variables';
+@import 'reset';
+
+
+/* DEFAULT STYLES */
+
+body {
+ font-family: Verdana, sans-serif;
+ color: $text-color;
+ min-width: 300px;
+ background-color: rgb(248, 246, 246);
+ background-position: left top;
+ background-repeat: no-repeat;
+ background-attachment: fixed;
+ background-size: 175% auto;
+}
+
+h1,
+h2 {
+ color: $p-color;
+ line-height: 1.2em;
+}
+
+h1 {
+ font-family: 'Skia', sans-serif;
+ font-size: 1.5em;
+ word-spacing: -0.12em;
+}
+
+h2 {
+ font-size: 1.125em;
+}
+
+em {
+ font-style: italic;
+}
+
+h1 a:link,
+h1 a:visited,
+h2 a:link,
+h2 a:visited {
+ text-decoration: none;
+}
+
+h1 a:hover,
+h2 a:hover {
+ text-decoration: underline;
+}
+
+a,
+a:link,
+a:visited {
+ color: inherit;
+}
+
+strong {
+ font-weight: 700;
+}
+
+sup {
+ vertical-align: super;
+ font-size: .8em;
+ line-height: .8em;
+}
+
+table td {
+ padding-right: 1em;
+}
+
+#page .content form ul,
+#page .content form ol {
+ list-style: none;
+ padding: 0;
+}
+
+#page .content form input[type="radio"],
+#page .content form input[type="checkbox"] {
+ margin-right: 0.5em
+}
+
+#page .content form .top_label > li {
+ padding-top: 1.6em;
+ clear: left;
+}
+
+#page .content form .top_label > li:first-child {
+ padding-top: 0;
+}
+
+#page .content form ul ul {
+ margin-top: 0;
+}
+
+#page .content form label {
+ font-size: 1.125em;
+}
+
+.ginput_container:after {
+ content: "";
+ display: block;
+ clear: left;
+}
+
+#page .content form .gfield_checkbox li,
+#page .content form .gfield_radio li {
+ float: left;
+ margin-right: 1em;
+}
+
+#page .content form .gfield_checkbox li:last-child,
+#page .content form .gfield_radio li:last-child {
+ margin-right: 0;
+}
+
+header,
+.hoofdnavigatie li a,
+.content {
+ padding-left: 7%;
+ padding-right: 7%;	
+}
+
+img,
+embed,
+object,
+video {
+ height: auto;
+ max-width: 100%;
+}
+
+iframe {
+ max-width: 100%;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="search"],
+textarea {
+ font-family: inherit;
+ font-size: inherit;
+ border: none;
+ padding: 0;
+ background-color: rgb(238, 238, 238);
+ border-radius: 10px;
+}
+
+input[type="submit"] {
+ font-size: 1.2em;
+ padding: 0.4em;
+ margin-top: 0.8em;
+ border: none;
+ display: inline-block;
+ color: rgb(255, 255, 255);
+ background-color: $p-color;
+ border-radius: 10px;
+}
+
+input[type="submit"]:hover {
+ background-color: rgb(136, 113, 169);
+}
+
+.validation_error {
+ display: none;
+}
+
+.validation_message {
+ display: inline-block;
+ position: relative;
+ color: rgb(255, 255, 255);
+ margin-top: .3em;
+ padding: 0.4em 1em;
+ background-color: rgb(200, 25, 25);
+}
+
+.validation_message:before {
+ content: "";
+ display: block;
+ position: absolute;
+ top: -0.4em;
+ left: 1em;
+ width: 0;
+ height: 0;
+ border-left: 0.5em solid transparent;
+ border-right: 0.5em solid transparent;
+ border-bottom: 0.5em solid rgb(200, 25, 25);
+}
+
+.gallery img {
+ display: block;
+ border: none!important;
+}
+
+.gallery a {
+ display: block;
+}
+
+.gallery-columns-3 .gallery-item {
+ width: 30%!important;
+ margin-left: 5%;
+ margin-top: 1.6em!important;
+ border-radius: 20px;
+ overflow: hidden;
+}
+
+.gallery-columns-3 .gallery-item:nth-child(3n+1) {
+ margin-left: 0;
+ clear: left;
+}
+
+/* HEADER */
+
+header {
+ height: 140px;
+ padding-bottom: 30px;
+}
+
+
+/* CONTENT */
+
+.content h2,
+.content h1 + div h2:first-child {
+ margin-top: 1.4em;
+}
+
+.content h2:first-child {
+ margin-top: 0;
+}
+
+.content p,
+.content ul,
+.content ol,
+.content table,
+time,
+.gform_confirmation_wrapper {
+ line-height: 1.6em;
+ margin-top: 1.6em;
+}
+
+.content table {
+ font-size: 0.8125em;
+}
+
+.content h2 + p,
+.content h2 + ul,
+.content h2 + ol,
+.content h2 + table,
+.content h2 + iframe {
+ margin-top: 0;
+}
+
+.content ul,
+.content ol {
+ padding-left: 1em;
+ list-style-type: circle;
+}
+
+.content p a:link,
+.content p a:visited,
+.content ul a:link,
+.content ul a:visited,
+.content ol a:link,
+.content ol a:visited {
+ color: $p-color;
+ text-decoration: underline;
+}
+
+.content p a:hover,
+.content ul a:hover,
+.content ol a:hover {
+ color: saturate(lighten($p-color, 10%), 30%);
+}
+
+.content input[type="text"],
+.content input[type="email"],
+.content input[type="search"],
+.content input[type="tel"],
+.content textarea {
+ padding: 0.6em 0 0.6em 0.6em;
+ width: 100%;
+ box-sizing: border-box;
+}
+
+.content textarea {
+ min-height: 16em;
+ resize: vertical;
+}
+
+
+/* tables */
+
+.content table,
+.content thead,
+.content tbody,
+.content th,
+.content td,
+.content tr { 
+ display: block; 
+}
+
+.content th {
+ display: none;
+}
+
+.content td[data-column-name]:before {
+ content: attr(data-column-name);
+ position: absolute;
+ top: .5em;
+ left: 0;
+ width: 45%; 
+ white-space: nowrap;
+}
+
+.content table {
+ width: 100%;
+}
+
+.content table tr {
+ padding-bottom: 1em;
+}
+
+.content table td,
+.content table th {
+ text-align: left;
+ padding: .5em 0 .5em 0;
+ border-bottom: 1px solid rgb(240, 240, 240);
+}
+
+.content td:not(:last-child),
+.content table th {
+ border-bottom: 1px solid rgb(240, 240, 240);
+}
+
+.content table td:first-child,
+.content table th {
+ font-weight: 700;
+}
+
+.content table td[data-column-name] {
+ position: relative;
+ padding-left: 50%;
+ min-height: 1.6em;
+}
+
+.content table tr:last-child td {
+ border-bottom: 0;
+}
+
+
+/* OVERLAY */
+
+#overlay {
+ position: fixed;
+ left: 0;
+ right: 0;
+ top: 0;
+ bottom: 0;
+ background-color: rgb(0, 0, 0);
+ background-color: rgba(0, 0, 0, 0.8);
+ z-index: 1000;
+}
+
+#viewer {
+ position: absolute;
+ z-index: 1001;
+ left: 0;
+ right: 0;
+ top: 0;
+ height: 100%;
+}
+
+#viewer img,
+#viewer iframe {
+ position: absolute;
+ display: block;
+ left: 0;
+ bottom: 0;
+ right: 0;
+ top: 0;
+ margin: auto;
+ max-height: 100%;
+ opacity: 1;
+ transition: opacity 0.5s;
+ z-index: 1;
+}
+
+#viewer img.unloaded {
+ opacity: 0;
+}
+
+#viewer #nextPic,
+#viewer #prevPic,
+#viewer #closePic {
+ position: absolute;
+ top: 50%;
+ width: 3em;
+ height: 3em;
+ line-height: 3em;
+ text-align: center;
+ margin-top: -2.5em;
+ z-index: 2;
+ cursor: default;
+ color: rgb(255,255,255);
+ background-color: rgb(0,0,0);
+ background-color: rgba(0,0,0,.5);
+ border-radius: 50px;
+ transition: background-color 0.2s;
+}
+
+#viewer #nextPic:hover,
+#viewer #prevPic:hover,
+#viewer #closePic:hover {
+ background-color: rgba(0,0,0,1);
+}
+
+#viewer #nextPic {
+ right: 1em;
+}
+
+#viewer #prevPic {
+ left: 1em;
+}
+
+#viewer #closePic {
+ right: 1em;
+ margin: 0;
+ top: 1em;
+}
+
+#viewer #nextPic:before,
+#viewer #prevPic:before,
+#viewer #closePic:before {
+ font-family: 'Genericons';
+ font-size: 3em;
+}
+
+#viewer #nextPic:before {
+ content: '\f429';
+}
+
+#viewer #prevPic:before {
+ content: '\f430';
+}
+
+#viewer #closePic:before {
+ content: '\f405';
+ display: block;
+ margin-left: -0.03em;
+ padding-top: 0.03em;
+}
+
+.test {
+ transform: scale(1.2);
+}
+
+@media (min-width: $bp-small) {
+ //@import 'css/style_small';
+}
+
+@media (min-width: $bp-middle) {
+ //@import 'css/style_middle';
+}
+
+@media (min-width: $bp-large) {
+ //@import 'css/style_large';
+}
