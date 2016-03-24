@@ -16,11 +16,6 @@ body {
  font-family: Verdana, sans-serif;
  color: $text-color;
  min-width: 300px;
- background-color: rgb(248, 246, 246);
- background-position: left top;
- background-repeat: no-repeat;
- background-attachment: fixed;
- background-size: 175% auto;
 }
 
 h1,
@@ -244,15 +239,12 @@ time,
  margin-top: 1.6em;
 }
 
-.content table {
- font-size: 0.8125em;
-}
 
-.content h2 + p,
-.content h2 + ul,
-.content h2 + ol,
-.content h2 + table,
-.content h2 + iframe {
+h2 + p,
+h2 + ul,
+h2 + ol,
+h2 + table,
+h2 + iframe {
  margin-top: 0;
 }
 
@@ -461,7 +453,7 @@ time,
 }
 
 @media (min-width: $bp-small) {
- //@import 'css/style_small';
+ @import 'style_small';
 }
 
 @media (min-width: $bp-middle) {
