@@ -1,0 +1,119 @@
+html,
+body {
+ height: 100%;
+}
+
+body {
+ font-family: $p-font;
+ color: $text-color;
+ min-width: 250px;
+ background-color: white;
+ scroll-behavior: smooth; 
+}
+
+body.nav-active {
+ overflow-y: hidden;
+}
+
+strong {
+ font-weight: 700;
+}
+
+em {
+ font-style: italic;
+}
+
+img,
+embed,
+object,
+video {
+ height: auto;
+ max-width: 100%;
+}
+
+iframe {
+ max-width: 100%;
+}
+
+p,
+ul,
+ol,
+table,
+h1,
+h2,
+h3,
+figure {
+ font-size: 1.0625em;
+ line-height: 1.7;
+ margin-top: 1.6em;
+}
+
+h1,
+h2,
+h3 {
+ font-family: $s-font;
+ color: $text-color;
+ line-height: 1.2;
+ font-weight: 400;
+ text-transform: uppercase;
+}
+
+h1 {
+ font-size: 1.875em;
+ letter-spacing: .25em;
+}
+
+@media (min-width: $break-middle) {
+	h1 {
+	 font-size: 2em;
+	}
+}
+
+h2 {
+ font-size: 1.75em;
+}
+
+@media (min-width: $break-middle) {
+	h2 {
+	 font-size: 1.875em;
+	}
+}
+
+h3 {
+ font-size: 1.5em;
+}
+
+@media (min-width: $break-middle) {
+	h3 {
+	 font-size: 1.75em;
+	}
+}
+
+h1 a:link,
+h1 a:visited,
+h2 a:link,
+h2 a:visited,
+h3 a:link,
+h3 a:visited {
+ color: inherit;
+ text-decoration: none;
+}
+
+ul,
+ol {
+ padding-left: 1.2em;
+}
+
+ul {
+ list-style-type: circle;
+}
+
+ol {
+ list-style-type: decimal;
+}
+
+a:link,
+a:visited {
+ color: $p-color;
+ text-decoration: none;
+}

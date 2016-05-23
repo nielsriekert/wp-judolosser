@@ -1,10 +1,22 @@
 //color
 $text-color: rgb(50, 50, 50);
-$p-color: rgb(126, 112, 147);
-$p-color-darker: rgb(140, 140, 140);
+$p-color: rgb(202, 33, 40);
 $s-color: rgb(234, 139, 3);
+
+//fonts
+$p-font: 'Avenir W01', sans-serif;
+$s-font: 'Iowan Old Style BT W01', serif;
+$t-font: 'Snell Roundhand W01', sans-serif;
 
 //breakpoints
 $bp-small: 34em;
 $bp-middle: 55em;
 $bp-large: 66em;
+
+//content paddings
+$cp-default: 7%;
+$cp-small: 2em;
+$cp-middle: 1.25em;
+
+//other
+$header-height: 92px;//fixed header height

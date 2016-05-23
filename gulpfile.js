@@ -5,7 +5,8 @@ var gulp = require('gulp'),
 	uglify = require('gulp-uglify'),
 	imagemin = require('gulp-imagemin'),
 	cache = require('gulp-cache'),
-	concat = require('gulp-concat');;
+	concat = require('gulp-concat'),
+	ftp = require('vinyl-ftp');
 
 
 gulp.task('styles', function() {
@@ -32,13 +33,41 @@ gulp.task('images', function(){
 		.pipe(cache(imagemin({
 			progressive: true
 		})))
-		.pipe(gulp.dest('images'))
+		.pipe(gulp.dest('images'));
 });
 
-gulp.task('watch', ['styles', 'scripts', 'images'], function() {
+gulp.task('deploy', function(){
+	var ftppass = require('./.ftppass.json');
+
+    var conn = ftp.create( {
+        host: 'judolosser.nl',
+        user: ftppass.judolosser.username,
+        password: ftppass.judolosser.password,
+        parallel: 10
+        //log: gutil.log
+    } );
+
+    var globs = [
+        'images/**',
+        'js/**',
+        '*.php',
+        '*.css'
+    ];
+
+    // using base = '.' will transfer everything to /public_html correctly
+    // turn off buffering in gulp.src for best performance
+
+    return gulp.src( globs, { base: '.', buffer: false } )
+        .pipe( conn.newer( '/domains/judolosser.nl/public_html/dev/wp-content/themes/judolosser' ) ) // only upload newer files
+        .pipe( conn.dest( '/domains/judolosser.nl/public_html/dev/wp-content/themes/judolosser' ) );
+
+} );
+
+gulp.task('watch', ['styles', 'scripts', 'images', 'deploy'], function() {
 	gulp.watch('src/scss/*.scss', ['styles']);
 	gulp.watch('src/js/*.js', ['scripts']);
 	gulp.watch('src/images/*.+(png|jpg|gif|svg)', ['images']);
+	gulp.watch(['images/**', 'js/**', '*.php', '*.css'], ['deploy']);
 });
 
 
