@@ -33,6 +33,12 @@ echo get_theme_mod('tracking_code') . "\n";
 ?>
 <div class="header-wrapper">
  	<div class="header-content">
-	<a class="header-logo" href="<?php bloginfo('url'); ?>"><img src="<?php bloginfo('template_directory'); ?>/images/logo.svg" alt="<?php bloginfo('name'); ?>" /></a>
+		<a class="header-logo" href="<?php bloginfo('url'); ?>"><img src="<?php bloginfo('template_directory'); ?>/images/logo.svg" alt="<?php bloginfo('name'); ?>" /></a>
+		<button id="header-menu" class="header-menu-button">
+			<div class="header-menu-button-icon">
+		</button>
+		<nav id="header-nav" class="header-nav">
+			<?php wp_nav_menu(array('theme_location' => 'headernav', 'container' => ''));?>
+		</nav>
 	</div>
 </div>

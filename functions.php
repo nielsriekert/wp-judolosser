@@ -4,7 +4,7 @@ if(function_exists('add_theme_support')) {
 	
 	add_theme_support('post-thumbnails');
 	
-	register_nav_menus(array('hoofdnavigatie' => 'Hoofdmenu', 'footernavigatie' => 'Footermenu'));
+	register_nav_menus(array('headernav' => 'Hoofdmenu', 'footernavigatie' => 'Footermenu'));
 
 	add_theme_support( 'html5', array('search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
 }
@@ -196,7 +196,7 @@ add_shortcode( 'fotos', 'shortcode_fotos' );
 /* ///////////////// */
 
 function create_post_types() {
-	
+
 	$labels = array(
 		'name' => 'Evenementen',
 		'singular_name' => 'Evenement',
@@ -309,7 +309,7 @@ add_action( 'customize_register', 'customize_template' );
 /* ROLES */
 /* ///// */
 
-add_action('after_switch_theme', 'one_pager_setup_options');
+add_action('after_switch_theme', 'judolosser_setup_options');
 
 function one_pager_setup_options () {
 	add_role( 'klant', 'Klant', array(
@@ -346,7 +346,7 @@ function one_pager_setup_options () {
 	);
 };
 
-add_action('switch_theme', 'one_pager_deactivate_options');
+add_action('switch_theme', 'judolosser_deactivate_options');
 
 function one_pager_deactivate_options () {
 	remove_role('klant');

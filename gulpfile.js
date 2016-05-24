@@ -22,7 +22,7 @@ gulp.task('styles', function() {
 });
 
 gulp.task('scripts', function() {
-	return gulp.src(['./src/js/utils.js', './src/js/carousel.js'])
+	return gulp.src(['./src/js/utils.js', './src/js/menu.js', './src/js/carousel.js'])
 		.pipe(uglify())
 		.pipe(concat('main.min.js'))
 		.pipe(gulp.dest('./js'));
@@ -39,35 +39,39 @@ gulp.task('images', function(){
 gulp.task('deploy', function(){
 	var ftppass = require('./.ftppass.json');
 
-    var conn = ftp.create( {
-        host: 'judolosser.nl',
-        user: ftppass.judolosser.username,
-        password: ftppass.judolosser.password,
-        parallel: 10
-        //log: gutil.log
-    } );
+	var conn = ftp.create( {
+		host: 'judolosser.nl',
+		user: ftppass.judolosser.username,
+		password: ftppass.judolosser.password,
+		parallel: 10
+		//log: gutil.log
+	});
 
-    var globs = [
-        'images/**',
-        'js/**',
-        '*.php',
-        '*.css'
-    ];
+	var globs = [
+		'images/**',
+		'js/**',
+		'*.php',
+		'cards/*.php',
+		'loops/*.php',
+		'*.css',
+		'src/maps/*.map',
+		'src/scss/*.scss'
+	];
 
-    // using base = '.' will transfer everything to /public_html correctly
-    // turn off buffering in gulp.src for best performance
+	// using base = '.' will transfer everything to /public_html correctly
+	// turn off buffering in gulp.src for best performance
 
-    return gulp.src( globs, { base: '.', buffer: false } )
-        .pipe( conn.newer( '/domains/judolosser.nl/public_html/dev/wp-content/themes/judolosser' ) ) // only upload newer files
-        .pipe( conn.dest( '/domains/judolosser.nl/public_html/dev/wp-content/themes/judolosser' ) );
+	return gulp.src( globs, { base: '.', buffer: false } )
+	.pipe( conn.newer( '/domains/judolosser.nl/public_html/dev/wp-content/themes/judolosser' ) ) // only upload newer files
+	.pipe( conn.dest( '/domains/judolosser.nl/public_html/dev/wp-content/themes/judolosser' ) );
 
-} );
+});
 
 gulp.task('watch', ['styles', 'scripts', 'images', 'deploy'], function() {
 	gulp.watch('src/scss/*.scss', ['styles']);
 	gulp.watch('src/js/*.js', ['scripts']);
 	gulp.watch('src/images/*.+(png|jpg|gif|svg)', ['images']);
-	gulp.watch(['images/**', 'js/**', '*.php', '*.css'], ['deploy']);
+	gulp.watch(['images/**', 'js/**', '*.php', 'cards/*.php', 'loops/*.php', '*.css'], ['deploy']);
 });
 
 
