@@ -1,6 +1,10 @@
 .header-wrapper {
+ min-height: 60px;
  background-color: $p-color;
- height: 80px;
+}
+
+.header-content {
+ line-height: 60px;
 }
 
 .header-logo {
@@ -22,8 +26,8 @@
  right: $cp-default;
  width: 50px;
  height: 50px;
- background-color: $p-color;
  border-radius: 50px;
+ background-color: $p-color;
  border: none;
  box-shadow: 0 0 16px rgba(0, 0, 0, .3);
  outline: none;
@@ -128,6 +132,12 @@
  opacity: 1;
 }
 
+.header-nav a:link,
+.header-nav a:visited {
+ font-size: 1.25em;
+ color: white;
+}
+
 .content {
  padding-left: $cp-default;
  padding-right: $cp-default;
@@ -144,6 +154,13 @@
 	.content {
 	 padding-left: $cp-middle;
 	 padding-right: $cp-middle;
+	}
+}
+
+@media (min-width: $bp-large) {
+	.content {
+	 margin: 0 auto;
+	 width: $bp-large - $cp-middle * 2;
 	}
 }
 

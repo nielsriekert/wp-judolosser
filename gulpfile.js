@@ -58,12 +58,22 @@ gulp.task('deploy', function(){
 		'src/scss/*.scss'
 	];
 
+	var roots = [
+		'src/manifest.json'
+	];
+
 	// using base = '.' will transfer everything to /public_html correctly
 	// turn off buffering in gulp.src for best performance
 
-	return gulp.src( globs, { base: '.', buffer: false } )
+	var templateFiles = gulp.src( globs, { base: '.', buffer: false } )
 	.pipe( conn.newer( '/domains/judolosser.nl/public_html/dev/wp-content/themes/judolosser' ) ) // only upload newer files
 	.pipe( conn.dest( '/domains/judolosser.nl/public_html/dev/wp-content/themes/judolosser' ) );
+
+	var rootFiles = gulp.src( roots, { base: 'src', buffer: false } )
+	.pipe( conn.newer( '/domains/judolosser.nl/public_html/dev' ) ) // only upload newer files
+	.pipe( conn.dest( '/domains/judolosser.nl/public_html/dev' ) );
+
+	return templateFiles, rootFiles;
 
 });
 
@@ -71,7 +81,7 @@ gulp.task('watch', ['styles', 'scripts', 'images', 'deploy'], function() {
 	gulp.watch('src/scss/*.scss', ['styles']);
 	gulp.watch('src/js/*.js', ['scripts']);
 	gulp.watch('src/images/*.+(png|jpg|gif|svg)', ['images']);
-	gulp.watch(['images/**', 'js/**', '*.php', 'cards/*.php', 'loops/*.php', '*.css'], ['deploy']);
+	gulp.watch(['images/**', 'js/**', '*.php', 'cards/*.php', 'loops/*.php', '*.css', 'src/manifest.json'], ['deploy']);
 });
 
 

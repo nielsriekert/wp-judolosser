@@ -41,6 +41,7 @@ add_filter('excerpt_length', 'new_excerpt_length');
 if(function_exists('add_image_size')){
 	add_image_size('bericht-thumb', 500, 375, true);
 	add_image_size('bericht', 800, 600);
+	add_image_size('card', 400, 300, true);
 	add_image_size('media-thumb', 300, 200, true);
 	add_image_size('media-full', 1000, 800);
 }
@@ -49,7 +50,7 @@ add_filter( 'image_size_names_choose', 'add_to_post_media_selecter' );
 
 function add_to_post_media_selecter( $sizes ) {
 	return array_merge( $sizes, array(
-			'bericht-thumb' => __('Bericht'),
+		'bericht-thumb' => __('Bericht'),
 	) );
 }
 
@@ -59,14 +60,13 @@ function add_to_post_media_selecter( $sizes ) {
 /* //////// */
 
 function humanize_date($date, $dateformat = 'j F Y', $tolerantie = 2){
-	//echo date_i18n('Ymj', strtotime('+1 day')) . ' == ' . $date . ' <br />';
-	if(date_i18n('Ymd', time()) == $date && $tolerantie > 0){
+	if(date_i18n('Ymd', time()) == date_i18n('Ymd', strtotime($date)) && $tolerantie > 0){
 		return 'vandaag';
 	}
-	else if(date_i18n('Ymd', strtotime('+1 day')) == $date && $tolerantie > 1){
+	else if(date_i18n('Ymd', strtotime('+1 day')) == date_i18n('Ymd', strtotime($date)) && $tolerantie > 1){
 		return 'morgen';
 	}
-	else if(date_i18n('Ymd', strtotime('-1 day')) == $date && $tolerantie > 1){
+	else if(date_i18n('Ymd', strtotime('-1 day')) == date_i18n('Ymd', strtotime($date)) && $tolerantie > 1){
 		return 'gisteren';
 	}
 	else {
@@ -98,16 +98,16 @@ function getSocialMedia($return_follow_us_text = false){
 
 function connection_types() {
 	p2p_register_connection_type( array(
-			'name' => 'module_to_page',
-			'from' => 'module',
-			'to' => 'page',
-			'sortable' => 'to'
+		'name' => 'module_to_page',
+		'from' => 'module',
+		'to' => 'page',
+		'sortable' => 'to'
 	));
 
 	p2p_register_connection_type( array(
-			'name' => 'button_to_module',
-			'from' => 'button',
-			'to' => 'module'
+		'name' => 'button_to_module',
+		'from' => 'button',
+		'to' => 'module'
 	));
 }
 
@@ -121,38 +121,38 @@ add_action( 'p2p_init', 'connection_types' );
 add_filter('manage_edit-module_columns', 'module_columns') ;
 
 function module_columns($columns){
-		$columns = array(
-				'cb' => '<input type="checkbox" />',
-				'title' => 'Titel',
-				'author' => 'Auteur',
-				'type' => 'Type',
-				'standaard' => 'Standaard',
-				'date' => 'Datum'
-		);
+	$columns = array(
+		'cb' => '<input type="checkbox" />',
+		'title' => 'Titel',
+		'author' => 'Auteur',
+		'type' => 'Type',
+		'standaard' => 'Standaard',
+		'date' => 'Datum'
+	);
 
-		return $columns;
+	return $columns;
 }
 
 add_action('manage_module_posts_custom_column', 'manage_module_columns', 10, 2 );
 
 function manage_module_columns($column, $post_id){
-		global $post;
+	global $post;
 
-		switch($column){
-				case 'type' :
-						$type = get_field('m_type', $post_id);
-						if (empty($type))
-								echo '-';
-						else
-								echo ucfirst(preg_replace('/_/', ' ', $type));
-						break;
-				case 'standaard' :
-						if(get_field('m_gebruik_standaard', $post_id))
-								echo '&#10004';
-						break;
-				default :
-						break;
-		}
+	switch($column){
+		case 'type' :
+			$type = get_field('m_type', $post_id);
+			if (empty($type))
+					echo '-';
+			else
+					echo ucfirst(preg_replace('/_/', ' ', $type));
+			break;
+		case 'standaard' :
+			if(get_field('m_gebruik_standaard', $post_id))
+					echo '&#10004';
+			break;
+		default :
+			break;
+	}
 }
 
 /* /////////*/
@@ -225,6 +225,34 @@ function create_post_types() {
 	);
 
 	register_post_type('evenement', $args);
+
+	$labels = array(
+		'name' => 'Fotoalbums',
+		'singular_name' => 'Fotoalbum',
+		'add_new' => 'Nieuw fotoalbum', 'fotoalbum',
+		'add_new_item' => 'Voeg nieuw fotoalbum toe',
+		'edit_item' => 'Bewerk fotoalbum',
+		'new_item' => 'Nieuw fotoalbum',
+		'view_item' => 'Bekijk fotoalbum',
+		'search_items' => 'Zoek fotoalbums',
+		'not_found' => 'Geen fotoalbums gevonden',
+		'not_found_in_trash' => 'Geen fotoalbums gevonden in de prullenbak', 
+		'all_items' => 'Alle fotoalbums',
+		'parent_item_colon'  => '',
+		'menu_name' => 'Fotoalbums'
+	);
+
+	$args = array(
+		'labels' => $labels,
+		'description' => 'Fotoalbums van Judo Losser',
+		'public' => true,
+		'rewrite' => array('slug' => 'fotoalbum'),
+		'menu_position' => 6,
+		'supports' => array( 'title', 'thumbnail', 'editor', 'excerpt', 'author', 'revisions'),
+		'menu_icon' => 'dashicons-format-gallery'
+	);
+
+	register_post_type('photoalbum', $args);
 }
 
 add_action( 'init', 'create_post_types' );
