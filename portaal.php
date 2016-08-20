@@ -9,9 +9,9 @@ get_header(); ?>
 	get_template_part('cards/card', 'news');
 	get_template_part('cards/card', 'events');
 	get_template_part('cards/card', 'photos');
-	get_template_part('cards/card', 'events');
-	get_template_part('cards/card', 'events');
-	get_template_part('cards/card', 'events');
+	get_template_part('cards/card', 'location');
+	get_template_part('cards/card', 'sign-up');
+	get_template_part('cards/card', 'judo');
 	wp_reset_query();
 	?>
 	</div>

@@ -164,6 +164,26 @@
 	}
 }
 
+.header-wrapper + .content {
+ padding-top: 80px;
+}
+
+.article {
+ max-width: 54em;
+}
+
+.photos {
+ line-height: 0;
+}
+
+.photos .photo {
+ display: inline-block;
+}
+
+.photos .photo img {
+ display: block;
+}
+
 .footer-wrapper {
  background-color: rgb(50, 50, 50);
 }

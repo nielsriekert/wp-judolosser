@@ -1,6 +1,7 @@
 <?php
-get_header(); ?>
-<div class="content">
-	<?php the_content();?>
-</div>
+get_header(); the_post(); ?>
+<article class="content article">
+	<h1><?php the_title(); ?></h1>
+	<?php the_content(); ?>
+</article>
 <?php get_footer(); ?>

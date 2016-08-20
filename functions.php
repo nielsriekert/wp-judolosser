@@ -2,6 +2,7 @@
 if(function_exists('add_theme_support')) {
 	add_theme_support('menus');
 	
+	add_post_type_support('page', 'excerpt');
 	add_theme_support('post-thumbnails');
 	
 	register_nav_menus(array('headernav' => 'Hoofdmenu', 'footernavigatie' => 'Footermenu'));
@@ -43,7 +44,7 @@ if(function_exists('add_image_size')){
 	add_image_size('bericht', 800, 600);
 	add_image_size('card', 400, 300, true);
 	add_image_size('media-thumb', 300, 200, true);
-	add_image_size('media-full', 1000, 800);
+	add_image_size('media-full', 1200, 1100);
 }
 
 add_filter( 'image_size_names_choose', 'add_to_post_media_selecter' );
@@ -218,13 +219,14 @@ function create_post_types() {
 		'taxonomies' => array('category'),
 		'description' => 'Evenementen van Judo Losser',
 		'public' => true,
+		'rewrite' => array('slug' => 'evenement'),
 		'menu_position' => 5,
 		'supports' => array( 'title', 'thumbnail', 'editor', 'excerpt', 'author', 'revisions'),
 		//'has_archive' => false,
 		'menu_icon' => 'dashicons-calendar'
 	);
 
-	register_post_type('evenement', $args);
+	register_post_type('event', $args);
 
 	$labels = array(
 		'name' => 'Fotoalbums',

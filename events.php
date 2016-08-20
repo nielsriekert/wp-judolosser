@@ -1,13 +1,13 @@
 <?php
 /*
-Template Name: Berichten
+Template Name: Evenementen
 */
 get_header(); ?>
 <div class="content">
 	<?php the_content();
 
 	$posts = new WP_Query(array(
-		'post_type' => 'post',
+		'post_type' => 'event',
 		'nopaging' => true,
 		'no_found_rows' => true,
 	));
