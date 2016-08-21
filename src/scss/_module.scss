@@ -35,6 +35,12 @@
  margin-top: 0;
 }
 
+.card-post,
+.card-event,
+.card-photo {
+ padding-bottom: 2em;
+}
+
 @media (min-width: $bp-small) {
 	.card,
 	.card:first-child {
@@ -96,24 +102,35 @@
  padding: 1.5em;
 }
 
-.card .card-date,
+/*.card .card-title {
+ line-height: 2em;
+}*/
+
+.card .card-date {
+ display: inline-block;
+ padding: .25em .5em;
+ margin-top: .5em;
+ vertical-align: middle;
+ background-color: rgb(230, 230, 230);
+ border-radius: 3px;
+}
+
+.card.card-photo .card-date {
+ color: white;
+ background-color: rgba(0, 0, 0, .7);
+}
+
 .card .card-type {
  position: absolute;
  top: -1.75em;
+ left: 1.5em;
  height: 1.75em;
  padding: 0 .75em;
- font-size: .875em;
+ font-size: 1em;
+ color: $s-color;
  line-height: 1.75em;
  background-color: white;
  box-shadow: inset 0 -.2em .2em rgba(0, 0, 0, .1);
-}
-
-.card .card-date {
- left: 1.5em;
-}
-
-.card .card-type {
- right: 1.5em;
 }
 
 .card h2 {
@@ -124,12 +141,13 @@
 .card-location .card-body {
  box-sizing: border-box;
  height: 100%;
- background-color: rgba(0, 0, 0, .2);
+ background-color: rgba(0, 0, 0, .1);
+ background-image: linear-gradient(to bottom, rgba(0, 0, 0, .5) 0, transparent 50%);
  transition: background-color .2s;
 }
 
-.card-photo:hover .card-body,
-.card-location:hover .card-body {
+.card-photo > a:hover .card-body,
+.card-location > a:hover .card-body {
  background-color: rgba(0, 0, 0, .4);
 }
 
@@ -140,8 +158,8 @@
  transition: opacity .2s, transform .2s;
 }
 
-.card-photo:hover p,
-.card-location:hover p {
+.card-photo > a:hover p,
+.card-location > a:hover p {
  opacity: 1;
  transform: translateY(0);
 }
@@ -154,21 +172,50 @@
 }
 
 .card-navigation {
+ position: absolute;
+ left: 0;
+ right: 0;
+ bottom: 0;
  background-color: white;
 }
 
 .card-navigation .card-button {
  display: inline-block;
+ position: relative;
  text-align: center;
- line-height: 2em;
- height: 2em;
+ line-height: 2.5em;
+ height: 2.5em;
  width: 100%;
  color: $text-color;
- background-color: rgb(240, 240, 240);
+ background-color: rgb(230, 230, 230);
+}
+
+.card-navigation .card-button:after {
+ content: "";
+ display: block;
+ position: absolute;
+ left: 0;
+ top: 0;
+ right: 0;
+ bottom: 0;
+ border: 2px solid darken(rgb(230, 230, 230), 5%);
 }
 
 .card-navigation .card-button:hover {
- background-color: darken(rgb(240, 240, 240), 5%);
+ background-color: darken(rgb(230, 230, 230), 5%);
+}
+
+.card-navigation .card-button.card-navigation-all {
+ color: white;
+ background-color: $s-color;
+}
+
+.card-navigation .card-button.card-navigation-all:after {
+ border-color: darken($s-color, 5%);
+}
+
+.card-navigation .card-button.card-navigation-all:hover {
+ background-color: darken($s-color, 5%);
 }
 
 .card-navigation.card-navigation-count-2 .card-button {

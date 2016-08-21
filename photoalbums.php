@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Berichten
+Template Name: Fotoalbums
 */
 get_header(); ?>
 <div class="content articles-content">
@@ -9,9 +9,12 @@ get_header(); ?>
 </div>
 <?php
 $posts = new WP_Query(array(
-	'post_type' => 'post',
+	'post_type' => 'photoalbum',
 	'nopaging' => true,
 	'no_found_rows' => true,
+	'meta_key' => 'e_datum',
+	'orderby' => 'meta_value',
+	'order' => 'DESC'
 ));
 
 if($posts->have_posts()){?>

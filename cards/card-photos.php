@@ -19,15 +19,16 @@ if($events->have_posts()){
 
 			<div class="card-body">
 				<h2><?php the_title(); ?></h2>
-				<?php the_excerpt(); ?>
 				<div class="card-date">
 					<?php echo humanize_date(CFS()->get('e_datum')); ?>
 				</div>
+				<?php the_excerpt(); ?>
 				<div class="card-type">
 					Foto's
 				</div>
 			</div>
 		</a>
+		<?php echo get_card_navigation($post, 'photoalbums.php', 'Bekijk foto\'s', 'Fotoalbums'); ?>
 	</section>
 	<?php
 }

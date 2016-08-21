@@ -1,0 +1,139 @@
+.header-wrapper {
+ min-height: 60px;
+ background-color: $p-color;
+}
+
+.header-content {
+ line-height: 60px;
+}
+
+.header-logo {
+ display: block;
+ position: absolute;
+ left: 50%;
+ top: -15em;
+ margin-left: -12em;
+ width: 24em;
+}
+
+.header-logo img {
+ display: block;
+}
+
+.header-menu-button {
+ position: fixed;
+ top: 15px;
+ right: $cp-default;
+ width: 50px;
+ height: 50px;
+ border-radius: 50px;
+ background-color: $p-color;
+ border: none;
+ box-shadow: 0 0 16px rgba(0, 0, 0, .3);
+ outline: none;
+ z-index: 101;
+ transition: background-color .2s;
+}
+
+.nav-active .header-menu-button {
+ background-color: white;
+}
+
+.admin-bar .header-menu-button {
+ top: 47px;
+}
+
+@media screen and (max-width: 782px){
+	.admin-bar .header-menu-button {
+	 top: 61px;
+	}
+}
+
+.header-menu-button-icon,
+.header-menu-button-icon:after,
+.header-menu-button-icon:before {
+ height: 4px;
+ background-color: white;
+}
+
+.header-menu-button-icon {
+ display: inline-block;
+ position: relative;
+ width: 30px;
+ vertical-align: middle;
+ transition: background-color .2s;
+}
+
+.header-menu-button-icon:after,
+.header-menu-button-icon:before {
+ content: "";
+ display: block;
+ position: absolute;
+ left: 0;
+ right: 0;
+ transition: transform .2s, background-color .2s;
+}
+
+.header-menu-button-icon:before {
+ transform: translateY(-8px);
+}
+
+.header-menu-button-icon:after {
+ transform: translateY(8px);
+}
+
+.nav-active .header-menu-button-icon,
+.nav-active .header-menu-button-icon:after,
+.nav-active .header-menu-button-icon:before {
+ background-color: black;
+}
+
+.nav-active .header-menu-button-icon {
+ background-color: transparent;
+}
+
+.nav-active .header-menu-button-icon:after {
+ transform: rotateZ(45deg) translateY(0);
+}
+
+.nav-active .header-menu-button-icon:before {
+ transform: rotateZ(-45deg) translateY(0);
+}
+
+@media (min-width: $bp-small) {
+	.header-menu-button {
+	 right: $cp-small;
+	}
+}
+
+@media (min-width: $bp-middle) {
+	.header-menu-button {
+	 right: $cp-middle;
+	}
+}
+
+.header-nav {
+ position: fixed;
+ left: 0;
+ top: 0;
+ right: 0;
+ opacity: 0;
+ height: 0;
+ overflow: hidden;
+ text-align: center;
+ transition: opacity .2s;
+ background-color: rgba(0, 0, 0, .9);
+ z-index: 100;
+}
+
+.nav-active .header-nav {
+ bottom: 0;
+ height: auto;
+ opacity: 1;
+}
+
+.header-nav a:link,
+.header-nav a:visited {
+ font-size: 1.25em;
+ color: white;
+}

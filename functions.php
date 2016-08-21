@@ -1,16 +1,106 @@
 <?php
-if(function_exists('add_theme_support')) {
+function theme_setup() {
 	add_theme_support('menus');
 	
-	add_post_type_support('page', 'excerpt');
 	add_theme_support('post-thumbnails');
-	
-	register_nav_menus(array('headernav' => 'Hoofdmenu', 'footernavigatie' => 'Footermenu'));
+	set_post_thumbnail_size( 600, 600, true );
 
-	add_theme_support( 'html5', array('search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
+	add_post_type_support( 'page', 'excerpt' );
+	
+	register_nav_menus(array(
+		'headernav' => 'Hoofdmenu',
+		'footernavigatie' => 'Footermenu'
+	));
+	
+	/*
+	 * Let WordPress manage the document title.
+	 * By adding theme support, we declare that this theme does not use a
+	 * hard-coded <title> tag in the document head, and expect WordPress to
+	 * provide it for us.
+	 */
+	add_theme_support( 'title-tag' );
+
+	/*
+	 * Switch default core markup for search form, comment form, and comments
+	 * to output valid HTML5.
+	 */
+	add_theme_support('html5', array(
+		'search-form',
+		'comment-form',
+		'comment-list',
+		'gallery',
+		'caption'
+	));
+
+	add_image_size('post-thumb', 500, 375, true);
+	add_image_size('post', 800, 600);
+	add_image_size('card', 400, 300, true);
+	add_image_size('media-thumb', 300, 200, true);
+	add_image_size('media-full', 1200, 1100);
+
+	add_editor_style(array('editor-style.css', google_fonts_url(true), fontscom_fonts_url()));
+}
+add_action( 'after_setup_theme', 'theme_setup' );
+
+
+/* /////// */
+/* SCRIPTS */
+/* /////// */
+
+function theme_scripts() {
+	//styles
+	wp_enqueue_style( 'google-fonts', google_fonts_url(), array(), false );
+
+	//javascript
+	wp_enqueue_script(
+	 'main',
+		get_template_directory_uri() . '/js/main.min.js',
+		array(),
+		false,
+		true
+	);
 }
 
-add_editor_style();
+add_action('wp_enqueue_scripts', 'theme_scripts');
+
+/* ///// */
+/* FONTS */
+/* ///// */
+
+function google_fonts_url($urlencode = false) {
+	$fonts_url = '';
+	$fonts = array();
+
+	$fonts[] = 'Lato:400,700';
+	$fonts[] = 'Roboto+Slab:400,700';
+
+	if($urlencode){
+		$family = urlencode(implode( '|', $fonts ));
+	}
+	else {
+		$family = implode( '|', $fonts );
+	}
+
+	if ( $fonts ) {
+		$fonts_url = add_query_arg( array(
+			'family' => $family,
+		), 'https://fonts.googleapis.com/css' );
+	}
+
+	return $fonts_url;
+}
+
+
+function fontscom_fonts_url() {
+	$fonts_url = '//fast.fonts.net/cssapi/11f4e116-36b1-4853-877a-76a60cd83d95.css';
+
+	return $fonts_url;
+}
+
+
+/* ///// */
+/* OTHER */
+/* ///// */
 
 function cc_mime_types( $mimes ){
 	$mimes['svg'] = 'image/svg+xml';
@@ -19,41 +109,21 @@ function cc_mime_types( $mimes ){
 add_filter( 'upload_mimes', 'cc_mime_types' );
 
 
-add_action('wp_enqueue_scripts', 'scripts');
-
-function scripts() {
-	wp_enqueue_script(
-	 'main',
-		get_template_directory_uri() . '/js/main.min.js',
-		array(),
-		false,
-		true
-	);
-
-	wp_deregister_script( 'wp-embed' );
-}
-
 function new_excerpt_length($length) {
-		return 30;
+	return 30;
 }
 
 add_filter('excerpt_length', 'new_excerpt_length');
 
-if(function_exists('add_image_size')){
-	add_image_size('bericht-thumb', 500, 375, true);
-	add_image_size('bericht', 800, 600);
-	add_image_size('card', 400, 300, true);
-	add_image_size('media-thumb', 300, 200, true);
-	add_image_size('media-full', 1200, 1100);
-}
 
 add_filter( 'image_size_names_choose', 'add_to_post_media_selecter' );
 
 function add_to_post_media_selecter( $sizes ) {
 	return array_merge( $sizes, array(
-		'bericht-thumb' => __('Bericht'),
+			'bericht-thumb' => __('Bericht'),
 	) );
 }
+
 
 
 /* //////// */
@@ -92,13 +162,53 @@ function getSocialMedia($return_follow_us_text = false){
 	}
 }
 
+function get_card_navigation($post = false, $template = false, $txt_article = 'Lees verder', $txt_all = 'Alles'){
+	$html_navigation = '';
+
+	$links = array();
+
+	if($post){
+		$links[] = array(
+			'text' => $txt_article,
+			'link' => get_permalink($post->ID),
+			'class' => 'card-navigation-article'
+		);
+	}
+
+	if($template){
+		$pages = get_pages(array(
+			'meta_key' => '_wp_page_template',
+			'meta_value' => $template
+		));
+
+		if(count($pages) == 1){
+			$links[] = array(
+				'text' => $txt_all,
+				'link' => get_permalink(current($pages)->ID),
+				'class' => 'card-navigation-all'
+			);
+		}
+	}
+
+	$html_navigation .= '<nav class="card-navigation card-navigation-count-'. count($links) . '">';
+	foreach($links as $button){
+		$html_navigation .= '<a class="card-button';
+		if(null !== $button['class'] && $button['class']){
+			$html_navigation .= ' ' . $button['class'];
+		}
+		$html_navigation .= '" href="' . $button['link'] . '">' . $button['text'] . '</a>';
+	}
+	$html_navigation .= '</nav>';
+
+	return $html_navigation;
+}
 
 /* ///////////// */
 /* POSTS 2 POSTS */
 /* ///////////// */
 
 function connection_types() {
-	p2p_register_connection_type( array(
+	/*p2p_register_connection_type( array(
 		'name' => 'module_to_page',
 		'from' => 'module',
 		'to' => 'page',
@@ -109,7 +219,7 @@ function connection_types() {
 		'name' => 'button_to_module',
 		'from' => 'button',
 		'to' => 'module'
-	));
+	));*/
 }
 
 add_action( 'p2p_init', 'connection_types' );

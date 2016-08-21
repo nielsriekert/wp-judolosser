@@ -1,0 +1,13 @@
+@import 'variables';
+
+@import 'reset';
+@import 'base';
+
+body#tinymce.wp-editor {
+ font-size: 16px;
+ margin: 2em 1.5625em 2em 50px;
+}
+
+#tinymce.wp-editor  {
+ width: 609px;
+}

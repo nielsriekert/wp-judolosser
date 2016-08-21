@@ -1,142 +1,8 @@
-.header-wrapper {
- min-height: 60px;
- background-color: $p-color;
+body:not(.single) {
+ background-color: rgb(240, 240, 240);
 }
 
-.header-content {
- line-height: 60px;
-}
-
-.header-logo {
- display: block;
- position: absolute;
- left: 50%;
- top: -15em;
- margin-left: -11em;
- width: 22em;
-}
-
-.header-logo img {
- display: block;
-}
-
-.header-menu-button {
- position: fixed;
- top: 15px;
- right: $cp-default;
- width: 50px;
- height: 50px;
- border-radius: 50px;
- background-color: $p-color;
- border: none;
- box-shadow: 0 0 16px rgba(0, 0, 0, .3);
- outline: none;
- z-index: 101;
- transition: background-color .2s;
-}
-
-.nav-active .header-menu-button {
- background-color: white;
-}
-
-.admin-bar .header-menu-button {
- top: 47px;
-}
-
-@media screen and (max-width: 782px){
-	.admin-bar .header-menu-button {
-	 top: 61px;
-	}
-}
-
-.header-menu-button-icon,
-.header-menu-button-icon:after,
-.header-menu-button-icon:before {
- height: 4px;
- background-color: white;
-}
-
-.header-menu-button-icon {
- display: inline-block;
- position: relative;
- width: 30px;
- vertical-align: middle;
- transition: background-color .2s;
-}
-
-.header-menu-button-icon:after,
-.header-menu-button-icon:before {
- content: "";
- display: block;
- position: absolute;
- left: 0;
- right: 0;
- transition: transform .2s, background-color .2s;
-}
-
-.header-menu-button-icon:before {
- transform: translateY(-8px);
-}
-
-.header-menu-button-icon:after {
- transform: translateY(8px);
-}
-
-.nav-active .header-menu-button-icon,
-.nav-active .header-menu-button-icon:after,
-.nav-active .header-menu-button-icon:before {
- background-color: black;
-}
-
-.nav-active .header-menu-button-icon {
- background-color: transparent;
-}
-
-.nav-active .header-menu-button-icon:after {
- transform: rotateZ(45deg) translateY(0);
-}
-
-.nav-active .header-menu-button-icon:before {
- transform: rotateZ(-45deg) translateY(0);
-}
-
-@media (min-width: $bp-small) {
-	.header-menu-button {
-	 right: $cp-small;
-	}
-}
-
-@media (min-width: $bp-middle) {
-	.header-menu-button {
-	 right: $cp-middle;
-	}
-}
-
-.header-nav {
- position: fixed;
- left: 0;
- top: 0;
- right: 0;
- opacity: 0;
- height: 0;
- overflow: hidden;
- text-align: center;
- transition: opacity .2s;
- background-color: rgba(0, 0, 0, .9);
- z-index: 100;
-}
-
-.nav-active .header-nav {
- bottom: 0;
- height: auto;
- opacity: 1;
-}
-
-.header-nav a:link,
-.header-nav a:visited {
- font-size: 1.25em;
- color: white;
-}
+@import 'layout-header';
 
 .content {
  padding-left: $cp-default;
@@ -170,6 +36,113 @@
 
 .article {
  max-width: 54em;
+}
+
+
+.articles-content {
+ text-align: center;
+}
+
+
+/* ARTICLE ITEM */
+
+.article-item-content {
+ padding-top: 60px;
+ padding-bottom: 80px;
+}
+
+.article-item-content::after {
+ content: "";
+ display: block;
+ clear: left;
+}
+
+.article-item {
+ position: relative;
+ margin-top: 60px;
+ color: inherit;
+ background-color: white;
+}
+
+.article-item:first-child {
+ margin-top: 0;
+}
+
+.article-item > a {
+ display: block;
+ height: 100%;
+ box-sizing: border-box;
+ color: inherit;
+ border: 2px solid transparent;
+ transition: border-color .1s;
+}
+
+.article-item > a:hover {
+ border-color: rgba(darken($p-color, 30%), .2);
+}
+
+@media (min-width: $bp-small) {
+	.article-item,
+	.article-item:first-child {
+	 float: left;
+	 width: 47%;
+	 margin-left: 6%;
+	 margin-top: 60px;
+	}
+
+	.article-item:nth-child(2n+1) {
+	 margin-left: 0;
+	 clear: left;
+	}
+
+	.article-item:nth-child(-n+2) {
+	 margin-top: 0;
+	}
+}
+
+@media (min-width: $bp-middle) {
+ 	.article-item,
+	.article-item:first-child,
+	.article-item:nth-child(2n+1) {
+	 width: 30%;
+	 margin-left: 5%;
+	 margin-top: 60px;
+	 clear: none;
+	}
+
+	.article-item:nth-child(3n+1) {
+	 margin-left: 0;
+	 clear: left;
+	}
+
+	.article-item:nth-child(-n+3) {
+	 margin-top: 0;
+	}
+}
+
+.article-item-thumb img {
+ display: block;
+}
+
+.article-item-thumb + .article-item-body {
+ margin: -1.75em 1em 0;
+}
+
+.article-item-body {
+ position: relative;
+ padding-bottom: 1.75em;
+}
+
+.article-item-title {
+ display: inline-block;
+ padding: 8px 16px;
+ background-color: white;
+}
+
+.article-item-date {
+ margin-top: .5em;
+ padding: 0 16px;
+ line-height: 1;
 }
 
 .photos {

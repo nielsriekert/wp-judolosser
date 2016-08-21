@@ -21,9 +21,9 @@ if($locations->have_posts()){
 			<div class="card-body">
 				<h2><?php the_title(); ?></h2>
 				<?php the_excerpt(); ?>
-				<div class="card-type">
+				<!--<div class="card-type">
 					Judo
-				</div>
+				</div>-->
 			</div>
 		</a>
 	</section>
