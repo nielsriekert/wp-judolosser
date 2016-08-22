@@ -34,10 +34,69 @@ body:not(.single) {
  padding-top: 80px;
 }
 
-.article {
+/* ARTICLE */
+
+html {
+ height: 100%;
+}
+
+.single {
+ height: 100%;
+}
+
+.single:not(.single-photoalbum) .content {
  max-width: 54em;
 }
 
+.article-image-post {
+ display: table;
+ position: relative;
+ width: 100%;
+ height: 60%;
+ padding-left: $cp-default;
+ padding-right: $cp-default;
+ background-size: cover;
+ background-position: center center;
+ box-sizing: border-box;
+}
+
+.article-image-post::before {
+ content: "";
+ display: block;
+ position: absolute;
+ left: 0;
+ right: 0;
+ top: 0;
+ bottom: 0;
+ background-color: rgba(0, 0, 0, .3);
+}
+
+.article-image-post h1 {
+ display: table-cell;
+ position: relative;
+ font-size: 2em;
+ color: white;
+ text-align: center;
+ vertical-align: middle;
+}
+
+@media (min-width: $bp-small) {
+	.article-image-post h1 {
+	 font-size: 3em;
+	}
+}
+
+@media (min-width: $bp-middle) {
+	.article-image-post h1 {
+	 font-size: 3em;
+	}
+}
+
+@media (min-width: $bp-large) {
+	.article-image-post h1 {
+	 font-size: 4em;
+	}
+}
 
 .articles-content {
  text-align: center;

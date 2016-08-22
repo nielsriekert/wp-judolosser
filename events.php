@@ -14,7 +14,15 @@ $posts = new WP_Query(array(
 	'no_found_rows' => true,
 	'meta_key' => 'e_datum',
 	'orderby' => 'meta_value',
-	'order' => 'ASC'
+	'order' => 'ASC',
+	'meta_query' => array(
+		array(
+			'key' => 'e_datum',
+			'value' => date('Y-m-d'),
+			'compare' => '>=',
+			'type' => 'DATE'
+		)
+	)
 ));
 
 if($posts->have_posts()){?>

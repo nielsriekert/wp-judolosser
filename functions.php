@@ -3,7 +3,7 @@ function theme_setup() {
 	add_theme_support('menus');
 	
 	add_theme_support('post-thumbnails');
-	set_post_thumbnail_size( 600, 600, true );
+	set_post_thumbnail_size( 500, 375, true );
 
 	add_post_type_support( 'page', 'excerpt' );
 	
@@ -33,7 +33,7 @@ function theme_setup() {
 	));
 
 	add_image_size('post-thumb', 500, 375, true);
-	add_image_size('post', 800, 600);
+	add_image_size('post', 1920, 1080);
 	add_image_size('card', 400, 300, true);
 	add_image_size('media-thumb', 300, 200, true);
 	add_image_size('media-full', 1200, 1100);

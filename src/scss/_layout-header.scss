@@ -1,6 +1,8 @@
 .header-wrapper {
+ position: relative;
  min-height: 60px;
  background-color: $p-color;
+ z-index: 10;
 }
 
 .header-content {
