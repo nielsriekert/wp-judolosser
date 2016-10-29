@@ -16,7 +16,7 @@ if(has_post_thumbnail()){
 		<h1><?php the_title(); ?></h1>
 		<?php
 	}
+	the_content();
 	?>
-	<?php the_content(); ?>
 </article>
 <?php get_footer(); ?>

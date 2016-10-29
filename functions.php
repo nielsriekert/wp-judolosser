@@ -97,6 +97,72 @@ function fontscom_fonts_url() {
 	return $fonts_url;
 }
 
+/* /////////// */
+/* JUDO LOSSER */
+/* /////////// */
+
+add_action( 'admin_menu', 'judo_losser_menu' );
+
+function judo_losser_menu() {
+	//add_options_page( 'My Plugin Options', 'My Plugin', 'manage_options', 'my-unique-identifier', 'my_plugin_options' );
+
+	add_menu_page('Judo Losser', 'Judo Losser', 'manage_options', 'judo-losser', 'setup_judo_losser', 'dashicons-admin-site', 31);
+}
+
+function setup_judo_losser() {
+	if ( !current_user_can( 'manage_options' ) )  {
+		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+	}
+	echo '<div class="wrap">';
+	echo '<p>Here is where the form would go if I actually had options.</p>';
+	echo '</div>';
+}
+
+function get_training_times($post_id = false, $columns = 'all'){
+	if(!$post_id){
+		$pages = get_pages(array(
+			'meta_key' => '_wp_page_template',
+			'meta_value' => 'trainingstijden.php'
+		));
+		if(count($pages) == 1){
+			$post_id == current($pages)->ID;
+		}
+		else {
+			return false;
+		}
+	}
+
+	$trainingstijden = CFS()->get('t_trainingstijden', $post_id);
+	if($trainingstijden){
+	$return_data = '<table class="trainingstijden">
+		<tr>
+			<th>Dag</th>
+			<th>Tijden</th>
+			<th>Trainer</th>
+			<th>Soort training</th>
+			<th>Locatie</th>
+		</tr>';
+		foreach($trainingstijden as $dag){
+			$counter = 0;
+			foreach($dag['t_training'] as $training){$counter ++;
+			?>
+		<tr>
+			<?php if($counter === 1){
+			$return_data .= '<td rowspan="' . count($dag['t_training']) . '">' . current($dag['t_dag']) . '</td>';
+			}
+			$return_data .= '<td>' . current($training['t_tijd_van_uren']) . ':' . current($training['t_tijd_van_minuten']) . ' t/m ' .  current($training['t_tijd_tot_uren']) . ':' . current($training['t_tijd_tot_minuten']) . '</td>' . "\n\r";
+			$return_data .= '<td>' . $training['t_trainer'] . '</td>' . "\n\r";
+			$return_data .= '<td>' . $training['t_soort_training'] . '</td>' . "\n\r";
+			$return_data .= '<td>' . $training['t_locatie'] . '</td>' . "\n\r" . '
+		</tr>';
+			}
+		}
+	$return_data .= '</table>'. "\n\r";
+	}
+
+	return $return_data;
+}
+
 
 /* ///// */
 /* OTHER */
@@ -451,7 +517,7 @@ add_action( 'customize_register', 'customize_template' );
 
 add_action('after_switch_theme', 'judolosser_setup_options');
 
-function one_pager_setup_options () {
+function judolosser_setup_options () {
 	add_role( 'klant', 'Klant', array(
 		'delete_others_pages' => true,
 		'delete_others_posts' => true,
@@ -488,8 +554,7 @@ function one_pager_setup_options () {
 
 add_action('switch_theme', 'judolosser_deactivate_options');
 
-function one_pager_deactivate_options () {
+function judolosser_deactivate_options () {
 	remove_role('klant');
 }
-
 ?>

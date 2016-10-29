@@ -1,7 +1,8 @@
 	<div class="footer-wrapper">
-		bla
+		<div class="content">
+			<?php echo get_training_times(); ?>
+		</div>
 	</div>
 	<?php wp_footer(); ?>
-	<link href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700" rel="stylesheet">
 	</body>
 </html>

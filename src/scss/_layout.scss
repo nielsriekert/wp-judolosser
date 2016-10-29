@@ -1,4 +1,6 @@
-body:not(.single) {
+body.page-template-events,
+body.page-template-photoalbums,
+body.page-template-posts {
  background-color: rgb(240, 240, 240);
 }
 
@@ -102,6 +104,9 @@ html {
  text-align: center;
 }
 
+.article table {
+ width: 100%;
+}
 
 /* ARTICLE ITEM */
 
