@@ -34,12 +34,21 @@ body.page-template-posts {
 
 .header-wrapper + .content {
  padding-top: 120px;
+ padding-bottom: 60px;
 }
 
 /* ARTICLE */
 
 html {
  height: 100%;
+}
+
+th {
+ background-color: rgb(240, 240, 240);
+}
+
+td {
+ border-top: 1px solid rgb(240, 240, 240);
 }
 
 .single {
@@ -221,6 +230,4 @@ html {
  display: block;
 }
 
-.footer-wrapper {
- background-color: rgb(50, 50, 50);
-}
+@import 'layout-footer';

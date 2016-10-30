@@ -69,12 +69,12 @@ h1 {
 }
 
 h2 {
- font-size: 1.75em;
+ font-size: 1.375em;
 }
 
 @media (min-width: $bp-middle) {
 	h2 {
-	 font-size: 1.875em;
+	 font-size: 1.5em;
 	}
 }
 
@@ -115,4 +115,118 @@ a:link,
 a:visited {
  color: $p-color;
  text-decoration: none;
+}
+
+/* tables */
+
+table,
+thead,
+tbody,
+th,
+td,
+tr { 
+ display: block; 
+}
+
+th {
+ display: none;
+}
+
+td[data-column-name]:before,
+td[data-title]:before {
+ position: absolute;
+ top: .5em;
+ left: 0;
+ width: 45%;
+ font-weight: 700;
+ white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
+}
+
+td[data-column-name]:before {
+ content: attr(data-column-name);
+}
+
+td[data-title]:before {
+ content: attr(data-title);
+}
+
+table {
+ width: 100%;
+}
+
+td,
+th {
+ padding: .5em 1em .5em .5em;
+}
+
+td:first-child,
+th:first-child {
+ padding-left: 0;
+}
+
+td:last-child,
+th:last-child {
+ padding-right: 0;
+}
+
+th {
+ font-weight: 700;
+ text-align: left;
+}
+
+td[data-column-name],
+td[data-title] {
+ position: relative;
+ padding-left: 50%;
+}
+
+@media (min-width: $bp-small) {
+	table {
+	 display: table;
+	}
+
+	thead {
+	 display: table-header-group;
+	}
+
+	tbody {
+	 display: table-row-group;
+	}
+
+	td,
+	th {
+	 display: table-cell;
+	}
+
+	tr:last-child td {
+	 border-bottom: 0;
+	}
+
+	th,
+	td,
+	td:first-child,
+	th:first-child,
+	td:last-child,
+	th:last-child,
+	td[data-column-name],
+	td[data-title] {
+	 position: static;
+	 padding: .5em 1em .5em .5em;
+	}
+
+	tr { 
+	 display: table-row; 
+	}
+
+	td[data-column-name]:before,
+	td[data-title]:before {
+	 content: "";
+	 display: none;
+	}
+
+	table td:first-child {
+	 font-weight: 400;
+	}
 }

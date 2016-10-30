@@ -3,7 +3,7 @@ Theme Name: Judo Losser
 Theme URI: judolosser.nl
 Description: Template voor Judo Losser
 Author: Niels Riekert	
-Version: 0
+Version: 0.1
 */
 
 @import 'variables';
@@ -64,74 +64,6 @@ input[type="submit"]:hover {
 .gallery-columns-3 .gallery-item:nth-child(3n+1) {
  margin-left: 0;
  clear: left;
-}
-
-
-/* CONTENT */
-
-.content h2,
-.content h1 + div h2:first-child {
- margin-top: 1.4em;
-}
-
-.content h2:first-child {
- margin-top: 0;
-}
-
-.content p,
-.content ul,
-.content ol,
-.content table,
-time,
-.gform_confirmation_wrapper {
- line-height: 1.6em;
- margin-top: 1.6em;
-}
-
-
-h2 + p,
-h2 + ul,
-h2 + ol,
-h2 + table,
-h2 + iframe {
- margin-top: 0;
-}
-
-.content ul,
-.content ol {
- padding-left: 1em;
- list-style-type: circle;
-}
-
-.content p a:link,
-.content p a:visited,
-.content ul a:link,
-.content ul a:visited,
-.content ol a:link,
-.content ol a:visited {
- color: $p-color;
- text-decoration: underline;
-}
-
-.content p a:hover,
-.content ul a:hover,
-.content ol a:hover {
- color: saturate(lighten($p-color, 10%), 30%);
-}
-
-.content input[type="text"],
-.content input[type="email"],
-.content input[type="search"],
-.content input[type="tel"],
-.content textarea {
- padding: 0.6em 0 0.6em 0.6em;
- width: 100%;
- box-sizing: border-box;
-}
-
-.content textarea {
- min-height: 16em;
- resize: vertical;
 }
 
 

@@ -134,33 +134,52 @@ function get_training_times($post_id = false, $columns = 'all'){
 
 	$trainingstijden = CFS()->get('t_trainingstijden', $post_id);
 	if($trainingstijden){
-	$return_data = '<table class="trainingstijden">
+	$rhtml = '<table class="trainingstijden">
 		<tr>
-			<th>Dag</th>
-			<th>Tijden</th>
-			<th>Trainer</th>
-			<th>Soort training</th>
-			<th>Locatie</th>
-		</tr>';
+			<th>Dag</th>';
+
+			if($columns == 'all' || array_search('tijden', $columns) !== false){
+				$rhtml .= '<th>Tijden</th>';
+			}
+			if($columns == 'all' || array_search('trainer', $columns) !== false){
+				$rhtml .= '<th>Trainer</th>';
+			}
+			if($columns == 'all' || array_search('training', $columns) !== false){
+				$rhtml .= '<th>Soort training</th>';
+			}
+			if($columns == 'all' || array_search('locatie', $columns) !== false){
+				$rhtml .= '<th>Locatie</th>';
+			}
+		$rhtml .= '</tr>';
 		foreach($trainingstijden as $dag){
 			$counter = 0;
 			foreach($dag['t_training'] as $training){$counter ++;
 			?>
 		<tr>
 			<?php if($counter === 1){
-			$return_data .= '<td rowspan="' . count($dag['t_training']) . '">' . current($dag['t_dag']) . '</td>';
+			$rhtml .= '<td data-column-name="Dag" rowspan="' . count($dag['t_training']) . '">' . current($dag['t_dag']) . '</td>';
 			}
-			$return_data .= '<td>' . current($training['t_tijd_van_uren']) . ':' . current($training['t_tijd_van_minuten']) . ' t/m ' .  current($training['t_tijd_tot_uren']) . ':' . current($training['t_tijd_tot_minuten']) . '</td>' . "\n\r";
-			$return_data .= '<td>' . $training['t_trainer'] . '</td>' . "\n\r";
-			$return_data .= '<td>' . $training['t_soort_training'] . '</td>' . "\n\r";
-			$return_data .= '<td>' . $training['t_locatie'] . '</td>' . "\n\r" . '
-		</tr>';
+			if($columns == 'all' || array_search('tijden', $columns) !== false){
+				$rhtml .= '<td data-column-name="Tijden">' . current($training['t_tijd_van_uren']) . ':' . current($training['t_tijd_van_minuten']) . ' t/m ' .  current($training['t_tijd_tot_uren']) . ':' . current($training['t_tijd_tot_minuten']) . '</td>' . "\n\r";
+			}
+			if($columns == 'all' || array_search('trainer', $columns) !== false){
+				$rhtml .= '<td data-column-name="Trainer">' . $training['t_trainer'] . '</td>' . "\n\r";
+			}
+			if($columns == 'all' || array_search('training', $columns) !== false){
+				$rhtml .= '<td data-column-name="Training">' . $training['t_soort_training'] . '</td>' . "\n\r";
+			}
+			if($columns == 'all' || array_search('locatie', $columns) !== false){
+				$rhtml .= '<td data-column-name="Locatie">' . $training['t_locatie'] . '</td>' . "\n\r";
+			}
+		$rhtml .= '</tr>';
 			}
 		}
-	$return_data .= '</table>'. "\n\r";
+	$rhtml .= '</table>'. "\n\r";
+	return $rhtml;
 	}
-
-	return $return_data;
+	else {
+		return false;
+	}
 }
 
 

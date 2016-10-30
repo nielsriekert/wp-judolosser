@@ -1,0 +1,46 @@
+.footer-wrapper {
+ background-color: rgb(50, 50, 50);
+}
+
+.footer {
+ padding-top: 40px;
+ padding-bottom: 50px;
+ color: white;
+}
+
+@media (min-width: $bp-small) {
+	.footer-column {
+	 width: 47%;
+	 margin-left: 6%;
+	}
+
+	.footer-column:nth-child(2n+1) {
+	 margin-left: 0;
+	 clear: left;
+	}
+}
+
+.footer h2,
+.footer h3,
+.footer p,
+.footer table {
+ color: rgb(200, 200, 200);
+}
+
+.footer table {
+ width: 100%;
+}
+
+.footer h2:first-child,
+.footer p:first-child,
+.footer table:first-child {
+ margin-top: 0;
+}
+
+.footer th {
+ background-color: darken(rgb(50, 50, 50), 2%);
+}
+
+.footer td {
+ border-top: 1px solid darken(rgb(50, 50, 50), 2%);
+}
