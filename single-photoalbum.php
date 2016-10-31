@@ -10,7 +10,7 @@ if(has_post_thumbnail()){
 	<?php
 }
 ?>
-<div class="content">
+<div class="content article">
 	<?php
 	if(!has_post_thumbnail()){?>
 		<h1><?php the_title(); ?></h1>

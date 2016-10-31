@@ -16,7 +16,7 @@ get_header(); ?>
 	?>
 	</div>
 </div>
-<div class="content">
+<div class="content article">
 	<?php the_content();?>
 </div>
 <?php get_footer(); ?>

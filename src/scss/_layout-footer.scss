@@ -27,6 +27,10 @@
  color: rgb(200, 200, 200);
 }
 
+.footer .trainingstijden {
+ font-size: .9375em;
+}
+
 .footer table {
  width: 100%;
 }
@@ -35,6 +39,12 @@
 .footer p:first-child,
 .footer table:first-child {
  margin-top: 0;
+}
+
+.footer td,
+.footer th {
+ padding-top: .25em;
+ padding-bottom: .25em;
 }
 
 .footer th {

@@ -120,18 +120,18 @@ function setup_judo_losser() {
 
 function get_training_times($post_id = false, $columns = 'all'){
 	if(!$post_id){
+		wp_reset_query();
 		$pages = get_pages(array(
 			'meta_key' => '_wp_page_template',
 			'meta_value' => 'trainingstijden.php'
 		));
 		if(count($pages) == 1){
-			$post_id == current($pages)->ID;
+			$post_id = current($pages)->ID;
 		}
 		else {
 			return false;
 		}
 	}
-
 	$trainingstijden = CFS()->get('t_trainingstijden', $post_id);
 	if($trainingstijden){
 	$rhtml = '<table class="trainingstijden">
@@ -537,7 +537,7 @@ add_action( 'customize_register', 'customize_template' );
 add_action('after_switch_theme', 'judolosser_setup_options');
 
 function judolosser_setup_options () {
-	add_role( 'klant', 'Klant', array(
+	add_role( 'manager', 'Manager', array(
 		'delete_others_pages' => true,
 		'delete_others_posts' => true,
 		'delete_pages' => true,
@@ -574,6 +574,6 @@ function judolosser_setup_options () {
 add_action('switch_theme', 'judolosser_deactivate_options');
 
 function judolosser_deactivate_options () {
-	remove_role('klant');
+	remove_role('manager');
 }
 ?>

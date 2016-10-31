@@ -34,6 +34,10 @@ body.page-template-posts {
 
 .header-wrapper + .content {
  padding-top: 120px;
+}
+
+.single .header-wrapper + .content,
+.page-template-default .header-wrapper + .content {
  padding-bottom: 60px;
 }
 
@@ -51,11 +55,23 @@ td {
  border-top: 1px solid rgb(240, 240, 240);
 }
 
+.article {
+ padding-top: 40px;
+ padding-bottom: 50px;
+}
+
+.article p:first-child,
+.article ul:first-child,
+.article ol:first-child,
+.article table:first-child {
+ margin-top: 0;
+}
+
 .single {
  height: 100%;
 }
 
-.single:not(.single-photoalbum) .content {
+.single:not(.single-photoalbum) .article {
  max-width: 54em;
 }
 
