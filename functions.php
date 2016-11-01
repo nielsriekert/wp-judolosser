@@ -9,7 +9,7 @@ function theme_setup() {
 	
 	register_nav_menus(array(
 		'headernav' => 'Hoofdmenu',
-		'footernavigatie' => 'Footermenu'
+		'footernav' => 'Footermenu'
 	));
 	
 	/*
@@ -455,6 +455,95 @@ function create_post_types() {
 add_action( 'init', 'create_post_types' );
 
 
+/* /////////// */
+/* USER FIELDS */
+/* /////////// */
+
+function get_bestuursrollen(){
+	return array(
+		'Voorzitter',
+		'Secretaris',
+		'Penningmeester',
+		'Technisch coordinator',
+		'Algemeen'
+	);
+}
+
+function show_extra_profile_fields( $user ) { ?>
+
+	<h3>Leden informatie</h3>
+	<table class="form-table">
+		<tr>
+			<th><label for="boardmember">Bestuursrol</label></th>
+			<td>
+				<?php
+				$bestuursrollen = get_bestuursrollen();
+				?>
+				<select name="boardmember">
+					<option value="">- geen -</option>
+					<?php
+					$user_boardmember = get_the_author_meta('boardmember', $user->ID);
+					foreach($bestuursrollen as $rol){?>
+					<option value="<?php echo $rol; ?>"<?php if($user_boardmember == $rol){?> selected="selected"<?php } ?>><?php echo $rol; ?></option>
+					<?php }
+					?>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<th><label for="address">Straat en huisnummer</label></th>
+			<td>
+				<input type="text" name="address" id="address" value="<?php echo esc_attr( get_the_author_meta( 'address', $user->ID ) ); ?>" class="regular-text" /><br />
+			</td>
+		</tr>
+		<tr>
+			<th><label for="postcode">Postcode</label></th>
+			<td>
+				<input type="text" name="postcode" id="postcode" value="<?php echo esc_attr( get_the_author_meta( 'postcode', $user->ID ) ); ?>" class="regular-text" /><br />
+			</td>
+		</tr>
+		<tr>
+			<th><label for="town">Plaats</label></th>
+			<td>
+				<input type="text" name="town" id="town" value="<?php echo esc_attr( get_the_author_meta( 'town', $user->ID ) ); ?>" class="regular-text" /><br />
+			</td>
+		</tr>
+		<tr>
+			<th><label for="phone-home">Telefoon (thuis)</label></th>
+			<td>
+				<input type="tel" name="phonehome" id="phonehome" value="<?php echo esc_attr( get_the_author_meta( 'phonehome', $user->ID ) ); ?>" class="regular-text" /><br />
+			</td>
+		</tr>
+		<tr>
+			<th><label for="phone">Telefoon (mobiel)</label></th>
+			<td>
+				<input type="tel" name="phone" id="phone" value="<?php echo esc_attr( get_the_author_meta( 'phone', $user->ID ) ); ?>" class="regular-text" /><br />
+			</td>
+		</tr>
+	</table>
+<?php
+}
+
+add_action( 'show_user_profile', 'show_extra_profile_fields' );
+add_action( 'edit_user_profile', 'show_extra_profile_fields' );
+
+
+function save_extra_profile_fields($user_id){
+
+	if(!current_user_can('edit_user'))
+		return false;
+
+	update_user_meta($user_id, 'boardmember', $_POST['boardmember']);
+	update_user_meta($user_id, 'address', $_POST['address']);
+	update_user_meta($user_id, 'postcode', $_POST['postcode']);
+	update_user_meta($user_id, 'town', $_POST['town']);
+	update_user_meta($user_id, 'phonehome', $_POST['phonehome']);
+	update_user_meta($user_id, 'phone', $_POST['phone']);
+}
+
+add_action( 'personal_options_update', 'save_extra_profile_fields' );
+add_action( 'edit_user_profile_update', 'save_extra_profile_fields' );
+
 /* ///////////// */
 /* SETTING PAGES */
 /* ///////////// */
@@ -509,7 +598,7 @@ function customize_template( $wp_customize ) {
 
 	/*// CODE //*/
 	
-	$wp_customize->add_section('ons_tracking_code' , array(
+	$wp_customize->add_section('tracking_code' , array(
 		'title' => 'Tracking code',
 		'priority' => 50,
 		'capability' => 'administrator'
@@ -517,12 +606,21 @@ function customize_template( $wp_customize ) {
 	
 	/* tracking code */
 	
-	$wp_customize->add_setting('tracking_code');
+	$wp_customize->add_setting('code-head');
 	
-	$wp_customize->add_control( new WP_Customize_Textarea_Control($wp_customize, 'tracking_code', array(
-		'label' => 'Plaats (tracking) code',
-		'section' => 'ons_tracking_code',
-		'settings' => 'tracking_code',
+	$wp_customize->add_control( new WP_Customize_Textarea_Control($wp_customize, 'code-head', array(
+		'label' => 'Plaats (tracking) code (head)',
+		'section' => 'tracking_code',
+		'settings' => 'code-head',
+		'type' => 'textarea'
+	)));
+
+	$wp_customize->add_setting('code-body');
+	
+	$wp_customize->add_control( new WP_Customize_Textarea_Control($wp_customize, 'code-body', array(
+		'label' => 'Plaats (tracking) code (body)',
+		'section' => 'tracking_code',
+		'settings' => 'code-body',
 		'type' => 'textarea'
 	)));
 }

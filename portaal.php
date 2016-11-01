@@ -16,7 +16,14 @@ get_header(); ?>
 	?>
 	</div>
 </div>
+<?php
+$content = get_the_content();
+if($content){
+?>
 <div class="content article">
 	<?php the_content();?>
 </div>
+<?php
+}
+?>
 <?php get_footer(); ?>

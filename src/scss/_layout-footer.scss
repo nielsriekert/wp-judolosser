@@ -4,12 +4,19 @@
 
 .footer {
  padding-top: 40px;
- padding-bottom: 50px;
+ //padding-bottom: 50px;
  color: white;
+}
+
+.footer::after {
+ content: "";
+ display: block;
+ clear: left;
 }
 
 @media (min-width: $bp-small) {
 	.footer-column {
+	 float: left;
 	 width: 47%;
 	 margin-left: 6%;
 	}
@@ -23,8 +30,15 @@
 .footer h2,
 .footer h3,
 .footer p,
-.footer table {
+.footer table,
+.footer a:link,
+.footer a:visited  {
  color: rgb(200, 200, 200);
+}
+
+.footer a:hover {
+ color: white;
+ text-decoration: underline;
 }
 
 .footer .trainingstijden {
@@ -53,4 +67,33 @@
 
 .footer td {
  border-top: 1px solid darken(rgb(50, 50, 50), 2%);
+}
+
+.footer .footer-nav {
+ clear: both;
+}
+
+.footer .footer-nav ul {
+ padding-left: 0;
+ margin-top: 0;
+ list-style-type: none;
+}
+
+.footer-nav {
+ padding-top: 30px;
+}
+
+.footer-nav .menu {
+ padding: .5em 0;
+ border-top: 1px solid rgb(100, 100, 100);
+}
+
+.footer-nav .menu-item {
+ display: inline-block;
+ padding: 0 1em;
+}
+
+.footer-nav .menu-item a:link,
+.footer-nav .menu-item a:visited {
+ text-transform: lowercase;
 }
