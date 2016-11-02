@@ -2,7 +2,7 @@
 		<footer class="content footer">
 			<div class="footer-column">
 				<h2>Trainingstijden</h2>
-				<?php echo get_training_times(false, array('tijden', 'training')); ?>
+				<?php echo get_training_times(false, array('tijd', 'training')); ?>
 			</div>
 			<div class="footer-column">
 				<p>

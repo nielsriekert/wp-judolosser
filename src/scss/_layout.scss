@@ -235,11 +235,30 @@ td {
 }
 
 .photos {
+ margin: 0 -4px;
  line-height: 0;
 }
 
 .photos .photo {
  display: inline-block;
+ width: 33.3333%;
+ border: 2px solid transparent;
+ box-sizing: border-box;
+}
+
+.photos .photo:nth-child(3n) {
+ //border-right-width: 0;
+}
+
+@media (min-width: $bp-middle) {
+	.photos .photo,
+	.photos .photo:nth-child(3n) {
+	 width: 25%;
+	}
+
+	.photos .photo:nth-child(4n) {
+	 margin-right: 0;
+	}
 }
 
 .photos .photo img {
