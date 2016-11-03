@@ -76,10 +76,9 @@ td {
 }
 
 .article-image-post {
- display: table;
+ overflow: hidden;
  position: relative;
- width: 100%;
- height: 60%;
+ height: 50%;
  padding-left: $cp-default;
  padding-right: $cp-default;
  background-size: cover;
@@ -96,6 +95,12 @@ td {
  top: 0;
  bottom: 0;
  background-color: rgba(0, 0, 0, .3);
+}
+
+.article-image-post-content {
+ display: table;
+ width: 100%;
+ height: 100%;
 }
 
 .article-image-post h1 {
@@ -123,6 +128,26 @@ td {
 	.article-image-post h1 {
 	 font-size: 4em;
 	}
+}
+
+
+.article-image-post-image {
+ position: absolute;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ margin: -5px -10px -10px -5px;
+ top: 0;
+ background-position: center center;
+ background-size: cover;
+ background-attachment: fixed;
+ transition: filter .8s, transform .8s;
+ z-index: -1;
+}
+
+.scrolled-down .article-image-post-image {
+ filter: blur(5px);
+ transform: scale(1.03);
 }
 
 .articles-content {
