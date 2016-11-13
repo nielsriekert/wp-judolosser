@@ -1,7 +1,7 @@
 <div class="article-item">
 	<a href="<?php the_permalink(); ?>">
 		<?php
-		if(has_post_thumbnail()) {?>
+		if(has_post_thumbnail()){?>
 		<div class="article-item-thumb">
 			<?php the_post_thumbnail('post-thumb'); ?>
 		</div>
@@ -19,6 +19,14 @@
 				}
 				?>
 			</div>
+			<?php
+			if(!has_post_thumbnail()){?>
+			<div class="article-item-excerpt">
+				<?php the_excerpt(); ?>
+			</div>
+				<?php
+			}
+			?>
 		</div>
 	</a>
 </div>

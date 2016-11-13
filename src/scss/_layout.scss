@@ -60,6 +60,8 @@ td {
  padding-bottom: 50px;
 }
 
+.article h2:first-child,
+.article h3:first-child,
 .article p:first-child,
 .article ul:first-child,
 .article ol:first-child,
@@ -250,6 +252,7 @@ td {
 .article-item-title {
  display: inline-block;
  padding: 8px 16px;
+ margin-top: 0;
  background-color: white;
 }
 
@@ -257,6 +260,10 @@ td {
  margin-top: .5em;
  padding: 0 16px;
  line-height: 1;
+}
+
+.article-item-excerpt {
+ padding: 0 16px;
 }
 
 .photos {
@@ -311,6 +318,11 @@ ul.users {
 }
 
 @media (min-width: $bp-small) {
+	.users {
+	 display: flex;
+	 flex-wrap: wrap;
+	}
+
 	.users .user-item {
 	 float: left;
 	 width: 47%;
@@ -351,9 +363,29 @@ ul.users {
  font-size: 1.25rem;
 }
 
+.users .user-item .user-boardmember,
+.users .user-item .user-contact {
+ font-size: 1em;
+}
+
+.users .user-item .user-contact a:hover {
+ text-decoration: underline;
+}
+
+.users .user-item .user-contact a[href^="tel:"] {
+ padding-left: 1.75em;
+ background-image: url('images/icon-phone.svg');
+ background-position: left center;
+ background-repeat: no-repeat;
+ background-size: auto 90%;
+}
+
+.users .user-item .user-contact a[href^="mailto:"] {
+ word-break: break-all;
+}
+
 .users .user-item .user-boardmember {
  margin-top: 0;
- font-size: 1em;
  font-style: italic;
 }
 

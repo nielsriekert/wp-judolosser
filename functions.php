@@ -101,7 +101,7 @@ function fontscom_fonts_url() {
 /* JUDO LOSSER */
 /* /////////// */
 
-add_action( 'admin_menu', 'judo_losser_menu' );
+/*add_action( 'admin_menu', 'judo_losser_menu' );
 
 function judo_losser_menu() {
 	//add_options_page( 'My Plugin Options', 'My Plugin', 'manage_options', 'my-unique-identifier', 'my_plugin_options' );
@@ -116,7 +116,7 @@ function setup_judo_losser() {
 	echo '<div class="wrap">';
 	echo '<p>Here is where the form would go if I actually had options.</p>';
 	echo '</div>';
-}
+}*/
 
 function get_training_times($post_id = false, $columns = 'all'){
 	if(!$post_id){
@@ -287,6 +287,32 @@ function get_card_navigation($post = false, $template = false, $txt_article = 'L
 
 	return $html_navigation;
 }
+
+
+/* ///////////// */
+/* WP ALL IMPORT */
+/* ///////////// */
+
+function map_user_id($old_user_id){
+	switch($old_user_id){
+		case 2:
+			return 3;
+			break;
+		case 6:
+			return 2;
+			break;
+		case 10:
+			return 9;
+			break;
+		case 1:
+			return 1;
+			break;
+		default:
+			return 1;
+			break;
+	}
+}
+
 
 /* ///////////// */
 /* POSTS 2 POSTS */
@@ -465,6 +491,7 @@ function get_bestuursrollen(){
 		'Secretaris',
 		'Penningmeester',
 		'Technisch coordinator',
+		'Oudervertegenwoordiger',
 		'Algemeen'
 	);
 }

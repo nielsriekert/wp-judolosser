@@ -13,11 +13,16 @@ get_header(); ?>
 	}
 
 	if($users){
+		$boardmember_roles = get_bestuursrollen();
 		?>
 	<ul class="users">
 		<?php
-		foreach($users as $user){
-			include(locate_template('loops/loop-user.php'));
+		foreach($boardmember_roles as $role){
+			foreach($users as $user){
+				if($role == $user->boardmember){
+					include(locate_template('loops/loop-user.php'));
+				}
+			}
 		}
 		?>
 	</ul>

@@ -3,6 +3,10 @@
 }
 
 .footer {
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: space-between;
+ align-content: space-between;
  padding-top: 40px;
  //padding-bottom: 50px;
  color: white;
@@ -14,16 +18,33 @@
  clear: left;
 }
 
+.footer-column {
+ margin-top: 30px;
+}
+
 @media (min-width: $bp-small) {
 	.footer-column {
-	 float: left;
 	 width: 47%;
-	 margin-left: 6%;
 	}
 
+	.footer-column.footer-training-times {
+	 margin-top: 0;
+	 width: 100%;
+	}
+}
+
+@media (min-width: $bp-middle) {
+	.footer-column,
 	.footer-column:nth-child(2n+1) {
-	 margin-left: 0;
-	 clear: left;
+	 width: 23.5%;
+	}
+
+	.footer-column:nth-child(-n+3) {
+	 margin-top: 0;
+	}
+
+	.footer-column.footer-training-times {
+	 width: 47%;
 	}
 }
 
@@ -69,7 +90,13 @@
  border-top: 1px solid darken(rgb(50, 50, 50), 2%);
 }
 
+ul.footer-events {
+ list-style-type: none;
+ padding-left: 0;
+}
+
 .footer .footer-nav {
+ width: 100%;
  clear: both;
 }
 
