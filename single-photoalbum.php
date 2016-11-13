@@ -21,11 +21,12 @@ if(has_post_thumbnail()){
 	the_content();
 
 	$photos = CFS()->get('p_photos');
+	//print_r($photos);
 	if($photos){?>
 	<div class="photos">
 		<?php
 		foreach($photos as $photo){
-			echo '<a class="photo" href="' . wp_get_attachment_image_src($photo['p_photo'], 'media-full')[0] . '"><img src="' . wp_get_attachment_image_src($photo['p_photo'], 'media-thumb')[0] . '"></a>';
+			echo '<a class="photo" href="' . wp_get_attachment_image_src($photo['p_photo'], 'media-full')[0] . '"><img src="' . wp_get_attachment_image_src($photo['p_photo'], 'media-thumb')[0] . '" alt="' . get_post_meta($photo['p_photo'], '_wp_attachment_image_alt', true) . '"></a>';
 		}
 		?>
 	</div>

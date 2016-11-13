@@ -150,13 +150,13 @@ function get_training_times($post_id = false, $columns = 'all'){
 			if($columns == 'all' || array_search('locatie', $columns) !== false){
 				$rhtml .= '<th>Locatie</th>';
 			}
-		$rhtml .= '</tr>';
+		$rhtml .= '</tr>' . "\n\r";
 		foreach($trainingstijden as $dag){
 			$counter = 0;
 			foreach($dag['t_training'] as $training){$counter ++;
-			?>
-		<tr>
-			<?php if($counter === 1){
+			
+			$rhtml .= '<tr>' . "\n\r";
+			if($counter === 1){
 			$rhtml .= '<td class="trainingstijden-dag" data-column-name="Dag" rowspan="' . count($dag['t_training']) . '">' . current($dag['t_dag']) . '</td>';
 			}
 			if($columns == 'all' || array_search('tijd', $columns) !== false){
