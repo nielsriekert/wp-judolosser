@@ -1,6 +1,6 @@
 <?php
 get_header(); ?>
-<div class="content">
+<div class="content article">
 	<h1>Pagina niet gevonden (404)</h1>
 	<p>
 		De pagina is niet gevonden.

@@ -73,7 +73,8 @@ td {
  height: 100%;
 }
 
-.single:not(.single-photoalbum) .article {
+.single:not(.single-photoalbum) .article,
+.error404 .article {
  max-width: 54em;
 }
 
