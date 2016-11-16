@@ -13,7 +13,9 @@
 			<div class="article-item-date">
 				<?php
 				if(get_post_type() == 'event' || get_post_type() == 'photoalbum'){
-					echo humanize_date(CFS()->get('e_datum'));
+					if(CFS()->get('e_datum')){
+						echo humanize_date(CFS()->get('e_datum'));
+					}
 				} else {
 					echo humanize_date(get_the_time('Ymd'));
 				}

@@ -319,18 +319,12 @@ function map_user_id($old_user_id){
 /* ///////////// */
 
 function connection_types() {
-	/*p2p_register_connection_type( array(
-		'name' => 'module_to_page',
-		'from' => 'module',
-		'to' => 'page',
-		'sortable' => 'to'
-	));
-
 	p2p_register_connection_type( array(
-		'name' => 'button_to_module',
-		'from' => 'button',
-		'to' => 'module'
-	));*/
+		'name' => 'post_to_photoalbum',
+		'from' => 'post',
+		'to' => 'photoalbum',
+		'cardinality' => 'one-to-many'
+	));
 }
 
 add_action( 'p2p_init', 'connection_types' );
