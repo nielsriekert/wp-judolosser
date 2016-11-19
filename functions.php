@@ -323,7 +323,14 @@ function connection_types() {
 		'name' => 'post_to_photoalbum',
 		'from' => 'post',
 		'to' => 'photoalbum',
-		'cardinality' => 'one-to-many'
+		'cardinality' => 'one-to-one'
+	));
+
+	p2p_register_connection_type( array(
+		'name' => 'event_to_photoalbum',
+		'from' => 'event',
+		'to' => 'photoalbum',
+		'cardinality' => 'one-to-one'
 	));
 }
 
@@ -334,41 +341,113 @@ add_action( 'p2p_init', 'connection_types' );
 /* CUSTOM COLUMNS */
 /* ////////////// */
 
-add_filter('manage_edit-module_columns', 'module_columns') ;
-
-function module_columns($columns){
+function photoalbum_columns($columns){
 	$columns = array(
 		'cb' => '<input type="checkbox" />',
 		'title' => 'Titel',
 		'author' => 'Auteur',
-		'type' => 'Type',
-		'standaard' => 'Standaard',
+		'event' => 'Evenement',
 		'date' => 'Datum'
 	);
 
 	return $columns;
 }
+add_filter('manage_edit-photoalbum_columns', 'photoalbum_columns') ;
 
-add_action('manage_module_posts_custom_column', 'manage_module_columns', 10, 2 );
 
-function manage_module_columns($column, $post_id){
+function manage_photoalbum_columns($column, $post_id){
 	global $post;
 
 	switch($column){
-		case 'type' :
-			$type = get_field('m_type', $post_id);
-			if (empty($type))
-					echo '-';
-			else
-					echo ucfirst(preg_replace('/_/', ' ', $type));
-			break;
-		case 'standaard' :
-			if(get_field('m_gebruik_standaard', $post_id))
-					echo '&#10004';
+		case 'event' :
+			$events = new WP_Query( array(
+				'connected_type' => 'event_to_photoalbum',
+				'connected_items' => $post_id,
+				'nopaging' => true,
+			));
+
+			$counter = 0;
+			foreach($events->posts as $event){$counter ++;
+				echo '<a href="' . get_edit_post_link($event->ID) . '">' . $event->post_title . '</a>';
+				if($counter < count($events->posts)){
+					echo '<br />';
+				}
+			}
+
+			if($events->post_count <= 0)
+				echo '-';
 			break;
 		default :
 			break;
 	}
+}
+add_action('manage_photoalbum_posts_custom_column', 'manage_photoalbum_columns', 10, 2 );
+
+
+function event_columns($columns){
+	$columns = array(
+		'cb' => '<input type="checkbox" />',
+		'title' => 'Titel',
+		'author' => 'Auteur',
+		'date-event' => 'Datum evenement',
+		'date' => 'Datum'
+	);
+
+	return $columns;
+}
+add_filter('manage_edit-event_columns', 'event_columns') ;
+
+
+function manage_event_columns($column, $post_id){
+	global $post;
+
+	switch($column){
+		case 'date-event' :
+			if(CFS()->get('e_datum', $post_id))
+				echo humanize_date(CFS()->get('e_datum', $post_id));
+			else
+				echo '-';
+			break;
+		default :
+			break;
+	}
+}
+add_action('manage_event_posts_custom_column', 'manage_event_columns', 10, 2 );
+
+function event_sortable_columns($columns) {
+	$columns['date-event'] = 'date-event';
+
+	return $columns;
+}
+add_filter( 'manage_edit-event_sortable_columns', 'event_sortable_columns' );
+
+/* Only run our customization on the 'edit.php' page in the admin. */
+function edit_event_load() {
+	add_filter( 'request', 'sort_event_event_date' );
+}
+add_action( 'load-edit.php', 'edit_event_load' );
+
+/* Sorts the movies. */
+function sort_event_event_date( $vars ) {
+
+	/* Check if we're viewing the 'movie' post type. */
+	if ( isset( $vars['post_type'] ) && 'event' == $vars['post_type'] ) {
+
+		/* Check if 'orderby' is set to 'duration'. */
+		if ( isset( $vars['orderby'] ) && 'date-event' == $vars['orderby'] ) {
+
+			/* Merge the query vars with our custom variables. */
+			$vars = array_merge(
+				$vars,
+				array(
+					'meta_key' => 'e_datum',
+					'orderby' => 'meta_value'
+				)
+			);
+		}
+	}
+
+	return $vars;
 }
 
 /* /////////*/

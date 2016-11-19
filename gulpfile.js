@@ -19,6 +19,7 @@ var globs = [
 	'admin/*.php',
 	'cards/*.php',
 	'loops/*.php',
+	'includes/*.php',
 	'*.css',
 	'src/maps/*.map',
 	'src/scss/*.scss'
@@ -106,7 +107,7 @@ gulp.task('watch', ['styles', 'scripts', 'images', 'deploy'], function() {
 	gulp.watch('src/scss/*.scss', ['styles']);
 	gulp.watch('src/js/*.js', ['scripts']);
 	gulp.watch('src/images/*.+(png|jpg|gif|svg)', ['images']);
-	gulp.watch(['images/**', 'js/**', '*.php', 'admin/*.php', 'cards/*.php', 'loops/*.php', '*.css', 'src/manifest.json'], ['deploy']);
+	gulp.watch(['images/**', 'js/**', '*.php', 'admin/*.php', 'cards/*.php', 'loops/*.php', 'includes/*.php', '*.css', 'src/manifest.json'], ['deploy']);
 });
 
 

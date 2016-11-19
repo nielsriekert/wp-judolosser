@@ -12,11 +12,24 @@
 			<h2 class="article-item-title"><?php the_title(); ?></h2>
 			<div class="article-item-date">
 				<?php
-				if(get_post_type() == 'event' || get_post_type() == 'photoalbum'){
+				if(get_post_type() == 'event'){
 					if(CFS()->get('e_datum')){
 						echo humanize_date(CFS()->get('e_datum'));
 					}
-				} else {
+				}
+				else if(get_post_type() == 'photoalbum'){
+					$events = new WP_Query( array(
+						'connected_type' => 'event_to_photoalbum',
+						'connected_items' => get_post(),
+						'nopaging' => true,
+					));
+
+					if($events->post_count == 1){
+						echo humanize_date(CFS()->get('e_datum', current($events->posts)->ID));
+					}
+
+				}
+				else {
 					echo humanize_date(get_the_time('Ymd'));
 				}
 				?>
