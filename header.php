@@ -64,7 +64,9 @@ echo get_theme_mod('code-body') . "\n";
 ?>
 <div class="header-wrapper">
  	<div class="header-content">
-		<a class="header-logo" href="<?php bloginfo('url'); ?>"><img src="<?php bloginfo('template_directory'); ?>/images/logo.svg" alt="<?php bloginfo('name'); ?>" /></a>
+ 		<div class="header-logo-wrapper">
+			<a class="header-logo" href="<?php bloginfo('url'); ?>"><img src="<?php bloginfo('template_directory'); ?>/images/logo.svg" alt="<?php bloginfo('name'); ?>" /></a>
+		</div>
 		<button id="header-menu" class="header-menu-button">
 			<span class="header-menu-button-icon"></span>
 		</button>

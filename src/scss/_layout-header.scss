@@ -9,6 +9,15 @@
  line-height: 60px;
 }
 
+.header-logo-wrapper {
+ position: absolute;
+ left: 0;
+ right: 0;
+ top: 0;
+ min-height: 150px;
+ overflow: hidden;
+}
+
 .header-logo {
  display: block;
  position: absolute;
