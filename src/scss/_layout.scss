@@ -32,7 +32,8 @@ body.page-template-posts {
 	}
 }
 
-.header-wrapper + .content {
+.header-wrapper + .content,
+.header-wrapper + script + .content  {
  padding-top: 120px;
 }
 

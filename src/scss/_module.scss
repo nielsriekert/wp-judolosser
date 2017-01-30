@@ -82,7 +82,7 @@
 	}
 }
 
-.card > a {
+.card > a:not(.card-type) {
  display: block;
  height: 100%;
  box-sizing: border-box;
@@ -91,12 +91,12 @@
  transition: border-color .1s;
 }
 
-.card > a:hover {
+.card > a:not(.card-type):hover {
  border-color: rgba(darken($p-color, 30%), .2);
 }
 
-.card.card-photo > a:hover,
-.card.card-location > a:hover {
+.card.card-photo > a:not(.card-type):hover,
+.card.card-location > a:not(.card-type):hover {
  border-color: rgba($p-color, .6);
 }
 

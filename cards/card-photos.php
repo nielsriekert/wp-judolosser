@@ -21,9 +21,19 @@ if($photoalbums->have_posts()){$photoalbums->the_post();
 	if($photos){
 		$image_src = wp_get_attachment_image_src($photos[array_rand($photos, 1)]['p_photo'], 'card')[0];
 	}
+	$pages = get_pages(array(
+		'meta_key' => '_wp_page_template',
+		'meta_value' => 'photoalbums.php'
+	));
+
+	if(count($pages) == 1){
+		$link = get_permalink(current($pages)->ID);
+	}
 	?>
 	<section class="card card-photo"<?php if($photos){?> style="background-image: url('<?php echo $image_src; ?>');"<?php } ?>>
-
+		<<?php if(isset($link)){ echo 'a href="' . $link . '"'; } else { echo 'div'; } ?> class="card-type">
+			Foto's
+		</<?php if(isset($link)){ echo 'a'; } else { echo 'div';} ?>>
 		<a href="<?php the_permalink(); ?>">
 
 			<div class="card-body">
@@ -35,9 +45,6 @@ if($photoalbums->have_posts()){$photoalbums->the_post();
 				<?php
 				}
 				the_excerpt(); ?>
-				<div class="card-type">
-					Foto's
-				</div>
 			</div>
 		</a>
 		<?php echo get_card_navigation($post, 'photoalbums.php', 'Bekijk foto\'s', 'Fotoalbums'); ?>
