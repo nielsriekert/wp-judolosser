@@ -31,7 +31,7 @@ if($photoalbums->have_posts()){$photoalbums->the_post();
 	}
 	?>
 	<section class="card card-photo"<?php if($photos){?> style="background-image: url('<?php echo $image_src; ?>');"<?php } ?>>
-		<<?php if(isset($link)){ echo 'a href="' . $link . '"'; } else { echo 'div'; } ?> class="card-type">
+		<<?php if(isset($link)){ echo 'a data-button-type="label" href="' . $link . '"'; } else { echo 'div'; } ?> class="card-type">
 			Foto's
 		</<?php if(isset($link)){ echo 'a'; } else { echo 'div';} ?>>
 		<a href="<?php the_permalink(); ?>">

@@ -27,7 +27,7 @@ if($events->have_posts()){
 	}
 	?>
 	<section class="card card-event">
-		<<?php if(isset($link)){ echo 'a href="' . $link . '"'; } else { echo 'div'; } ?> class="card-type">
+		<<?php if(isset($link)){ echo 'a data-button-type="label" href="' . $link . '"'; } else { echo 'div'; } ?> class="card-type">
 			Evenementen
 		</<?php if(isset($link)){ echo 'a'; } else { echo 'div';} ?>>
 		<a href="<?php the_permalink(); ?>">
