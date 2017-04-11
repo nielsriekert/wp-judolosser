@@ -43,7 +43,7 @@ gulp.task('styles', function() {
 });
 
 gulp.task('scripts', function() {
-	return gulp.src(['src/js/utils.js', 'src/js/menu.js', 'src/js/carousel.js', 'src/js/libs/lightbox.js'])
+	return gulp.src(['src/js/utils.js', 'src/js/menu.js', 'src/js/carousel.js', 'src/js/lib/lightbox.js'])
 		.pipe(uglify())
 		.pipe(concat('main.min.js'))
 		.pipe(gulp.dest('./js'));

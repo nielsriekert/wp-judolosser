@@ -72,17 +72,16 @@
 }
 
 .lightbox-viewer-button-next,
-.lightbox-viewer-button-previous {	
+.lightbox-viewer-button-previous,
+.lightbox-viewer-button-close {
  position: absolute;
- top: 50%;
  z-index: 3;
  width: 2.5rem;
  height: 2.5rem;
- margin-top: -1.25rem;
  opacity: 0;
  font-size: 1.5rem;
  color: white;
- line-height: 2.5rem;
+ line-height: 2.25rem;
  transition: opacity .2s;
  background-color: rgba(0, 0, 0, .8);
  border-radius: 2.5rem;
@@ -90,8 +89,15 @@
  outline: none;
 }
 
+.lightbox-viewer-button-next,
+.lightbox-viewer-button-previous {
+ top: 50%;
+ margin-top: -1.25rem;
+}
+
 .lightbox-viewer.is-active:hover .lightbox-viewer-button-next,
-.lightbox-viewer.is-active:hover .lightbox-viewer-button-previous {
+.lightbox-viewer.is-active:hover .lightbox-viewer-button-previous,
+.lightbox-viewer.is-active:hover .lightbox-viewer-button-close {
  opacity: 1;
 }
 
@@ -107,6 +113,15 @@
 .lightbox-viewer-button-next::after,
 .lightbox-viewer-button-previous::after {
  content: "➜";
+}
+
+.lightbox-viewer-button-close {
+ top: 30px;
+ right: 30px;
+}
+
+.lightbox-viewer-button-close::after {
+ content: "✖";
 }
 
 .lightbox-image-current {
