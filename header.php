@@ -70,8 +70,10 @@ echo get_theme_mod('code-body') . "\n";
 		<button id="header-menu" class="header-menu-button">
 			<span class="header-menu-button-icon"></span>
 		</button>
-		<nav id="header-nav" class="header-nav">
-			<?php wp_nav_menu(array('theme_location' => 'headernav', 'container' => ''));?>
-		</nav>
+		<div id="header-nav-wrapper" class="header-nav-wrapper">
+			<nav id="header-nav" class="header-nav">
+				<?php wp_nav_menu(array('theme_location' => 'headernav', 'container' => ''));?>
+			</nav>
+		</div>
 	</div>
 </div>
