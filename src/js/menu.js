@@ -21,6 +21,7 @@ function SideNav(headerNavigationElement, headerNavElement, buttonElement){
 	this.button = buttonElement;
 
 	this.toggleSideNav = this.toggleSideNav.bind(this);
+	this.hideSideNav = this.hideSideNav.bind(this);
 	this.blockClicks = this.blockClicks.bind(this);
 	this.onTouchMove = this.onTouchMove.bind(this);
 	this.onTouchStart = this.onTouchStart.bind(this);
@@ -37,13 +38,21 @@ function SideNav(headerNavigationElement, headerNavElement, buttonElement){
 	this.headerNavigation.addEventListener('touchstart', this.onTouchStart);
 	this.headerNavigation.addEventListener('touchmove', this.onTouchMove);
 	this.headerNavigation.addEventListener('touchend', this.onTouchEnd);
-	this.headerNavigation.addEventListener('click', this.toggleSideNav);
+	this.headerNavigation.addEventListener('click', this.hideSideNav);
 }
 
 SideNav.prototype.toggleSideNav = function(e){
 	this.headerNavigation.classList.add('header-nav-wrapper-animatable');
 	this.headerNavigation.classList.toggle('header-nav-wrapper-visible');
 	document.body.classList.toggle('nav-active');
+
+	this.headerNavigation.addEventListener('transitionend', this.onTransitionEnd);
+}
+
+SideNav.prototype.hideSideNav = function(e){
+	this.headerNavigation.classList.add('header-nav-wrapper-animatable');
+	this.headerNavigation.classList.remove('header-nav-wrapper-visible');
+	document.body.classList.remove('nav-active');
 
 	this.headerNavigation.addEventListener('transitionend', this.onTransitionEnd);
 }
@@ -84,8 +93,8 @@ SideNav.prototype.onTouchEnd = function(e) {
 
 	var translateX = Math.min(0, this.currentX - this.startX);
 	this.headerNav.style.transform = '';
-
-	if(translateX < 20) {
+	console.log(translateX);
+	if(translateX < -40) {
 		this.toggleSideNav();
 	}
 }
