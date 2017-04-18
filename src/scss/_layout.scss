@@ -297,6 +297,18 @@ td {
 	}
 }
 
+@media (min-width: $bp-large - 5) {
+	.photos .photo,
+	.photos .photo:nth-child(3n),
+	.photos .photo:nth-child(4n) {
+	 width: 20%;
+	}
+
+	.photos .photo:nth-child(5n) {
+	 margin-right: 0;
+	}
+}
+
 .photos .photo img {
  display: block;
 }
