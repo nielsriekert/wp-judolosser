@@ -1,14 +1,3 @@
-/*addEventListener('load', initMenu, false);
-
-function initMenu(){
-	document.getElementById('header-menu').addEventListener('click', menuOnClick, false);
-}
-
-function menuOnClick(e){
-	document.body.classList.toggle('nav-active');
-	document.body.classList.toggle('no-scroll');
-}*/
-
 window.addEventListener('DOMContentLoaded', function(){
 
 	var sideNav = new SideNav(document.getElementById('header-nav-wrapper'), document.getElementById('header-nav'), document.getElementById('header-menu'));

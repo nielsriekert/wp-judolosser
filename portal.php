@@ -20,6 +20,9 @@ if($kaarten){?>
 				case 'photos':
 					get_template_part('cards/card', 'photos');
 					break;
+				case 'featured':
+					include(locate_template('cards/card-featured.php'));
+					break;
 				case 'location':
 					get_template_part('cards/card', 'location');
 					break;
