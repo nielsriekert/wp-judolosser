@@ -97,7 +97,7 @@
 
 .card.card-photo > a:not(.card-type):hover,
 .card.card-location > a:not(.card-type):hover,
-.card.card-featured > a:not(.card-type):hover {
+.card.card-type-image > a:not(.card-type):hover {
  border-color: rgba($p-color, .6);
 }
 
@@ -143,7 +143,7 @@
 
 .card-photo .card-body,
 .card-location .card-body,
-.card-featured .card-body {
+.card-type-image .card-body {
 	box-sizing: border-box;
 	height: 100%;
 	background-color: rgba(0, 0, 0, .1);
@@ -153,13 +153,13 @@
 
 .card-photo > a:hover .card-body,
 .card-location > a:hover .card-body,
-.card-featured > a:hover .card-body {
+.card-type-image > a:hover .card-body {
 	background-color: rgba(0, 0, 0, .4);
 }
 
 .card-photo p,
 .card-location p,
-.card-featured p {
+.card-type-image p {
 	opacity: 0;
 	transform: translateY(.25em);
 	transition: opacity .2s, transform .2s;
@@ -167,7 +167,7 @@
 
 .card-photo > a:hover p,
 .card-location > a:hover p,
-.card-featured > a:hover p {
+.card-type-image > a:hover p {
 	opacity: 1;
 	transform: translateY(0);
 }
@@ -176,8 +176,8 @@
 .card-photo p,
 .card-location h2,
 .card-location p,
-.card-featured h2,
-.card-featured p {
+.card-type-image h2,
+.card-type-image p {
 	color: white;
 }
 

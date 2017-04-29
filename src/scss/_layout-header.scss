@@ -154,14 +154,14 @@
 
 @media (min-width: $bp-small) {
 	.header-nav {
-	 width: 23em;
+	 width: 19em;
 	 transform: translateX(-23em) translateX(-9px);
 	}
 }
 
 @media (min-width: $bp-middle) {
 	.header-nav {
-	 width: 28em;
+	 width: 23em;
 	 transform: translateX(-28em) translateX(-9px);
 	}
 }
@@ -217,7 +217,7 @@
 .header-nav .menu-item a:visited {
  display: block;
  padding: 0 1em;
- font-size: .75em;
+ font-size: .875em;
  color: white;
  font-weight: 300;
  line-height: 3.5;
