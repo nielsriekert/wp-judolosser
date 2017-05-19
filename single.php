@@ -23,4 +23,7 @@ if(has_post_thumbnail()){
 	the_content();
 	?>
 </article>
-<?php get_footer(); ?>
+<?php
+get_template_part('includes/include', 'lightbox');
+get_footer();
+?>

@@ -63,6 +63,7 @@ function theme_scripts() {
 
 add_action('wp_enqueue_scripts', 'theme_scripts');
 
+
 /* ///// */
 /* FONTS */
 /* ///// */
@@ -486,9 +487,9 @@ function shortcode_fotos( $atts ){
 }
 add_shortcode( 'fotos', 'shortcode_fotos' );
 
-/* ///////////////// */
-/* CUSTOM POST TYPES */
-/* ///////////////// */
+/* //////////////////////////////// */
+/* CUSTOM POST TYPES AND TAXONOMIES */
+/* //////////////////////////////// */
 
 function create_post_types() {
 

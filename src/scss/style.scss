@@ -44,25 +44,3 @@ input[type="submit"] {
 input[type="submit"]:hover {
  background-color: rgb(136, 113, 169);
 }
-
-.gallery img {
- display: block;
- border: none!important;
-}
-
-.gallery a {
- display: block;
-}
-
-.gallery-columns-3 .gallery-item {
- width: 30%!important;
- margin-left: 5%;
- margin-top: 1.6em!important;
- border-radius: 20px;
- overflow: hidden;
-}
-
-.gallery-columns-3 .gallery-item:nth-child(3n+1) {
- margin-left: 0;
- clear: left;
-}
