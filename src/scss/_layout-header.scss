@@ -32,26 +32,30 @@
 }
 
 .header-menu-button {
- position: fixed;
- top: 0;
- left: 0;
- padding: 0;
- width: 60px;
- height: 60px;
- background-color: $text-color;
- border: none;
- outline: none;
- z-index: 101;
- transition: background-color .2s;
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding: 0;
+	width: 60px;
+	height: 60px;
+	background-color: $text-color;
+	border: none;
+	outline: none;
+	z-index: 101;
+	transition: background-color .2s, top .2s;
 }
 
 .admin-bar .header-menu-button {
- top: 32px;
+	top: 32px;
 }
 
 @media screen and (max-width: 782px){
 	.admin-bar .header-menu-button {
-	 top: 46px;
+		top: 46px;
+	}
+
+	.scrolled-down.admin-bar .header-menu-button {
+		top: 0;
 	}
 }
 
