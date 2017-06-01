@@ -158,88 +158,148 @@
 
 @media (min-width: $bp-small) {
 	.header-nav {
-	 width: 19em;
-	 transform: translateX(-23em) translateX(-9px);
+		width: 19em;
+		transform: translateX(-23em) translateX(-9px);
 	}
 }
 
 @media (min-width: $bp-middle) {
 	.header-nav {
-	 width: 23em;
-	 transform: translateX(-28em) translateX(-9px);
+		width: 23em;
+		transform: translateX(-28em) translateX(-9px);
 	}
 }
 
 .admin-bar .header-nav {
- top: 46px;
+	top: 46px;
 }
 
 @media (min-width: $bp-middle) {
 	.admin-bar .header-nav {
-	 top: 32px;
+	 	top: 32px;
 	}
 }
 
 .header-nav-wrapper-animatable .header-nav {
- transition: transform .3s;
+	transition: transform .3s;
 }
 
 .nav-active .header-nav {
- transform: translateX(0);
+	transform: translateX(0);
 }
 
 .header-wrapper.active .header-nav {
- height: auto;
- opacity: 1;
+	height: auto;
+	opacity: 1;
 }
 
 .header-nav ul {
- padding: 0;
- margin: 0;
- list-style-type: none;
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
 }
 
 .header-nav > .menu {
- width: 100%;
- min-height: 20em;
- margin: auto;
- padding: 60px 0 0;
- line-height: inherit;
+	width: 100%;
+	min-height: 20em;
+	margin: auto;
+	padding: 60px 0 0;
+	line-height: inherit;
 }
 
 .header-nav .menu-item {
- width: 100%;
- border-top: 1px solid darken($text-color, 5%);
+	width: 100%;
+	border-top: 1px solid darken($text-color, 5%);
 }
 
 .header-nav .menu-item:first-child {
- border-top: 0;
+	border-top: 0;
 }
 
 .header-nav .menu-item a,
 .header-nav .menu-item a:link,
 .header-nav .menu-item a:visited {
- display: block;
- padding: 0 1em;
- font-size: .875em;
- color: white;
- font-weight: 300;
- line-height: 3.5;
- text-decoration: none;
- white-space: nowrap;
- text-overflow: ellipsis;
- overflow: hidden;
- transition: background-color .2s;
+	display: block;
+	padding: 0 1em;
+	font-size: .875em;
+	color: white;
+	font-weight: 300;
+	line-height: 3.5;
+	text-decoration: none;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	transition: background-color .2s;
 }
 
 @media (min-width: $bp-middle) {
 	.header-nav .menu-item a,
 	.header-nav .menu-item a:link,
 	.header-nav .menu-item a:visited {
-	 font-size: 1em;
+		font-size: 1em;
 	}
 }
 
 .header-nav .menu-item a:hover {
- background-color: darken($text-color, 5%);
+	background-color: darken($text-color, 5%);
 }
+
+.header-nav-download-button {
+	position: absolute;
+	right: $cp-middle;
+	top: 50%;
+	width: 40px;
+	height: 40px;
+	margin-top: -20px;
+	text-indent: -999999px;
+	background-color: white;
+	background-image: url('images/icon-download.svg');
+	background-size: 65% auto;
+	background-repeat: no-repeat;
+	background-position: center center;
+	border-radius: 40px;
+	border: none;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
+	transition: transform .2s ease-out, box-shadow .2s ease-out;
+}
+
+
+.header-nav-download-button:hover {
+	transform: scale(1.05);
+	box-shadow: 0 2px 15px rgba(0, 0, 0, .4);
+}
+
+ul.header-nav-download-container {
+	list-style-type: none;
+	margin: 0;
+}
+
+.header-nav-download-container {
+	position: absolute;
+	top: 75px;
+	right: $cp-middle;
+	max-height: 10em;
+	padding: 15px;
+	overflow-y: auto;
+	opacity: 0;
+	background-color: white;
+	border-radius: 20px 0 20px 20px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
+	transition: opacity .2s ease-out;
+	pointer-events: none;
+}
+
+.header-nav-download-container.is-active {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+/*.header-nav-download-container .download-mime-application-pdf::before {
+	content: "pdf";
+	display: inline-block;
+	padding: 0 .5em;
+	margin-right: .5em;
+	color: white;
+	background-color: rgb(200, 200, 200);
+	border-radius: 15px;
+}*/

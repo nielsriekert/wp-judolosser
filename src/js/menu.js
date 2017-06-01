@@ -2,6 +2,13 @@ window.addEventListener('DOMContentLoaded', function(){
 
 	var sideNav = new SideNav(document.getElementById('header-nav-wrapper'), document.getElementById('header-nav'), document.getElementById('header-menu'));
 
+	var downloadbutton = document.getElementById('header-nav-download-button');
+	if(downloadbutton){
+		document.getElementById('header-nav-download-button').addEventListener('click', function(){
+			document.getElementById('header-nav-download-container').classList.toggle('is-active');
+		});
+	}
+
 }, false);
 
 function SideNav(headerNavigationElement, headerNavElement, buttonElement){
