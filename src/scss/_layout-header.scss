@@ -294,6 +294,29 @@ ul.header-nav-download-container {
 	pointer-events: auto;
 }
 
+.header-nav-download-container .header-nav-download-single a::before {
+	content: "";
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	margin-right: .5em;
+	margin-top: -.25em;
+	vertical-align: middle;
+	background-image: url('images/icon-file.svg');
+	background-position: center center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.header-nav-download-container .header-nav-download-single a:link,
+.header-nav-download-container .header-nav-download-single a:visited {
+	color: $text-color;
+}
+
+.header-nav-download-container .header-nav-download-single a:hover {
+	color: $p-color;
+}
+
 /*.header-nav-download-container .download-mime-application-pdf::before {
 	content: "pdf";
 	display: inline-block;

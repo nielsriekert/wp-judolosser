@@ -17,7 +17,7 @@
 	<meta name="theme-color" content="#ffffff">
 	<?php wp_head(); ?>
 	<script>
-	window.addEventListener('load', initHeader);
+	window.addEventListener('DOMContentLoaded', initHeader);
 
 	var didScroll = true;
 	var prefPageYOffset = 0;
