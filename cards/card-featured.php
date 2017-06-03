@@ -1,16 +1,10 @@
 <?php
-$page_id = $kaart['k_uitlichten'];//tijdelijk gehardcode
+$page_id = current($kaart['k_uitlichten']);
 
-$locations = new WP_Query(array(
-	'post_type' => 'page',
-	'nopaging' => true,
-	'no_found_rows' => true,
-	'p' => $page_id
-));
+$post = get_post($page_id);
 
-if($locations->have_posts()){
-	$locations->the_post();
-
+if($post){
+	setup_postdata($post);
 	if(has_post_thumbnail()){
 
 		$image_src = wp_get_attachment_image_src(get_post_thumbnail_id(), 'card')[0];
@@ -29,4 +23,6 @@ if($locations->have_posts()){
 	</section>
 	<?php
 }
+
+wp_reset_postdata();
 ?>
