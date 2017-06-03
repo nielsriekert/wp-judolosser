@@ -42,13 +42,13 @@ $args_pages = array_merge(
 $events = new WP_Query($args_events);
 $pages = new WP_Query($args_pages);
 
-$posts = array_merge($events->posts, $pages->posts);
+$post_items = array_merge($events->posts, $pages->posts);
 
-if(count($posts) > 0){?>
+if(count($post_items) > 0){?>
 <button class="header-nav-download-button" id="header-nav-download-button">Download</button>
 <ul class="header-nav-download-container" id="header-nav-download-container">
 	<?php
-	foreach($posts as $post_single){
+	foreach($post_items as $post_single){
 		$bijlagen = CFS()->get('bl_bijlagen', $post_single->ID);
 		foreach($bijlagen as $bijlage){
 			$file = get_post($bijlage['bl_bijlage']);
