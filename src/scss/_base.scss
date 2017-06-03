@@ -43,9 +43,22 @@ h1,
 h2,
 h3,
 figure {
-	font-size: 1.0625em;
+	font-size: 1em;
 	line-height: 1.7;
 	margin-top: 1.6em;
+}
+
+@media (min-width: $bp-small) {
+	p,
+	ul,
+	ol,
+	table,
+	h1,
+	h2,
+	h3,
+	figure {
+		font-size: 1.0625em;
+	}
 }
 
 h1,

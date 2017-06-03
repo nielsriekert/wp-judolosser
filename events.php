@@ -18,7 +18,7 @@ $posts = new WP_Query(array(
 	'meta_query' => array(
 		array(
 			'key' => 'e_datum',
-			'value' => date('Y-m-d'),
+			'value' => date_i18n('Y-m-d'),
 			'compare' => '>=',
 			'type' => 'DATE'
 		)
