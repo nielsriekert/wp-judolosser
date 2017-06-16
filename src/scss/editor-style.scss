@@ -11,3 +11,17 @@ body#tinymce.wp-editor {
 #tinymce.wp-editor  {
  width: 609px;
 }
+
+//quickfix (change in WordPress core)
+.mce-content-body p,
+.mce-content-body ul,
+.mce-content-body ol,
+.mce-content-body table,
+.mce-content-body h1,
+.mce-content-body h2,
+.mce-content-body h3,
+.mce-content-body .gform_confirmation_message,
+.mce-content-body .validation_error,
+.mce-content-body figure {
+	line-height: 1.7;
+}
