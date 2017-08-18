@@ -7,6 +7,17 @@ window.addEventListener('DOMContentLoaded', function(){
 		document.getElementById('header-nav-download-button').addEventListener('click', function(){
 			document.getElementById('header-nav-download-container').classList.toggle('is-active');
 		});
+
+		document.addEventListener('click', function(e){
+			var target = e.target;
+			while(target.getAttribute('id') != 'header-nav-download-button' && target.getAttribute('id') != 'header-nav-download-container' && target != document.body){
+				target = target.parentNode;
+			}
+
+			if(target == document.body){
+				document.getElementById('header-nav-download-container').classList.remove('is-active');
+			}
+		});
 	}
 
 }, false);
