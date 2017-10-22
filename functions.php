@@ -52,13 +52,19 @@ function theme_scripts() {
 	wp_enqueue_style( 'google-fonts', google_fonts_url(), array(), false );
 
 	//javascript
-	wp_enqueue_script(
+	wp_register_script(
 	 'main',
 		get_template_directory_uri() . '/js/main.min.js',
 		array(),
 		false,
 		true
 	);
+
+	wp_localize_script('main', 'wp', array(
+		'templateDirectory' => get_bloginfo('template_directory')
+	));
+
+	wp_enqueue_script('main');
 }
 
 add_action('wp_enqueue_scripts', 'theme_scripts');
