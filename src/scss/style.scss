@@ -13,34 +13,3 @@ Version: 1.0.2
 @import 'base';
 @import 'layout';
 @import 'module';
-
-
-/* DEFAULT STYLES */
-
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="search"],
-textarea {
- font-family: inherit;
- font-size: inherit;
- border: none;
- padding: 0;
- background-color: rgb(238, 238, 238);
- border-radius: 10px;
-}
-
-input[type="submit"] {
- font-size: 1.2em;
- padding: 0.4em;
- margin-top: 0.8em;
- border: none;
- display: inline-block;
- color: rgb(255, 255, 255);
- background-color: $p-color;
- border-radius: 10px;
-}
-
-input[type="submit"]:hover {
- background-color: rgb(136, 113, 169);
-}

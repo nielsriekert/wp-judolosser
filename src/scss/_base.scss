@@ -130,6 +130,33 @@ a:visited {
 	text-decoration: none;
 }
 
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="search"],
+input[type="submit"],
+textarea {
+	font-family: inherit;
+	font-size: inherit;
+	border: none;
+	padding: 0;
+	background-color: rgb(238, 238, 238);
+}
+
+input[type="submit"].button,
+.button {
+	display: inline-block;
+	padding: .675em 1em;
+	color: white;
+	background-color: $p-color;
+	transition: background-color .15s;
+}
+
+input[type="submit"].button:hover,
+.button:hover {
+	background-color: darken($p-color, 10%);
+}
+
 /* tables */
 
 table,

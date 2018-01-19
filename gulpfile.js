@@ -111,5 +111,4 @@ gulp.task('watch', ['styles', 'scripts', 'images', 'deploy'], function() {
 	gulp.watch(['images/**', 'js/**', '*.php', 'admin/*.php', 'cards/*.php', 'loops/*.php', 'includes/*.php', '*.css', 'src/manifest.json'], ['deploy']);
 });
 
-
 gulp.task('default', ['watch']);
