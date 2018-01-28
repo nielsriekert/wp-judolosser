@@ -30,11 +30,6 @@ if(has_post_thumbnail()){
 		}
 		?>
 	</div>
-	<script>
-	window.addEventListener('load', function(){
-		var lightBox = new LightBox(document.getElementsByClassName('photo'));
-	});
-	</script>
 		<?php
 	}
 	?>

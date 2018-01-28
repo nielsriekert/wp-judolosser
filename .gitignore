@@ -7,10 +7,7 @@
 *.o
 *.so
 *.map
-/images
-/js
-/css
-*.css
+/dist/
 
 # Libraries #
 #############
@@ -51,3 +48,8 @@ Thumbs.db
 node_modules
 .sass-cache
 .ftppass.json
+
+# Docker #
+##########
+wordpress
+mariadb

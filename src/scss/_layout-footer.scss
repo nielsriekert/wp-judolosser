@@ -1,50 +1,49 @@
 .footer-wrapper {
- background-color: rgb(50, 50, 50);
+	background-color: rgb(50, 50, 50);
 }
 
 .footer {
- display: flex;
- flex-wrap: wrap;
- justify-content: space-between;
- align-content: space-between;
- padding-top: 40px;
- //padding-bottom: 50px;
- color: white;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-content: space-between;
+	padding-top: 40px;
+	color: white;
 }
 
 .footer::after {
  content: "";
- display: block;
- clear: left;
+	display: block;
+	clear: left;
 }
 
 .footer-column {
- margin-top: 30px;
+	margin-top: 30px;
 }
 
 @media (min-width: $bp-small) {
 	.footer-column {
-	 width: 47%;
+		width: 47%;
 	}
 
 	.footer-column.footer-training-times {
-	 margin-top: 0;
-	 width: 100%;
+		margin-top: 0;
+		width: 100%;
 	}
 }
 
 @media (min-width: $bp-middle) {
 	.footer-column,
 	.footer-column:nth-child(2n+1) {
-	 width: 23.5%;
+		width: 23.5%;
 	}
 
 	.footer-column:nth-child(-n+3) {
-	 margin-top: 0;
+		margin-top: 0;
 	}
 
 	.footer-column.footer-training-times {
-	 width: 47%;
+		width: 47%;
 	}
 }
 
@@ -54,73 +53,73 @@
 .footer table,
 .footer a:link,
 .footer a:visited  {
- color: rgb(200, 200, 200);
+	color: rgb(200, 200, 200);
 }
 
 .footer a:hover {
- color: white;
- text-decoration: underline;
+	color: white;
+	text-decoration: underline;
 }
 
 .footer .trainingstijden {
- font-size: .9375em;
+	font-size: .9375em;
 }
 
 .footer table {
- width: 100%;
+	width: 100%;
 }
 
 .footer h2:first-child,
 .footer p:first-child,
 .footer table:first-child {
- margin-top: 0;
+	margin-top: 0;
 }
 
 .footer td,
 .footer th {
- padding-top: .25em;
- padding-bottom: .25em;
+	padding-top: .25em;
+	padding-bottom: .25em;
 }
 
 .footer th {
- background-color: darken(rgb(50, 50, 50), 2%);
+	background-color: darken(rgb(50, 50, 50), 2%);
 }
 
 .footer td {
- border-top: 1px solid darken(rgb(50, 50, 50), 2%);
+	border-top: 1px solid darken(rgb(50, 50, 50), 2%);
 }
 
 ul.footer-events {
- list-style-type: none;
- padding-left: 0;
+	list-style-type: none;
+	padding-left: 0;
 }
 
 .footer .footer-nav {
- width: 100%;
- clear: both;
+	width: 100%;
+	clear: both;
 }
 
 .footer .footer-nav ul {
- padding-left: 0;
- margin-top: 0;
- list-style-type: none;
+	padding-left: 0;
+	margin-top: 0;
+	list-style-type: none;
 }
 
 .footer-nav {
- padding-top: 30px;
+	padding-top: 30px;
 }
 
 .footer-nav .menu {
- padding: .5em 0;
- border-top: 1px solid rgb(100, 100, 100);
+	padding: .5em 0;
+	border-top: 1px solid rgb(100, 100, 100);
 }
 
 .footer-nav .menu-item {
- display: inline-block;
- padding: 0 1em;
+	display: inline-block;
+	padding: 0 1em;
 }
 
 .footer-nav .menu-item a:link,
 .footer-nav .menu-item a:visited {
- text-transform: lowercase;
+	text-transform: lowercase;
 }

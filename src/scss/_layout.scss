@@ -7,58 +7,58 @@ body.page-template-posts {
 @import 'layout-header';
 
 .content {
- padding-left: $cp-default;
- padding-right: $cp-default;
+	padding-left: $cp-default;
+	padding-right: $cp-default;
 }
 
 @media (min-width: $bp-small) {
 	.content {
-	 padding-left: $cp-small;
-	 padding-right: $cp-small;
+		padding-left: $cp-small;
+		padding-right: $cp-small;
 	}
 }
 
 @media (min-width: $bp-middle) {
 	.content {
-	 padding-left: $cp-middle;
-	 padding-right: $cp-middle;
+		padding-left: $cp-middle;
+		padding-right: $cp-middle;
 	}
 }
 
 @media (min-width: $bp-large) {
 	.content {
-	 margin: 0 auto;
-	 width: $bp-large - $cp-middle * 2;
+		margin: 0 auto;
+		width: $bp-large - $cp-middle * 2;
 	}
 }
 
 .header-wrapper + .content,
 .header-wrapper + script + .content  {
- padding-top: 120px;
+	padding-top: 120px;
 }
 
 .single .header-wrapper + .content,
 .page-template-default .header-wrapper + .content {
- padding-bottom: 60px;
+	padding-bottom: 60px;
 }
 
 /* ARTICLE */
 
 html {
- height: 100%;
+	height: 100%;
 }
 
 th {
- background-color: rgb(240, 240, 240);
+	background-color: rgb(240, 240, 240);
 }
 
 td {
- border-top: 1px solid rgb(240, 240, 240);
+	border-top: 1px solid rgb(240, 240, 240);
 }
 
 .article {
- padding-top: 40px;
- padding-bottom: 50px;
+	padding-top: 40px;
+	padding-bottom: 50px;
 }
 
 .article h2:first-child,
@@ -67,101 +67,101 @@ td {
 .article ul:first-child,
 .article ol:first-child,
 .article table:first-child {
- margin-top: 0;
+	margin-top: 0;
 }
 
 .single {
- height: 100%;
+	height: 100%;
 }
 
 .single:not(.single-photoalbum) .article,
 .error404 .article {
- max-width: 54em;
- margin: 0 auto;
+	max-width: 54em;
+	margin: 0 auto;
 }
 
 .article-image-post {
- overflow: hidden;
- position: relative;
- height: 50%;
- min-height: 20em;
- padding-left: $cp-default;
- padding-right: $cp-default;
- background-size: cover;
- background-position: center center;
- box-sizing: border-box;
+	overflow: hidden;
+	position: relative;
+	height: 50%;
+	min-height: 20em;
+	padding-left: $cp-default;
+	padding-right: $cp-default;
+	background-size: cover;
+	background-position: center center;
+	box-sizing: border-box;
 }
 
 .article-image-post::before {
  content: "";
- display: block;
- position: absolute;
- left: 0;
- right: 0;
- top: 0;
- bottom: 0;
- background-color: rgba(0, 0, 0, .3);
+	display: block;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, .3);
 }
 
 .article-image-post-content {
- display: table;
- width: 100%;
- height: 100%;
+	display: table;
+	width: 100%;
+	height: 100%;
 }
 
 .article-image-post h1 {
- display: table-cell;
- position: relative;
- font-size: 2em;
- color: white;
- text-align: center;
- vertical-align: middle;
+	display: table-cell;
+	position: relative;
+	font-size: 2em;
+	color: white;
+	text-align: center;
+	vertical-align: middle;
 }
 
 @media (min-width: $bp-small) {
 	.article-image-post h1 {
-	 font-size: 3em;
+		font-size: 3em;
 	}
 }
 
 @media (min-width: $bp-middle) {
 	.article-image-post h1 {
-	 font-size: 3em;
+		font-size: 3em;
 	}
 }
 
 @media (min-width: $bp-large) {
 	.article-image-post h1 {
-	 font-size: 4em;
+		font-size: 4em;
 	}
 }
 
 
 .article-image-post-image {
- position: absolute;
- left: 0;
- right: 0;
- bottom: 0;
- margin: -5px -10px -10px -5px;
- top: 0;
- background-position: center center;
- background-size: cover;
- background-attachment: fixed;
- transition: filter .8s, transform .8s;
- z-index: -1;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: -5px -10px -10px -5px;
+	top: 0;
+	background-position: center center;
+	background-size: cover;
+	background-attachment: fixed;
+	transition: filter .8s, transform .8s;
+	z-index: -1;
 }
 
 .scrolled-down .article-image-post-image {
  filter: blur(5px);
- transform: scale(1.03);
+	transform: scale(1.03);
 }
 
 .articles-content {
- text-align: center;
+	text-align: center;
 }
 
 .article table {
- width: 100%;
+	width: 100%;
 }
 
 /* ARTICLE ITEM */
@@ -315,87 +315,87 @@ ul.users {
 
 .users::after {
  content: "";
- display: block;
- clear: left;
+	display: block;
+	clear: left;
 }
 
 .users .user-item {
- padding: 2em;
- margin-top: 40px;
- background-color: rgb(230, 230, 230);
- box-sizing: border-box;
+	padding: 2em;
+	margin-top: 40px;
+	background-color: rgb(230, 230, 230);
+	box-sizing: border-box;
 }
 
 @media (min-width: $bp-small) {
 	.users {
-	 display: flex;
-	 flex-wrap: wrap;
+		display: flex;
+		flex-wrap: wrap;
 	}
 
 	.users .user-item {
-	 float: left;
-	 width: 47%;
-	 margin-left: 6%;
+		float: left;
+		width: 47%;
+		margin-left: 6%;
 	}
 
 	.users .user-item:nth-child(2n+1) {
-	 margin-left: 0;
-	 clear: left;
+		margin-left: 0;
+		clear: left;
 	}
 
 	.users .user-item:nth-child(-n+2) {
-	 margin-top: 0;
+		margin-top: 0;
 	}
 }
 
 @media (min-width: $bp-middle) {
 	.users .user-item,
 	.users .user-item:nth-child(2n+1) {
-	 float: left;
-	 width: 30%;
-	 margin-left: 5%;
-	 clear: none;
+		float: left;
+		width: 30%;
+		margin-left: 5%;
+		clear: none;
 	}
 
 	.users .user-item:nth-child(3n+1) {
-	 margin-left: 0;
-	 clear: left;
+		margin-left: 0;
+		clear: left;
 	}
 
 	.users .user-item:nth-child(-n+3) {
-	 margin-top: 0;
+		margin-top: 0;
 	}
 }
 
 .users .user-item .user-name {
- margin-top: 0;
- font-size: 1.25rem;
+	margin-top: 0;
+	font-size: 1.25rem;
 }
 
 .users .user-item .user-boardmember,
 .users .user-item .user-contact {
- font-size: 1em;
+	font-size: 1em;
 }
 
 .users .user-item .user-contact a:hover {
- text-decoration: underline;
+	text-decoration: underline;
 }
 
 .users .user-item .user-contact a[href^="tel:"] {
- padding-left: 1.75em;
- background-image: url('images/icon-phone.svg');
- background-position: left center;
- background-repeat: no-repeat;
- background-size: auto 90%;
+	padding-left: 1.75em;
+	background-image: url('../images/icon-phone.svg');
+	background-position: left center;
+	background-repeat: no-repeat;
+	background-size: auto 90%;
 }
 
 .users .user-item .user-contact a[href^="mailto:"] {
- word-break: break-all;
+	word-break: break-all;
 }
 
 .users .user-item .user-boardmember {
- margin-top: 0;
- font-style: italic;
+	margin-top: 0;
+	font-style: italic;
 }
 
 @import 'layout-footer';

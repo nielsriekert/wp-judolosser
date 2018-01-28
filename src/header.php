@@ -8,8 +8,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<meta name="format-detection" content="telephone=no">
 
-	<link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_url'); ?>?v=1.0.0" />
-
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
 	<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
@@ -64,8 +62,11 @@ echo get_theme_mod('code-body') . "\n";
 ?>
 <div class="header-wrapper">
  	<div class="header-content">
+	 	<?php
+		$webpack_helper = new WebpackHelper();
+		?>
  		<div class="header-logo-wrapper">
-			<a class="header-logo" href="<?php bloginfo('url'); ?>"><img src="<?php bloginfo('template_directory'); ?>/images/logo.svg" alt="<?php bloginfo('name'); ?>" /></a>
+			<a class="header-logo" href="<?php bloginfo('url'); ?>"><img src="<?php bloginfo('template_directory'); ?>/<?php echo $webpack_helper->getHashedAssetUrl( 'logo.svg' ); ?>" alt="<?php bloginfo('name'); ?>" /></a>
 		</div>
 		<button id="header-menu" class="header-menu-button">
 			<span class="header-menu-button-icon"></span>

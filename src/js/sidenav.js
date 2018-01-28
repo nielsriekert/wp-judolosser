@@ -1,27 +1,3 @@
-window.addEventListener('DOMContentLoaded', function(){
-
-	var sideNav = new SideNav(document.getElementById('header-nav-wrapper'), document.getElementById('header-nav'), document.getElementById('header-menu'));
-
-	var downloadbutton = document.getElementById('header-nav-download-button');
-	if(downloadbutton){
-		document.getElementById('header-nav-download-button').addEventListener('click', function(){
-			document.getElementById('header-nav-download-container').classList.toggle('is-active');
-		});
-
-		document.addEventListener('click', function(e){
-			var target = e.target;
-			while(target.getAttribute('id') != 'header-nav-download-button' && target.getAttribute('id') != 'header-nav-download-container' && target != document.body){
-				target = target.parentNode;
-			}
-
-			if(target == document.body){
-				document.getElementById('header-nav-download-container').classList.remove('is-active');
-			}
-		});
-	}
-
-}, false);
-
 function SideNav(headerNavigationElement, headerNavElement, buttonElement){
 	this.headerNavigation = headerNavigationElement;
 	this.headerNav = headerNavElement;
@@ -120,3 +96,5 @@ SideNav.prototype.update = function() {
 SideNav.prototype.blockClicks = function(e) {
 	e.stopPropagation();
 }
+
+export default SideNav;

@@ -1,4 +1,7 @@
 <?php
+// include required core files
+require_once('classes/class-webpack-helper.php');
+
 function theme_setup() {
 	add_theme_support('menus');
 	
@@ -38,7 +41,12 @@ function theme_setup() {
 	add_image_size('media-thumb', 300, 200, true);
 	add_image_size('media-full', 1200, 1100);
 
-	add_editor_style(array('editor-style.css', google_fonts_url(true), fontscom_fonts_url()));
+	$webpack_helper = new WebpackHelper();
+	$editorcss = $webpack_helper->getHashedAssetUrl( 'editor-style.css' );
+	
+	if($editorcss){
+		add_editor_style(array($editorcss, google_fonts_url(true), fontscom_fonts_url()));
+	}
 }
 add_action( 'after_setup_theme', 'theme_setup' );
 
@@ -48,17 +56,31 @@ add_action( 'after_setup_theme', 'theme_setup' );
 /* /////// */
 
 function theme_scripts() {
+	$webpack_helper = new WebpackHelper();
+	$maincss = $webpack_helper->getHashedAssetUrl( 'main.css' );
+	$mainjs = $webpack_helper->getHashedAssetUrl( 'main.js' );
+
 	//styles
 	wp_enqueue_style( 'google-fonts', google_fonts_url(), array(), false );
 
-	//javascript
-	wp_register_script(
-	 'main',
-		get_template_directory_uri() . '/js/main.min.js',
-		array(),
-		false,
-		true
-	);
+	if( $maincss ) {
+		wp_enqueue_style(
+			'judolosser-style',
+			get_template_directory_uri() . '/' . $maincss,
+			array(),
+			wp_get_theme()->get('Version')
+		);
+	}
+
+	if( $mainjs ) {
+		wp_enqueue_script(
+			'main',
+			get_template_directory_uri() . '/' . $mainjs,
+			array(),
+			wp_get_theme()->get('Version'),
+			true
+		);
+	}
 
 	wp_localize_script('main', 'wp', array(
 		'templateDirectory' => get_bloginfo('template_directory')
@@ -216,6 +238,28 @@ function add_to_post_media_selecter( $sizes ) {
 	) );
 }
 
+
+/* ////////// */
+/* ADMIN MENU */
+/* ////////// */
+
+/*function add_admin_menu_separators() {
+
+	$positions = array(21, 24);
+
+	global $menu;
+
+	foreach( $positions as $position ){
+		$menu[$position] = array('', 'read', 'separator' . $position, '', 'wp-menu-separator');
+	}
+
+}
+add_action( 'admin_menu', 'add_admin_menu_separators' );*/
+
+function judolosser_cleanup_menu() {
+	remove_menu_page( 'edit-comments.php' );
+}
+add_action( 'admin_menu', 'judolosser_cleanup_menu' );
 
 
 /* //////// */
