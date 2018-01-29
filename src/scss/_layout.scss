@@ -70,6 +70,15 @@ td {
 	margin-top: 0;
 }
 
+.article h2:last-child,
+.article h3:last-child,
+.article p:last-child,
+.article ul:last-child,
+.article ol:last-child,
+.article table:last-child {
+	margin-bottom: 0;
+}
+
 .single {
 	height: 100%;
 }
@@ -253,7 +262,7 @@ td {
 .article-item-title {
 	display: inline-block;
 	padding: 8px 16px;
-	margin-top: 0;
+	margin: 0;
 	background-color: white;
 }
 
@@ -265,6 +274,10 @@ td {
 
 .article-item-excerpt {
 	padding: 0 16px;
+}
+
+.article-item-excerpt p:last-child {
+	margin-bottom: 0;
 }
 
 .photos {

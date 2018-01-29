@@ -5,7 +5,7 @@
 	echo get_theme_mod('code-head') . "\n";
 	?>
 	<meta charset="<?php bloginfo('charset'); ?>" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="format-detection" content="telephone=no">
 
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -68,7 +68,7 @@ echo get_theme_mod('code-body') . "\n";
  		<div class="header-logo-wrapper">
 			<a class="header-logo" href="<?php bloginfo('url'); ?>"><img src="<?php bloginfo('template_directory'); ?>/<?php echo $webpack_helper->getHashedAssetUrl( 'logo.svg' ); ?>" alt="<?php bloginfo('name'); ?>" /></a>
 		</div>
-		<button id="header-menu" class="header-menu-button">
+		<button id="header-menu" class="header-menu-button" aria-label="menu">
 			<span class="header-menu-button-icon"></span>
 		</button>
 		<div id="header-nav-wrapper" class="header-nav-wrapper">
