@@ -17,7 +17,6 @@ while(have_posts()){ the_post();
 	?>
 	<article class="article content">	
 		<?php
-			//print_r($post);
 			if(!has_post_thumbnail()){?>
 				<h1><?php the_title(); ?></h1>
 				<?php
@@ -26,6 +25,18 @@ while(have_posts()){ the_post();
 		?>
 	</article>
 	<?php
+	$photoalbum = JlPhotoalbumModel::getPhotoalbumByPost( get_post() );
+
+	if( $photoalbum ) {?>
+	<div class="article-item-wrapper">
+		<ul class="article-item-content content">
+			<?php JlPhotoalbumView::displayPhotoalbum( $photoalbum, array(
+				'label' => true
+			) );?>
+		</ul>
+	</div>
+		<?php
+	}
 }
 get_footer();
 ?>

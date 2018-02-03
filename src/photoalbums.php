@@ -8,24 +8,17 @@ get_header(); ?>
 	<?php the_content(); ?>
 </div>
 <?php
-$posts = new WP_Query(array(
-	'post_type' => 'photoalbum',
-	'nopaging' => true,
-	'no_found_rows' => true,
-	'meta_key' => 'e_datum',
-	'orderby' => 'meta_value',
-	'order' => 'DESC'
-));
+$photoalbums = JlPhotoalbumModel::getPhotoalbums();
 
-if($posts->have_posts()){?>
+if( count( $photoalbums ) > 0 ) {?>
 <div class="article-item-wrapper">
-	<div class="article-item-content content">
+	<ul class="article-item-content content">
 	<?php
-	while($posts->have_posts()){ $posts->the_post();
-		get_template_part('loops/loop', 'post');
+	foreach( $photoalbums as $photoalbum ) {
+		JlPhotoalbumView::displayPhotoalbum( $photoalbum );
 	}
 	?>
-	</div>
+	</ul>
 </div>
 	<?php
 }
