@@ -144,7 +144,9 @@ textarea {
 }
 
 input[type="submit"].button,
-.button {
+.button,
+.button:link,
+.button:visited {
 	display: inline-block;
 	padding: .675em 1em;
 	color: white;
