@@ -1,0 +1,91 @@
+/* USERS */
+
+ul.users {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+.users::after {
+ content: "";
+	display: block;
+	clear: left;
+}
+
+.users .user-item {
+	padding: 2em;
+	margin-top: 40px;
+	background-color: rgb(230, 230, 230);
+	box-sizing: border-box;
+}
+
+@media (min-width: $bp-small) {
+	.users {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.users .user-item {
+		float: left;
+		width: 47%;
+		margin-left: 6%;
+	}
+
+	.users .user-item:nth-child(2n+1) {
+		margin-left: 0;
+		clear: left;
+	}
+
+	.users .user-item:nth-child(-n+2) {
+		margin-top: 0;
+	}
+}
+
+@media (min-width: $bp-middle) {
+	.users .user-item,
+	.users .user-item:nth-child(2n+1) {
+		float: left;
+		width: 30%;
+		margin-left: 5%;
+		clear: none;
+	}
+
+	.users .user-item:nth-child(3n+1) {
+		margin-left: 0;
+		clear: left;
+	}
+
+	.users .user-item:nth-child(-n+3) {
+		margin-top: 0;
+	}
+}
+
+.users .user-item .user-name {
+	margin-top: 0;
+	font-size: 1.25rem;
+}
+
+.users .user-item .user-boardmember,
+.users .user-item .user-contact {
+	font-size: 1em;
+}
+
+.users .user-item .user-contact a:hover {
+	text-decoration: underline;
+}
+
+.users .user-item .user-contact a[href^="tel:"] {
+	padding-left: 1.75em;
+	background-image: url('../images/icon-phone.svg');
+	background-position: left center;
+	background-repeat: no-repeat;
+	background-size: auto 90%;
+}
+
+.users .user-item .user-contact a[href^="mailto:"] {
+	word-break: break-all;
+}
+
+.users .user-item .user-boardmember {
+	margin-top: 0;
+	font-style: italic;
+}

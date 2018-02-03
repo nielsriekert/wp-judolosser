@@ -1,6 +1,7 @@
 <?php
 // include required core files
 require_once('classes/class-webpack-helper.php');
+require_once('classes/class-photoalbums.php');
 
 function theme_setup() {
 	add_theme_support('menus');
@@ -521,11 +522,6 @@ add_action( 'init', 'disable_wp_emojicons' );
 remove_action('wp_head', 'wlwmanifest_link');
 
 
-/* ////////*/
-/* WALKERS */
-/* /////// */
-
-
 /* /////////// */
 /* SHORT CODES */
 /* /////////// */
@@ -536,6 +532,7 @@ function shortcode_fotos( $atts ){
 	return ob_get_clean();
 }
 add_shortcode( 'fotos', 'shortcode_fotos' );
+
 
 /* //////////////////////////////// */
 /* CUSTOM POST TYPES AND TAXONOMIES */
