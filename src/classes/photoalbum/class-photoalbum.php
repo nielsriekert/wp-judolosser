@@ -22,6 +22,20 @@ class JlPhotoalbum {
 	public $title = null;
 
 	/**
+	 * Photoalbum url
+	 *
+	 * @var string
+	 */
+	public $url = null;
+
+	/**
+	 * Photoalbum featured image.
+	 *
+	 * @var object
+	 */
+	public $featuredImage = null;
+
+	/**
 	 * Photoalbum event date
 	 *
 	 * @var string
