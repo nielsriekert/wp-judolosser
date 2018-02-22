@@ -17,11 +17,20 @@ while(have_posts()){ the_post();
 	?>
 	<article class="article content">	
 		<?php
-			if(!has_post_thumbnail()){?>
-				<h1><?php the_title(); ?></h1>
-				<?php
+		if( has_post_thumbnail() && get_post_type() == 'post' ) {?>
+			<time class="article-date"><?php the_date('j F Y'); ?></time>
+			<?php
+		}
+
+		if(!has_post_thumbnail()){?>
+			<h1 class="article-title"><?php the_title(); ?></h1>
+			<?php
+			if( get_post_type() == 'post' ) {?>
+			<time class="article-date"><?php the_date('j F Y'); ?></time>
+			<?php
 			}
-			the_content();
+		}
+		the_content();
 		?>
 	</article>
 	<?php
