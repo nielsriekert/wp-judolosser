@@ -57,10 +57,35 @@ td {
 }
 
 .article {
+	position: relative;
 	padding-top: 40px;
 	padding-bottom: 50px;
 }
 
+.article > .article-date:first-child {
+	position: absolute;
+	top: -2em;
+	height: 2em;
+	padding: 0 .75em;
+	line-height: 2em;
+	font-weight: 700;
+	background-color: white;
+}
+
+.article-title {
+	margin-bottom: .5em;;
+}
+
+.article-date {
+	font-size: 1em;
+}
+
+.article .article-date:first-child + h2,
+.article .article-date:first-child + h3,
+.article .article-date:first-child + p,
+.article .article-date:first-child + ul,
+.article .article-date:first-child + ol,
+.article .article-date:first-child + table,
 .article h2:first-child,
 .article h3:first-child,
 .article p:first-child,
