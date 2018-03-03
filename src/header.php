@@ -14,47 +14,6 @@
 	<link rel="manifest" href="/manifest.json">
 	<meta name="theme-color" content="#ffffff">
 	<?php wp_head(); ?>
-	<script>
-	window.addEventListener('DOMContentLoaded', initHeader);
-
-	var didScroll = true;
-	var prefPageYOffset = 0;
-
-	function initHeader(){
-
-		window.addEventListener('scroll', function(e){ didScroll = true;});
-
-		setInterval(function() {
-		    if(didScroll) {
-		       didScroll = false;
-		       pageOnScroll();
-		        //console.log('You scrolled');
-		    }
-		}, 100);
-	}
-
-	function pageOnScroll(){
-		if(window.pageYOffset > 50){
-			if(!document.body.classList.contains('scrolled-down')){
-				document.body.classList.add('scrolled-down');
-			}
-		}
-		else {
-			document.body.classList.remove('scrolled-down');
-		}
-
-		if(window.pageYOffset > 500){
-			if(!document.body.classList.contains('scrolled-down-content')){
-				document.body.classList.add('scrolled-down-content');
-			}
-		}
-		else {
-			document.body.classList.remove('scrolled-down-content');
-		}
-
-		prefPageYOffset = window.pageYOffset;
-	}
-	</script>
 </head>
 <body <?php body_class(); ?>>
 <?php

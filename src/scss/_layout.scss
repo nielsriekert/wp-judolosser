@@ -104,10 +104,6 @@ td {
 	margin-bottom: 0;
 }
 
-.single {
-	height: 100%;
-}
-
 .single:not(.single-photoalbum) .article,
 .error404 .article {
 	max-width: 54em;
@@ -117,7 +113,7 @@ td {
 .article-image-post {
 	overflow: hidden;
 	position: relative;
-	height: 50%;
+	height: 60vh;
 	min-height: 20em;
 	padding-left: $cp-default;
 	padding-right: $cp-default;
@@ -177,16 +173,12 @@ td {
 	bottom: 0;
 	margin: -5px -10px -10px -5px;
 	top: 0;
+	filter: blur(6px);
+	transform: scale(1.03);
 	background-position: center center;
 	background-size: cover;
 	background-attachment: fixed;
-	transition: filter .8s, transform .8s;
 	z-index: -1;
-}
-
-.scrolled-down .article-image-post-image {
- filter: blur(5px);
-	transform: scale(1.03);
 }
 
 .articles-content {
