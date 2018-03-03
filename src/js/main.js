@@ -11,6 +11,7 @@ import '../screenshot.png';
 
 import SideNav from './sidenav.js';
 import LightBox from './lib/lightbox.js';
+import ScrollClasses from './scrollclasses.js';
 
 function isPostType(postTypes){
 	if(typeof postTypes !== 'string' && ! Array.isArray(postTypes)){
@@ -43,15 +44,19 @@ window.addEventListener('DOMContentLoaded', function(){
 		let galleryItems = document.querySelectorAll('.gallery .gallery-item a[href$="jpg"]');
 		new LightBox(galleryItems);
 
-		const imageLinks = document.querySelectorAll('.article a[href$="jpg"]');
+		let imageLinks = document.querySelectorAll('.article a[href$="jpg"]');
 
 		galleryItems = [].slice.call(galleryItems);
+
+		imageLinks = [].slice.call(imageLinks);
 		
-		imageLinks.forEach((imageLink) => {
-			if(galleryItems.indexOf(imageLink) < 0){
-				new LightBox(imageLink);
-			}
-		});
+		if(Array.isArray(imageLinks)){
+			imageLinks.forEach((imageLink) => {
+				if(galleryItems.indexOf(imageLink) < 0){
+					new LightBox(imageLink);
+				}
+			});
+		}
 	}
 });
 
@@ -79,4 +84,20 @@ window.addEventListener('DOMContentLoaded', function(){
 			}
 		});
 	}
+});
+
+window.addEventListener('DOMContentLoaded', function(){
+	const scrollClasses = new ScrollClasses(
+		document.body,
+		[
+			{
+				'scrolled': 50,
+				'class': 'scrolled-down'
+			},
+			{
+				'scrolled': 500,
+				'class': 'scrolled-down-content'
+			}
+		]
+	);
 });
