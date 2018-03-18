@@ -130,9 +130,3 @@ module.exports = {
 		},
 	]
 };
-
-if(inProduction) {
-	module.exports.plugins.push(
-		new webpack.optimize.UglifyJsPlugin()
-	);
-}
