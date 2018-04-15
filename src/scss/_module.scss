@@ -1,5 +1,3 @@
-@import 'module-lightbox';
-
 .cards-wrapper {
 	display: flex;
 	padding-top: 80px;
@@ -233,7 +231,11 @@
 	width: 50%;
 }
 
-/* TRAININGSTIDEN */
+/* TRAININGSTIJDEN */
+
+td.trainingstijden-dag {
+	vertical-align: top;
+}
 
 .trainingstijden-tijd {
 	min-width: 8em;

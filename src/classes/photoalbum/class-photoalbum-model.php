@@ -17,7 +17,7 @@ class JlPhotoalbumModel {
 	 */
 
 	public static function getPhotoalbums( $args = array() ) {
-
+		// To do: sorting should be on event date followed by photoalbum published date
 		$wp_photoalbums = new WP_Query(array(
 			'post_type' => 'photoalbum',
 			'nopaging' => true,

@@ -1,4 +1,5 @@
 import 'normalize.css';
+import 'vanillelightbox/dist/vanillelightbox.css';
 import '../scss/main.scss';
 import '../scss/style.scss';
 import '../scss/editor-style.scss';
@@ -10,7 +11,7 @@ import '../images/logo.svg';
 import '../screenshot.png';
 
 import SideNav from './sidenav.js';
-import LightBox from './lib/lightbox.js';
+import VanilleLightbox from 'vanillelightbox';
 import ScrollClasses from './scrollclasses.js';
 
 function isPostType(postTypes){
@@ -37,12 +38,12 @@ function isPostType(postTypes){
 window.addEventListener('DOMContentLoaded', function(){
 
 	if(isPostType('photoalbum')){
-		new LightBox(document.querySelectorAll('.photos a.photo'));
+		new VanilleLightbox(document.querySelectorAll('.photos a.photo'));
 	}
 
 	if(isPostType(['post', 'event'])){
 		let galleryItems = document.querySelectorAll('.gallery .gallery-item a[href$="jpg"]');
-		new LightBox(galleryItems);
+		new VanilleLightbox(galleryItems);
 
 		let imageLinks = document.querySelectorAll('.article a[href$="jpg"]');
 
@@ -53,7 +54,7 @@ window.addEventListener('DOMContentLoaded', function(){
 		if(Array.isArray(imageLinks)){
 			imageLinks.forEach((imageLink) => {
 				if(galleryItems.indexOf(imageLink) < 0){
-					new LightBox(imageLink);
+					new VanilleLightbox(imageLink);
 				}
 			});
 		}
