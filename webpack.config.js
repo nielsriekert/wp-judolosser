@@ -71,7 +71,18 @@ module.exports = {
 							name: 'images/[name].[hash:6].[ext]'
 						}
 					},
-					'img-loader'
+					{
+						loader: 'img-loader',
+						options: {
+							svgo: {
+								plugins: [
+									{ removeViewBox: false },
+									{ inlineStyles: false }
+								]
+							},
+							mozjpeg: false
+						}
+					}
 				]
 			},
 			{

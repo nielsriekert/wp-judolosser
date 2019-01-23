@@ -1,5 +1,5 @@
 <?php
-$page_id = current($kaart['k_uitlichten']);
+$page_id = current($card['k_uitlichten']);
 
 $post = get_post($page_id);
 

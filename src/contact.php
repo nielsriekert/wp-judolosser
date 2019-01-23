@@ -7,13 +7,13 @@ get_header(); ?>
 	<h1><?php the_title(); ?></h1>
 	<?php the_content(); ?>
 	<?php
-	$users = get_users(); 
+	$users = get_users();
 	for($i=count($users)-1;$i>=0;$i--){
 		if(empty($users[$i]->boardmember)){unset($users[$i]);};
 	}
 
 	if($users){
-		$boardmember_roles = get_bestuursrollen();
+		$boardmember_roles = USERS()->getBoardRoles();
 		?>
 	<ul class="users">
 		<?php

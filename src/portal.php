@@ -4,33 +4,33 @@ Template Name: Portaal
 */
 get_header(); ?>
 <?php
-$kaarten = CFS()->get('k_kaarten');
-if($kaarten){?>
+$cards = CFS()->get('k_kaarten');
+if( $cards ) {?>
 <div class="cards-wrapper">
 	<div class="cards-content content">
 		<?php
-		foreach($kaarten as $kaart){
-			switch(key($kaart['k_type'])){
+		foreach( $cards as $card ) {
+			switch( key( $card['k_type'] ) ) {
 				case 'news':
-					get_template_part('cards/card', 'news');
+					get_template_part( 'cards/card', 'news' );
 					break;
 				case 'events':
-					get_template_part('cards/card', 'events');
+					get_template_part('cards/card', 'events' );
 					break;
 				case 'photos':
-					get_template_part('cards/card', 'photos');
+					get_template_part( 'cards/card', 'photos' );
 					break;
 				case 'featured':
-					include(locate_template('cards/card-featured.php'));
+					include(locate_template( 'cards/card-featured.php' ) );
 					break;
 				case 'location':
-					get_template_part('cards/card', 'location');
+					get_template_part( 'cards/card', 'location' );
 					break;
 				case 'sign-up':
-					get_template_part('cards/card', 'sign-up');
+					get_template_part( 'cards/card', 'sign-up' );
 					break;
 				case 'judo':
-					get_template_part('cards/card', 'judo');
+					get_template_part( 'cards/card', 'judo' );
 					break;
 			}
 		}
@@ -41,7 +41,7 @@ if($kaarten){?>
 <?php
 }
 $content = get_the_content();
-if($content){
+if( $content ) {
 ?>
 <div class="content article">
 	<?php the_content();?>

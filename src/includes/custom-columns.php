@@ -76,39 +76,6 @@ add_action( 'manage_photoalbum_posts_custom_column', 'manage_photoalbum_columns'
 /* EVENT */
 /* ///// */
 
-function event_columns($columns){
-
-	$columns_event = array();
-
-	foreach( $columns as $key => $value ) {
-		$columns_event[$key] = $value;
-		if( $key == 'title' || end( $columns ) == $value ) {
-			$columns_event['date-event'] = 'Datum evenement';
-		}
-	}
-
-	return $columns_event;
-}
-
-add_filter('manage_edit-event_columns', 'event_columns') ;
-
-
-function manage_event_columns($column, $post_id){
-	global $post;
-
-	switch($column){
-		case 'date-event' :
-			if(CFS()->get('e_datum', $post_id))
-				echo humanize_date(CFS()->get('e_datum', $post_id));
-			else
-				echo '-';
-			break;
-		default :
-			break;
-	}
-}
-add_action('manage_event_posts_custom_column', 'manage_event_columns', 10, 2 );
-
 function event_sortable_columns($columns) {
 	$columns['date-event'] = 'date-event';
 
