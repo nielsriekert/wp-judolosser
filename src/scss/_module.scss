@@ -42,7 +42,7 @@
 	padding-bottom: 2em;
 }
 
-@media (min-width: $bp-small) {
+@media (min-width: $break-small) {
 	.card,
 	.card:first-child {
 		float: left;
@@ -61,7 +61,7 @@
 	}
 }
 
-@media (min-width: $bp-middle) {
+@media (min-width: $break-middle) {
 	.card,
 	.card:first-child,
 	.card:nth-child(2n+1) {
@@ -242,3 +242,5 @@ td.trainingstijden-dag {
 }
 
 @import 'module-wordpress';
+@import 'modules/committees';
+@import 'modules/user-committee';

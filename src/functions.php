@@ -1,21 +1,23 @@
 <?php
 // include required core files
 require_once('classes/class-webpack-helper.php');
+require_once('classes/class-users.php');
+require_once('classes/class-events.php');
 require_once('classes/class-photoalbums.php');
 
 function theme_setup() {
 	add_theme_support('menus');
-	
+
 	add_theme_support('post-thumbnails');
 	set_post_thumbnail_size( 500, 375, true );
 
 	add_post_type_support( 'page', 'excerpt' );
-	
+
 	register_nav_menus(array(
 		'headernav' => 'Hoofdmenu',
 		'footernav' => 'Footermenu'
 	));
-	
+
 	/*
 	 * Let WordPress manage the document title.
 	 * By adding theme support, we declare that this theme does not use a
@@ -44,7 +46,7 @@ function theme_setup() {
 
 	$webpack_helper = new WebpackHelper();
 	$editorcss = $webpack_helper->getHashedAssetUrl( 'editor-style.css' );
-	
+
 	if($editorcss){
 		add_editor_style(array($editorcss, google_fonts_url(true), fontscom_fonts_url()));
 	}
@@ -184,7 +186,7 @@ function get_training_times($post_id = false, $columns = 'all'){
 		foreach($trainingstijden as $dag){
 			$counter = 0;
 			foreach($dag['t_training'] as $training){$counter ++;
-			
+
 			$rhtml .= '<tr>' . "\n\r";
 			if($counter === 1){
 			$rhtml .= '<td class="trainingstijden-dag" data-column-name="Dag" rowspan="' . count($dag['t_training']) . '">' . current($dag['t_dag']) . '</td>';
@@ -286,13 +288,37 @@ function humanize_date($date, $dateformat = 'j F Y', $tolerantie = 2){
 function getSocialMedia($return_follow_us_text = false){
 	$facebook_account = get_theme_mod('facebook');
 	$twitter_account = get_theme_mod('twitter');
-	
+
 	$sm_array = array();
 	if($facebook_account){ $sm_array['facebook'] = array('url' => 'https://www.facebook.com/', 'account' => $facebook_account);}
 	if($twitter_account){ $sm_array['twitter'] = array('url' => 'https://www.twitter.com/', 'account' => $twitter_account);}
-	
+
 	if(count($sm_array) > 0){
 		return $sm_array;
+	}
+	else {
+		return false;
+	}
+}
+
+
+function get_post_by_template( $template ) {
+	if( gettype( $template ) != 'string' ) {
+		return false;
+	}
+
+	$posts = new WP_Query(array(
+		'post_type'  => 'page',
+		'meta_query' => array(
+			array(
+				'key'   => '_wp_page_template',
+				'value' => $template
+			)
+		)
+	));
+
+	if( $posts->post_count == 1 ) {
+		return current( $posts->posts );
 	}
 	else {
 		return false;
@@ -469,36 +495,6 @@ add_shortcode( 'fotos', 'shortcode_fotos' );
 function create_post_types() {
 
 	$labels = array(
-		'name' => 'Evenementen',
-		'singular_name' => 'Evenement',
-		'add_new' => 'Nieuw evenement', 'evenement',
-		'add_new_item' => 'Voeg nieuw evenement toe',
-		'edit_item' => 'Bewerk evenement',
-		'new_item' => 'Nieuw evenement',
-		'view_item' => 'Bekijk evenement',
-		'search_items' => 'Zoek evenementen',
-		'not_found' => 'Geen evenementen gevonden',
-		'not_found_in_trash' => 'Geen evenementen gevonden in de prullenbak', 
-		'all_items' => 'Alle evenementen',
-		'parent_item_colon'  => '',
-		'menu_name' => 'Evenementen'
-	);
-
-	$args = array(
-		'labels' => $labels,
-		'taxonomies' => array('category'),
-		'description' => 'Evenementen van Judo Losser',
-		'public' => true,
-		'rewrite' => array('slug' => 'evenement'),
-		'menu_position' => 5,
-		'supports' => array( 'title', 'thumbnail', 'editor', 'excerpt', 'author', 'revisions'),
-		//'has_archive' => false,
-		'menu_icon' => 'dashicons-calendar'
-	);
-
-	register_post_type('event', $args);
-
-	$labels = array(
 		'name' => 'Fotoalbums',
 		'singular_name' => 'Fotoalbum',
 		'add_new' => 'Nieuw fotoalbum', 'fotoalbum',
@@ -508,7 +504,7 @@ function create_post_types() {
 		'view_item' => 'Bekijk fotoalbum',
 		'search_items' => 'Zoek fotoalbums',
 		'not_found' => 'Geen fotoalbums gevonden',
-		'not_found_in_trash' => 'Geen fotoalbums gevonden in de prullenbak', 
+		'not_found_in_trash' => 'Geen fotoalbums gevonden in de prullenbak',
 		'all_items' => 'Alle fotoalbums',
 		'parent_item_colon'  => '',
 		'menu_name' => 'Fotoalbums'
@@ -529,96 +525,6 @@ function create_post_types() {
 
 add_action( 'init', 'create_post_types' );
 
-
-/* /////////// */
-/* USER FIELDS */
-/* /////////// */
-
-function get_bestuursrollen(){
-	return array(
-		'Voorzitter',
-		'Secretaris',
-		'Penningmeester',
-		'Technisch coordinator',
-		'Oudervertegenwoordiger',
-		'Algemeen'
-	);
-}
-
-function show_extra_profile_fields( $user ) { ?>
-
-	<h3>Leden informatie</h3>
-	<table class="form-table">
-		<tr>
-			<th><label for="boardmember">Bestuursrol</label></th>
-			<td>
-				<?php
-				$bestuursrollen = get_bestuursrollen();
-				?>
-				<select name="boardmember">
-					<option value="">- geen -</option>
-					<?php
-					$user_boardmember = get_the_author_meta('boardmember', $user->ID);
-					foreach($bestuursrollen as $rol){?>
-					<option value="<?php echo $rol; ?>"<?php if($user_boardmember == $rol){?> selected="selected"<?php } ?>><?php echo $rol; ?></option>
-					<?php }
-					?>
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<th><label for="address">Straat en huisnummer</label></th>
-			<td>
-				<input type="text" name="address" id="address" value="<?php echo esc_attr( get_the_author_meta( 'address', $user->ID ) ); ?>" class="regular-text" /><br />
-			</td>
-		</tr>
-		<tr>
-			<th><label for="postcode">Postcode</label></th>
-			<td>
-				<input type="text" name="postcode" id="postcode" value="<?php echo esc_attr( get_the_author_meta( 'postcode', $user->ID ) ); ?>" class="regular-text" /><br />
-			</td>
-		</tr>
-		<tr>
-			<th><label for="town">Plaats</label></th>
-			<td>
-				<input type="text" name="town" id="town" value="<?php echo esc_attr( get_the_author_meta( 'town', $user->ID ) ); ?>" class="regular-text" /><br />
-			</td>
-		</tr>
-		<tr>
-			<th><label for="phone-home">Telefoon (thuis)</label></th>
-			<td>
-				<input type="tel" name="phonehome" id="phonehome" value="<?php echo esc_attr( get_the_author_meta( 'phonehome', $user->ID ) ); ?>" class="regular-text" /><br />
-			</td>
-		</tr>
-		<tr>
-			<th><label for="phone">Telefoon (mobiel)</label></th>
-			<td>
-				<input type="tel" name="phone" id="phone" value="<?php echo esc_attr( get_the_author_meta( 'phone', $user->ID ) ); ?>" class="regular-text" /><br />
-			</td>
-		</tr>
-	</table>
-<?php
-}
-
-add_action( 'show_user_profile', 'show_extra_profile_fields' );
-add_action( 'edit_user_profile', 'show_extra_profile_fields' );
-
-
-function save_extra_profile_fields($user_id){
-
-	if(!current_user_can('edit_user'))
-		return false;
-
-	update_user_meta($user_id, 'boardmember', $_POST['boardmember']);
-	update_user_meta($user_id, 'address', $_POST['address']);
-	update_user_meta($user_id, 'postcode', $_POST['postcode']);
-	update_user_meta($user_id, 'town', $_POST['town']);
-	update_user_meta($user_id, 'phonehome', $_POST['phonehome']);
-	update_user_meta($user_id, 'phone', $_POST['phone']);
-}
-
-add_action( 'personal_options_update', 'save_extra_profile_fields' );
-add_action( 'edit_user_profile_update', 'save_extra_profile_fields' );
 
 /* ///////////// */
 /* SETTING PAGES */
@@ -645,27 +551,27 @@ function customize_template( $wp_customize ) {
 	}
 
 	/*// SOCIAL //*/
-	
+
 	$wp_customize->add_section('social', array(
 		'title' => 'Social',
 		'priority' => 45,
 		'description' => 'Het account naam kunt u vinden door op de social media pagina het gedeelte van de url achter de domeinnaam te kopiëren.<br />Bijvoorbeeld: www.facebook.com/#######/ of www.twitter.com/#######.'
 	));
-	
+
 	/* facebook */
-	
+
 	$wp_customize->add_setting('facebook');
-	
+
 	$wp_customize->add_control( new WP_Customize_Control($wp_customize, 'facebook', array(
 		'label' => 'Facebook account',
 		'section' => 'social',
 		'settings' => 'facebook',
 	)));
-	
+
 	/* twitter */
 
 	$wp_customize->add_setting('twitter');
-	
+
 	$wp_customize->add_control( new WP_Customize_Control($wp_customize, 'twitter', array(
 		'label' => 'Twitter account',
 		'section' => 'social',
@@ -673,17 +579,17 @@ function customize_template( $wp_customize ) {
 	)));
 
 	/*// CODE //*/
-	
+
 	$wp_customize->add_section('tracking_code' , array(
 		'title' => 'Tracking code',
 		'priority' => 50,
 		'capability' => 'administrator'
 	));
-	
+
 	/* tracking code */
-	
+
 	$wp_customize->add_setting('code-head');
-	
+
 	$wp_customize->add_control( new WP_Customize_Textarea_Control($wp_customize, 'code-head', array(
 		'label' => 'Plaats (tracking) code (head)',
 		'section' => 'tracking_code',
@@ -692,7 +598,7 @@ function customize_template( $wp_customize ) {
 	)));
 
 	$wp_customize->add_setting('code-body');
-	
+
 	$wp_customize->add_control( new WP_Customize_Textarea_Control($wp_customize, 'code-body', array(
 		'label' => 'Plaats (tracking) code (body)',
 		'section' => 'tracking_code',
@@ -702,52 +608,4 @@ function customize_template( $wp_customize ) {
 }
 
 add_action( 'customize_register', 'customize_template' );
-
-
-/* ///// */
-/* ROLES */
-/* ///// */
-
-add_action('after_switch_theme', 'judolosser_setup_options');
-
-function judolosser_setup_options () {
-	add_role( 'manager', 'Manager', array(
-		'delete_others_pages' => true,
-		'delete_others_posts' => true,
-		'delete_pages' => true,
-		'delete_posts' => true,
-		'delete_private_pages' => true,
-		'delete_private_posts' => true,
-		'delete_published_pages' => true,
-		'delete_published_posts' => true,
-		'edit_others_pages' => true,
-		'edit_others_posts' => true,
-		'edit_pages' => true,
-		'edit_posts' => true,
-		'edit_private_pages' => true,
-		'edit_private_posts' => true,
-		'edit_published_pages' => true,
-		'edit_published_posts' => true,
-		'edit_theme_options' => true,
-		'manage_categories' => true,
-		'manage_links' => true,
-		'publish_pages' => true,
-		'publish_posts' => true,
-		'read' => true,
-		'read_private_pages' => true,
-		'read_private_posts' => true,
-		'unfiltered_html' => true,
-		'unfiltered_upload' => true,
-		'upload_files' => true,
-		'manage_options' => true,
-		'wpseo_bulk_edit' => true
-		)
-	);
-};
-
-add_action('switch_theme', 'judolosser_deactivate_options');
-
-function judolosser_deactivate_options () {
-	remove_role('manager');
-}
 ?>

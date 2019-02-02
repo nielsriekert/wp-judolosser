@@ -8,7 +8,7 @@ body {
 	color: $color-text;
 	min-width: 250px;
 	background-color: white;
-	scroll-behavior: smooth; 
+	scroll-behavior: smooth;
 }
 
 body.no-scroll {
@@ -48,7 +48,7 @@ figure {
 	margin-top: 1.6em;
 }
 
-@media (min-width: $bp-small) {
+@media (min-width: $break-small) {
 	p,
 	ul,
 	ol,
@@ -75,7 +75,7 @@ h1 {
 	font-size: 1.875em;
 }
 
-@media (min-width: $bp-middle) {
+@media (min-width: $break-middle) {
 	h1 {
 		font-size: 2em;
 	}
@@ -85,7 +85,7 @@ h2 {
 	font-size: 1.375em;
 }
 
-@media (min-width: $bp-middle) {
+@media (min-width: $break-middle) {
 	h2 {
 		font-size: 1.5em;
 	}
@@ -95,7 +95,7 @@ h3 {
 	font-size: 1.125em;
 }
 
-@media (min-width: $bp-middle) {
+@media (min-width: $break-middle) {
 	h3 {
 		font-size: 1.375em;
 	}
@@ -170,8 +170,8 @@ thead,
 tbody,
 th,
 td,
-tr { 
-	display: block; 
+tr {
+	display: block;
 }
 
 tr {
@@ -238,7 +238,7 @@ td[data-title] {
 	padding-left: 50%;
 }
 
-@media (min-width: $bp-small) {
+@media (min-width: $break-small) {
 	table {
 		display: table;
 	}
@@ -278,8 +278,8 @@ td[data-title] {
 		padding: .5em 1em .5em .5em;
 	}
 
-	tr { 
-		display: table-row; 
+	tr {
+		display: table-row;
 	}
 
 	td[data-column-name]:before,

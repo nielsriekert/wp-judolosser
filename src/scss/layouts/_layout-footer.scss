@@ -21,7 +21,7 @@
 	margin-top: 30px;
 }
 
-@media (min-width: $bp-small) {
+@media (min-width: $break-small) {
 	.footer-column {
 		width: 47%;
 	}
@@ -32,7 +32,7 @@
 	}
 }
 
-@media (min-width: $bp-middle) {
+@media (min-width: $break-middle) {
 	.footer-column,
 	.footer-column:nth-child(2n+1) {
 		width: 23.5%;
