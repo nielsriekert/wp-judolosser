@@ -1,0 +1,36 @@
+.user-committee-container {
+	padding: 2em;
+	background-color: rgb(230, 230, 230);
+	box-sizing: border-box;
+}
+
+.users .user-item .user-name {
+	margin-top: 0;
+	font-size: 1.25rem;
+}
+
+.users .user-item .user-boardmember,
+.users .user-item .user-contact {
+	font-size: 1em;
+}
+
+.users .user-item .user-contact a:hover {
+	text-decoration: underline;
+}
+
+.users .user-item .user-contact a[href^="tel:"] {
+	padding-left: 1.75em;
+	background-image: url('../images/icon-phone.svg');
+	background-position: left center;
+	background-repeat: no-repeat;
+	background-size: auto 90%;
+}
+
+.users .user-item .user-contact a[href^="mailto:"] {
+	word-break: break-all;
+}
+
+.users .user-item .user-boardmember {
+	margin-top: 0;
+	font-style: italic;
+}

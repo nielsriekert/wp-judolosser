@@ -11,24 +11,24 @@ body.page-template-posts {
 	padding-right: $cp-default;
 }
 
-@media (min-width: $bp-small) {
+@media (min-width: $break-small) {
 	.content {
 		padding-left: $cp-small;
 		padding-right: $cp-small;
 	}
 }
 
-@media (min-width: $bp-middle) {
+@media (min-width: $break-middle) {
 	.content {
 		padding-left: $cp-middle;
 		padding-right: $cp-middle;
 	}
 }
 
-@media (min-width: $bp-large) {
+@media (min-width: $break-large) {
 	.content {
 		margin: 0 auto;
-		width: $bp-large - $cp-middle * 2;
+		width: $break-large - $cp-middle * 2;
 	}
 }
 
@@ -148,19 +148,19 @@ td {
 	vertical-align: middle;
 }
 
-@media (min-width: $bp-small) {
+@media (min-width: $break-small) {
 	.article-image-post h1 {
 		font-size: 3em;
 	}
 }
 
-@media (min-width: $bp-middle) {
+@media (min-width: $break-middle) {
 	.article-image-post h1 {
 		font-size: 3em;
 	}
 }
 
-@media (min-width: $bp-large) {
+@media (min-width: $break-large) {
 	.article-image-post h1 {
 		font-size: 4em;
 	}
@@ -205,7 +205,7 @@ ul.article-item-content {
 	padding-bottom: 80px;
 }
 
-@media (min-width: $bp-small) {
+@media (min-width: $break-small) {
 	.article-item-content {
 		display: flex;
 		flex-wrap: wrap;
@@ -236,7 +236,7 @@ ul.article-item-content {
 	border-color: rgba(darken($color-primary, 30%), .2);
 }
 
-@media (min-width: $bp-small) {
+@media (min-width: $break-small) {
 	.article-item,
 	.article-item:first-child {
 		width: 47%;
@@ -253,7 +253,7 @@ ul.article-item-content {
 	}
 }
 
-@media (min-width: $bp-middle) {
+@media (min-width: $break-middle) {
  	.article-item,
 	.article-item:first-child,
 	.article-item:nth-child(2n+1) {
@@ -320,7 +320,7 @@ ul.article-item-content {
 	box-sizing: border-box;
 }
 
-@media (min-width: $bp-middle) {
+@media (min-width: $break-middle) {
 	.photos .photo,
 	.photos .photo:nth-child(3n) {
 		width: 25%;
@@ -331,7 +331,7 @@ ul.article-item-content {
 	}
 }
 
-@media (min-width: $bp-large - 5) {
+@media (min-width: $break-large - 5) {
 	.photos .photo,
 	.photos .photo:nth-child(3n),
 	.photos .photo:nth-child(4n) {
@@ -348,5 +348,4 @@ ul.article-item-content {
 }
 
 @import 'layouts/layout-posts';
-@import 'layouts/layout-contact';
 @import 'layouts/layout-footer';

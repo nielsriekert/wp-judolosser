@@ -96,9 +96,10 @@ class Users {
 
 		foreach( $custom_post_type_caps as $key => $value ) {
 			$administrator->add_cap( $key );
-			$administrator->add_cap( 'modern_forms_edit_forms' );
-			$administrator->add_cap( 'modern_forms_edit_entries' );
 		}
+
+		$administrator->add_cap( 'modern_forms_edit_forms' );
+			$administrator->add_cap( 'modern_forms_edit_entries' );
 
 		// remove unused build in roles
 		if( get_role( 'editor' ) ) {
@@ -177,26 +178,51 @@ class Users {
 		<h3>Leden informatie</h3>
 		<table class="form-table">
 			<tr>
-				<th><label for="boardmember">Bestuursrol</label></th>
+				<th><label for="committee">Commissie</label></th>
 				<td>
 					<?php
-					$bestuursrollen = $this->getBoardRoles();
+					$committees = $this->getCommittees();
 					?>
-					<select name="boardmember">
+					<select name="committee">
 						<option value="">- geen -</option>
 						<?php
-						$user_boardmember = get_the_author_meta('boardmember', $user->ID);
-						foreach($bestuursrollen as $rol){?>
-						<option value="<?php echo $rol; ?>"<?php if($user_boardmember == $rol){?> selected="selected"<?php } ?>><?php echo $rol; ?></option>
-						<?php }
+						$user_committee = get_the_author_meta('committee', $user->ID);
+						foreach( $committees as $committee ) { ?>
+							<option value="<?php echo $committee; ?>"<?php if( $user_committee == $committee ) { ?> selected="selected"<?php } ?>><?php echo $committee; ?></option>
+							<?php
+							}
 						?>
 					</select>
 				</td>
 			</tr>
 			<tr>
-				<th><label for="address">Straat en huisnummer</label></th>
+				<th><label for="role">Role</label></th>
 				<td>
-					<input type="text" name="address" id="address" value="<?php echo esc_attr( get_the_author_meta( 'address', $user->ID ) ); ?>" class="regular-text" /><br />
+					<?php
+					$roles = $this->getCommitteeRoles();
+					?>
+					<select name="role">
+						<option value="">- geen -</option>
+						<?php
+						$user_role = get_the_author_meta( 'role', $user->ID );
+						foreach( $roles as $rol ) { ?>
+							<option value="<?php echo $rol; ?>"<?php if ( $user_role == $rol ) { ?> selected="selected"<?php } ?>><?php echo $rol; ?></option>
+							<?php
+						}
+						?>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th><label for="street">Straat</label></th>
+				<td>
+					<input type="text" name="street" id="street" value="<?php echo esc_attr( get_the_author_meta( 'street', $user->ID ) ); ?>" class="regular-text" /><br />
+				</td>
+			</tr>
+			<tr>
+				<th><label for="house-number">Huisnummer</label></th>
+				<td>
+					<input type="text" name="house-number" id="house-number" value="<?php echo esc_attr( get_the_author_meta( 'house-number', $user->ID ) ); ?>" class="regular-text" /><br />
 				</td>
 			</tr>
 			<tr>
@@ -212,13 +238,7 @@ class Users {
 				</td>
 			</tr>
 			<tr>
-				<th><label for="phone-home">Telefoon (thuis)</label></th>
-				<td>
-					<input type="tel" name="phonehome" id="phonehome" value="<?php echo esc_attr( get_the_author_meta( 'phonehome', $user->ID ) ); ?>" class="regular-text" /><br />
-				</td>
-			</tr>
-			<tr>
-				<th><label for="phone">Telefoon (mobiel)</label></th>
+				<th><label for="phone">Telefoon</label></th>
 				<td>
 					<input type="tel" name="phone" id="phone" value="<?php echo esc_attr( get_the_author_meta( 'phone', $user->ID ) ); ?>" class="regular-text" /><br />
 				</td>
@@ -232,22 +252,37 @@ class Users {
 			return false;
 		}
 
-		update_user_meta($user_id, 'boardmember', $_POST['boardmember']);
-		update_user_meta($user_id, 'address', $_POST['address']);
-		update_user_meta($user_id, 'postcode', $_POST['postcode']);
-		update_user_meta($user_id, 'town', $_POST['town']);
-		update_user_meta($user_id, 'phonehome', $_POST['phonehome']);
-		update_user_meta($user_id, 'phone', $_POST['phone']);
+		update_user_meta( $user_id, 'committee', $_POST['committee'] );
+		update_user_meta( $user_id, 'role', $_POST['role'] );
+		update_user_meta( $user_id, 'street', $_POST['street'] );
+		update_user_meta( $user_id, 'house-number', $_POST['house-number'] );
+		update_user_meta( $user_id, 'postcode', $_POST['postcode'] );
+		update_user_meta( $user_id, 'town', $_POST['town'] );
+		update_user_meta( $user_id, 'phone', $_POST['phone'] );
 	}
 
-	public function getBoardRoles(){
+	public function getCommittees() {
+		return array(
+			'Bestuur',
+			'Activiteitencommissie',
+			'Selectiecommissie',
+			'Dojo / Wedstrijd commissie',
+			'Trainers',
+			'Ledenadministratie'
+		);
+	}
+
+	public function getCommitteeRoles() {
 		return array(
 			'Voorzitter',
 			'Secretaris',
 			'Penningmeester',
 			'Technisch coordinator',
 			'Oudervertegenwoordiger',
-			'Algemeen'
+			'Wedstrijdsecretariaat',
+			'Algemeen',
+			'Coach',
+			'Assistent trainer / coach'
 		);
 	}
 }

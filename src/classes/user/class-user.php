@@ -1,8 +1,4 @@
 <?php
-/**
- * @author Niels Riekert
- */
-
 class User extends WP_User {
 
 	/**
@@ -54,8 +50,12 @@ class User extends WP_User {
 		return get_the_author_meta( 'name-display', $this->user->ID );
 	}
 
-	public function getBoardMemberRole() {
-		return $this->user->get( 'board-member-role' );
+	public function getCommittee() {
+		return $this->user->get( 'committee' );
+	}
+
+	public function getCommitteeRole() {
+		return $this->user->get( 'role' );
 	}
 
 	public function getTask() {
@@ -80,6 +80,10 @@ class User extends WP_User {
 
 	public function getHouseNumber() {
 		return $this->user->get( 'house-number' );
+	}
+
+	public function getAddress() {
+		return trim( $this->getStreet() . ' ' . $this->getHouseNumber() );
 	}
 
 	public function getPostcode() {

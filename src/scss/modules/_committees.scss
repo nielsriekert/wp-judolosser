@@ -1,0 +1,32 @@
+ul.committees-container {
+	padding-left: 0;
+	list-style-type: none;
+}
+
+.committee-container:not(:first-child) {
+	margin-top: 50px;
+}
+
+ul.users-committee-container {
+	list-style-type: none;
+	padding-left: 0;
+	font-size: 1em;
+}
+
+.users-committee-container {
+	display: grid;
+	grid-gap: 30px;
+}
+
+@media (min-width: $break-middle) {
+	.users-committee-container {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+
+@media (min-width: $break-large) {
+	.users-committee-container {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}

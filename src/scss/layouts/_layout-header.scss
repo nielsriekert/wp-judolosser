@@ -152,14 +152,14 @@
  transform: translateX(-17em) translateX(-9px);
 }
 
-@media (min-width: $bp-small) {
+@media (min-width: $break-small) {
 	.header-nav {
 		width: 19em;
 		transform: translateX(-23em) translateX(-9px);
 	}
 }
 
-@media (min-width: $bp-middle) {
+@media (min-width: $break-middle) {
 	.header-nav {
 		width: 23em;
 		transform: translateX(-28em) translateX(-9px);
@@ -170,7 +170,7 @@
 	top: 46px;
 }
 
-@media (min-width: $bp-middle) {
+@media (min-width: $break-middle) {
 	.admin-bar .header-nav {
 	 	top: 32px;
 	}
@@ -228,7 +228,7 @@
 	transition: background-color .2s;
 }
 
-@media (min-width: $bp-middle) {
+@media (min-width: $break-middle) {
 	.header-nav .menu-item a,
 	.header-nav .menu-item a:link,
 	.header-nav .menu-item a:visited {
