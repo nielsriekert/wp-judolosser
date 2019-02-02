@@ -99,7 +99,7 @@ class Users {
 		}
 
 		$administrator->add_cap( 'modern_forms_edit_forms' );
-			$administrator->add_cap( 'modern_forms_edit_entries' );
+		$administrator->add_cap( 'modern_forms_edit_entries' );
 
 		// remove unused build in roles
 		if( get_role( 'editor' ) ) {
@@ -112,10 +112,6 @@ class Users {
 
 		if( get_role( 'author' ) ) {
 			remove_role( 'author' );
-		}
-
-		if( get_role( 'subscriber' ) ) {
-			remove_role( 'subscriber' );
 		}
 	}
 
@@ -201,10 +197,10 @@ class Users {
 					<?php
 					$roles = $this->getCommitteeRoles();
 					?>
-					<select name="role">
+					<select name="committee-role">
 						<option value="">- geen -</option>
 						<?php
-						$user_role = get_the_author_meta( 'role', $user->ID );
+						$user_role = get_the_author_meta( 'committee-role', $user->ID );
 						foreach( $roles as $rol ) { ?>
 							<option value="<?php echo $rol; ?>"<?php if ( $user_role == $rol ) { ?> selected="selected"<?php } ?>><?php echo $rol; ?></option>
 							<?php
@@ -253,7 +249,7 @@ class Users {
 		}
 
 		update_user_meta( $user_id, 'committee', $_POST['committee'] );
-		update_user_meta( $user_id, 'role', $_POST['role'] );
+		update_user_meta( $user_id, 'committee-role', $_POST['committee-role'] );
 		update_user_meta( $user_id, 'street', $_POST['street'] );
 		update_user_meta( $user_id, 'house-number', $_POST['house-number'] );
 		update_user_meta( $user_id, 'postcode', $_POST['postcode'] );

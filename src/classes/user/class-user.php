@@ -55,7 +55,7 @@ class User extends WP_User {
 	}
 
 	public function getCommitteeRole() {
-		return $this->user->get( 'role' );
+		return $this->user->get( 'committee-role' );
 	}
 
 	public function getTask() {
