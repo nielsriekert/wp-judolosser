@@ -15,7 +15,7 @@ if( count( $events ) > 0 ) {
 			<div class="card-body">
 				<h2><?php echo $event->getName(); ?></h2>
 				<div class="card-date">
-					<?php echo $event->getDateFormatted(); ?>
+					<?php echo $event->getDate(); ?>
 				</div>
 				<?php the_excerpt(); ?>
 			</div>

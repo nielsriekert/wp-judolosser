@@ -41,8 +41,6 @@ class Events {
 
 	/**
 	 * Hook into actions and filters.
-	 *
-	 * @author Niels Riekert
 	 */
 	private function initHooks() {
 		add_action( 'init', array( $this, 'createPostTypes' ) );
@@ -50,6 +48,12 @@ class Events {
 		add_filter( 'manage_edit-event_columns', array( $this, 'addAdminColumns' ), 10, 1 );
 		add_action( 'manage_event_posts_custom_column', array( $this, 'renderAdminRows' ), 10, 2 );
 		add_filter( 'manage_edit-event_sortable_columns', array( $this, 'addSortableColumns' ), 10, 1 );
+
+		add_action( 'wp_enqueue_scripts', array( $this, 'createJsGlobals' ), 20 );
+
+		add_action( 'wp_ajax_nopriv_get_events', array( 'EventModel', 'getEventsAjax' ) );
+		add_action( 'wp_ajax_get_events', array( 'EventModel', 'getEventsAjax' ) );
+
 		add_action( 'load-edit.php', function(){
 			add_filter( 'request', array( $this, 'sortByEventDate' ), 10, 1 );
 		} );
@@ -205,6 +209,10 @@ class Events {
 		}
 
 		return $vars;
+	}
+
+	public function createJsGlobals() {
+		wp_localize_script( 'main', 'ajax_get_events', admin_url( 'admin-ajax.php?action=get_events&nonce=' . wp_create_nonce( 'get_events' ) ) );
 	}
 
 	public function redirectPastEvent() {

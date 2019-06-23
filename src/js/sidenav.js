@@ -76,7 +76,6 @@ SideNav.prototype.onTouchEnd = function(e) {
 
 	var translateX = Math.min(0, this.currentX - this.startX);
 	this.headerNav.style.transform = '';
-	console.log(translateX);
 	if(translateX < -40) {
 		this.toggleSideNav();
 	}

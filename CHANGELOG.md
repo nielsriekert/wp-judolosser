@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2019-06-23
+### Added
+- Logo carousel (no carousel yet) above footer on all pages (client side rendering). Data from sanity.io, hardcoded project id.
+
+### Changed
+- Updated packages and refactored webpack config.
+- Articles, events and photoalbums now pagination with client side rendering (lit-html).
+
 ## [1.2.1] - 2019-02-02
 ### Fixed
 - Role setting naming class.

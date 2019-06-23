@@ -15,7 +15,7 @@ while(have_posts()){ the_post();
 		<?php
 	}
 	?>
-	<article class="article content">	
+	<article class="article content">
 		<?php
 		if( has_post_thumbnail() && get_post_type() == 'post' ) {?>
 			<time class="article-date"><?php the_date('j F Y'); ?></time>
@@ -34,12 +34,12 @@ while(have_posts()){ the_post();
 		?>
 	</article>
 	<?php
-	$photoalbum = JlPhotoalbumModel::getPhotoalbumByPost( get_post() );
+	$photoalbum = PhotoalbumModel::getPhotoalbumByPost( get_post() );
 
 	if( $photoalbum ) {?>
 	<div class="article-item-wrapper">
-		<ul class="article-item-content content">
-			<?php JlPhotoalbumView::displayPhotoalbum( $photoalbum, array(
+		<ul class="article-items-container content">
+			<?php PhotoalbumView::displayPhotoalbum( $photoalbum, array(
 				'label' => true
 			) );?>
 		</ul>
