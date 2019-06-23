@@ -46,7 +46,7 @@ LogoCarousel.prototype.setupCarousel = function() {
 		},
 		this.containerElement.querySelector('.logo-carousel-container')
 	)
-	indicatorContainer.init()
+	carouselSlider.init()
 }
 
 export default LogoCarousel
