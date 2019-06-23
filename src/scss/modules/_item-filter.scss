@@ -1,0 +1,121 @@
+.item-filter-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding-top: 45px;
+	padding-bottom: 45px;
+}
+
+@media (min-width: $break-middle) {
+	.item-filter-container {
+		flex-direction: row;
+	}
+}
+
+.item-filter-input-label {
+	font-family: $font-secondary;
+	font-size: 1.1875em;
+	text-transform: uppercase;
+	color: $color-primary;
+	font-weight: 500;
+}
+
+.item-filter-input-container {
+	position: relative;
+	min-width: 18em;
+	margin-top: 20px;
+}
+
+@media (min-width: $break-middle) {
+	.item-filter-input-container {
+		margin-top: 0;
+	}
+}
+
+.item-filter-input-container:not(:first-child) {
+	margin-left: 1em;
+}
+
+.item-filter-input-dropdown-button {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	padding: .75em 1.5em;
+	color: $color-primary;
+	text-align: left;
+	background-color: transparent;
+	transition: background-color .1s;
+	border: 1px solid $color-primary;
+}
+
+.item-filter-input-dropdown-button[data-is-open="true"] {
+	background-color: white;
+}
+
+.item-filter-input-dropdown-button::after {
+	content: "";
+	display: inline-block;
+	width: 0;
+	height: 0;
+	margin-left: 2em;
+	border-left: .5em solid transparent;
+	border-right: .5em solid transparent;
+	border-top: .5em solid $color-text;
+}
+
+ul.item-filter-dropdown-container {
+	margin: 0;
+	padding-left: 0;
+	list-style-type: none;
+}
+
+.item-filter-dropdown-container {
+	position: absolute;
+	left: 0;
+	right: 0;
+	z-index: 1;
+	opacity: 0;
+	pointer-events: none;
+	transform: translateY(-10px);
+	transition: opacity .1s, transform .1s;
+	background-color: white;
+	box-shadow: 0 .125em 1em rgba(0, 0, 0, .2);
+}
+
+.item-filter-dropdown-container[data-is-open="true"] {
+	opacity: 1;
+	pointer-events: auto;
+	transform: translateY(0);
+}
+
+.items-filter-dropdown-item button {
+	display: block;
+	width: 100%;
+	padding: .75em 1.5em;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	text-align: left;
+	background-color: white;
+	transition: background-color .1s;
+	border: none;
+}
+
+.items-filter-dropdown-item[data-is-selected="true"] button,
+.items-filter-dropdown-item button:hover {
+	background-color: $color-secondary;
+}
+
+.item-filter-dropdown-reset-button {
+	margin-top: 20px;
+	font-size: .75em;
+}
+
+@media (min-width: $break-middle) {
+	.item-filter-dropdown-reset-button {
+		margin-top: 0;
+		margin-left: 20px;
+	}
+}

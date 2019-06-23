@@ -1,7 +1,6 @@
 import 'normalize.css';
 import 'vanillelightbox/dist/vanillelightbox.css';
 import '../scss/main.scss';
-import '../scss/style.scss';
 import '../scss/editor-style.scss';
 
 // images used in html
@@ -13,6 +12,13 @@ import '../screenshot.png';
 import SideNav from './sidenav.js';
 import VanilleLightbox from 'vanillelightbox';
 import ScrollClasses from './scrollclasses.js';
+
+import ItemFilter from './item-filter';
+import itemFilterTemplateArticles from './item-filter/templates/template-articles'
+import itemFilterTemplateEvents from './item-filter/templates/template-events'
+import itemFilterTemplatePhotoalbums from './item-filter/templates/template-photoalbums'
+
+import LogoCarousel from './sponsors/logo-carousel'
 
 function isPostType(postTypes){
 	if(typeof postTypes !== 'string' && ! Array.isArray(postTypes)){
@@ -50,7 +56,7 @@ window.addEventListener('DOMContentLoaded', function(){
 		galleryItems = [].slice.call(galleryItems);
 
 		imageLinks = [].slice.call(imageLinks);
-		
+
 		if(Array.isArray(imageLinks)){
 			imageLinks.forEach((imageLink) => {
 				if(galleryItems.indexOf(imageLink) < 0){
@@ -101,4 +107,74 @@ window.addEventListener('DOMContentLoaded', function(){
 			}
 		]
 	);
+});
+
+window.addEventListener('DOMContentLoaded', function() {
+	const articleItemsWrapper = document.querySelector('.article-item-wrapper');
+
+	if (!articleItemsWrapper) {
+		return;
+	}
+
+	window.itemFilter = new ItemFilter(
+		articleItemsWrapper,
+		{
+			items: ajax_get_articles,
+			//services: ajax_get_services,
+		},
+		{
+			itemsTemplate: itemFilterTemplateArticles,
+			//filterTemplate: itemFilterTemplateFilterServices
+		}
+	);
+});
+
+window.addEventListener('DOMContentLoaded', function() {
+	const eventItemsWrapper = document.querySelector('.event-item-wrapper');
+
+	if (!eventItemsWrapper) {
+		return;
+	}
+
+	window.itemFilter = new ItemFilter(
+		eventItemsWrapper,
+		{
+			items: ajax_get_events,
+			//services: ajax_get_services,
+		},
+		{
+			itemsTemplate: itemFilterTemplateEvents,
+			//filterTemplate: itemFilterTemplateFilterServices
+		}
+	);
+});
+
+window.addEventListener('DOMContentLoaded', function() {
+	const photoalbumItemsWrapper = document.querySelector('.photoalbum-item-wrapper');
+
+	if (!photoalbumItemsWrapper) {
+		return;
+	}
+
+	window.itemFilter = new ItemFilter(
+		photoalbumItemsWrapper,
+		{
+			items: ajax_get_photoalbums,
+			//services: ajax_get_services,
+		},
+		{
+			itemsTemplate: itemFilterTemplatePhotoalbums,
+			//filterTemplate: itemFilterTemplateFilterServices
+		}
+	);
+});
+
+window.addEventListener('DOMContentLoaded', function(){
+	const footerWrapper = document.querySelector('.footer-wrapper')
+
+	const sponsorContainer = document.createElement('div');
+
+	document.body.insertBefore(sponsorContainer, footerWrapper);
+
+	new LogoCarousel(sponsorContainer);
 });

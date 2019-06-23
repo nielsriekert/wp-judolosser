@@ -31,4 +31,38 @@ class EventModel {
 
 		return $events;
 	}
+
+	public static function getEventsAjax() {
+		if( ! wp_verify_nonce( $_REQUEST['nonce'], 'get_events' ) ) {
+			wp_die( 'No naughty business please' );
+		}
+
+		$events = self::getEvents();
+
+		$events_json = array();
+		foreach( $events as $event ) {
+			$event_json = array(
+				'id' => $event->getId(),
+				'name' => $event->getName(),
+				'url' => $event->getUrl(),
+				'date' => $event->getDate(),
+				'excerpt' => html_entity_decode( $event->getExcerpt() ),
+			);
+
+			if( $event->getFeaturedImageSrc() ) {
+				$event_json['featuredImage'] = array(
+					'src' => $event->getFeaturedImageSrc()
+				);
+			}
+
+			$events_json[] = $event_json;
+		}
+
+
+		header('Content-Type: application/json');
+		echo json_encode( $events_json );
+
+		wp_die();
+	}
 }
+?>

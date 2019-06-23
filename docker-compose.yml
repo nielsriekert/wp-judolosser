@@ -7,12 +7,15 @@ services:
     ports:
       - 8080:80
     volumes:
-      - ./wordpress/:/var/www/html/
+      - ./dist/:/var/www/html/wp-content/themes/judolosser/
+      - ./wordpress/plugins/:/var/www/html/wp-content/plugins/
+      - ./wordpress/uploads/:/var/www/html/wp-content/uploads/
     links:
       - mariadb:mysql
     environment:
       WORDPRESS_DB_PASSWORD: root
-
+      WORDPRESS_DEBUG: 1
+      ENVIRONMENT: ${ENVIRONMENT}
   mariadb:
     image: mariadb:10.2.11
     ports:

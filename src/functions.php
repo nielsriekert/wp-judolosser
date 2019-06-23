@@ -2,6 +2,7 @@
 // include required core files
 require_once('classes/class-webpack-helper.php');
 require_once('classes/class-users.php');
+require_once('classes/class-articles.php');
 require_once('classes/class-events.php');
 require_once('classes/class-photoalbums.php');
 
