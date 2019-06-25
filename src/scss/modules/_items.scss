@@ -107,6 +107,13 @@ ul.items-item-container {
 
 .items-item {
 	position: relative;
+	margin-top: 15px;
+}
+
+@supports(display: grid) {
+	.items-item {
+		margin-top: 0;
+	}
 }
 
 @media (min-width: $break-small) {
@@ -148,6 +155,34 @@ ul.items-item-container {
 	opacity: 0;
 }
 
+.items-item::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 150px;
+    height: 150px;
+    margin-top: -75px;
+    margin-left: -75px;
+    border-radius: 150px;
+    background-color: $color-primary;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity .2s;
+    pointer-events: none;
+}
+
+.items-item[data-is-loaded="false"]::before {
+	opacity: 1;
+    animation-duration: 1s, .2s;
+    animation-name: item-loading, item-fade;
+    animation-timing-function: ease-in-out, ease-in-out;
+    animation-iteration-count: infinite, 1;
+    animation-fill-mode: backwards, backwards;
+    animation-delay: 1s, 0;
+}
+
 .items-more-button {
 	display: block;
 	width: 80px;
@@ -165,4 +200,26 @@ ul.items-item-container {
 
 .items-more-button:hover {
 	background-color: darken($color-primary, 5%);
+}
+
+
+@keyframes item-fade {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes item-loading {
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 0
+    }
 }

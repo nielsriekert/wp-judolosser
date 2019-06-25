@@ -1,3 +1,5 @@
+import '@webcomponents/template'
+
 import 'normalize.css';
 import 'vanillelightbox/dist/vanillelightbox.css';
 import '../scss/main.scss';

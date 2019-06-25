@@ -7,13 +7,13 @@ const template = (data) => html`
 			return html`
 			<ul class="photoalbum-items-container article-items-container items-item-container">
 				${data.displayedItems.map((item) => html`
-				<li class="photoalbum-item article-item" data-is-loaded="${item.loaded}" data-is-visible="${item.visible}">
-					<a href="${item.data.url}">
+				<li class="photoalbum-item article-item items-item" data-is-loaded="${item.loaded}" data-is-visible="${item.visible}">
+					<a href="${item.data.url}" data-item-id="${item.data.id}">
 						${(item => {
 							if(item.data.featuredImage) {
 								return html`
 								<div class="article-item-thumb">
-									<img src="${item.data.featuredImage.src}" alt="">
+									<img class="item-main-image" src="${item.data.featuredImage.src}" alt="" @load="${data}">
 								</div>
 								`
 							}
