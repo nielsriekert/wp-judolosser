@@ -223,7 +223,7 @@ ul.article-items-container {
 	box-sizing: border-box;
 	color: inherit;
 	border: 2px solid transparent;
-	transition: border-color .1s;
+	transition: opacity .5s, border-color .1s;
 }
 
 .article-item > a:hover {

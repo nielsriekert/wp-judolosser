@@ -1,6 +1,3 @@
-import 'core-js/fn/symbol/iterator.js'// NOTE: Dependency of @babel/polyfill: needed for IE11
-import 'core-js/es6/symbol'// NOTE: Dependency of @babel/polyfill: needed for IE11
-
 import template from './templates/template-container'
 import {render} from 'lit-html'
 
@@ -176,7 +173,7 @@ ItemFilter.prototype.onItemsLoaded = function(items) {
 	this.items = items.map(item => {
 		return {
 			data: item,
-			loaded: false,
+			loaded: item.featuredImage ? false : true,
 			visible: true
 		}
 	})
