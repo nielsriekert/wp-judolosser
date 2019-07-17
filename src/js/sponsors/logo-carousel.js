@@ -2,6 +2,8 @@ import {render} from 'lit-html'
 import sanityClient from '@sanity/client'
 import template from './templates/template-logo-carousel'
 import CarouselSlider from './carousel'
+import Flickity from 'flickity'
+import 'flickity/dist/flickity.css'
 
 function LogoCarousel(containerElement) {
 	this.containerElement = containerElement
@@ -34,19 +36,23 @@ function LogoCarousel(containerElement) {
 				})
 			})
 			render(template(sponsors), this.containerElement)
+			this.setupCarousel()
 		})
 	}, error => console.log(error))
 }
 
 LogoCarousel.prototype.setupCarousel = function() {
-	const carouselSlider = new CarouselSlider(
-		this.containerElement.querySelector('.logo-carousel-wrapper'),
+	this.flickity = new Flickity(
+		this.containerElement.querySelector('.logo-carousel-items-container'),
 		{
-
-		},
-		this.containerElement.querySelector('.logo-carousel-container')
-	)
-	carouselSlider.init()
+			wrapAround : true,
+			pageDots: false,
+			groupCells: '100%',
+			autoPlay: true,
+			pauseAutoPlayOnHover: false,
+			prevNextButtons: false
+		}
+	);
 }
 
 export default LogoCarousel

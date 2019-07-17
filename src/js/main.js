@@ -178,5 +178,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
 	document.body.insertBefore(sponsorContainer, footerWrapper);
 
-	new LogoCarousel(sponsorContainer);
+	const logoCarousel = new LogoCarousel(sponsorContainer);
+
+	//logoCarousel.setupCarousel();
 });
