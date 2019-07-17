@@ -2,7 +2,6 @@
 	background-color: rgb(240, 240, 240);
 }
 
-
 .page-template-events .logo-carousel-wrapper,
 .page-template-photoalbums .logo-carousel-wrapper,
 .page-template-posts .logo-carousel-wrapper {
@@ -29,21 +28,30 @@ ul.logo-carousel-items-container {
 	margin: 0;
 }
 
-.logo-carousel-items-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
 .logo-carousel-item-container {
 	padding: 0 15px;
 	width: 250px;
 	height: 100px;
+	width: 50%;
+	box-sizing: border-box;
 }
 
 @media (min-width: $break-small) {
 	.logo-carousel-item-container {
 		padding: 0 30px;
+		width: 33.3333%;
+	}
+}
+
+@media (min-width: $break-middle) {
+	.logo-carousel-item-container {
+		width: 25%;
+	}
+}
+
+@media (min-width: $break-large) {
+	.logo-carousel-item-container {
+		width: 20%;
 	}
 }
 

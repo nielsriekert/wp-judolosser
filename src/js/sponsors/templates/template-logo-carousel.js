@@ -5,18 +5,18 @@ import {html} from 'lit-html';
 const template = (data) => html`
 	<div class="logo-carousel-wrapper">
 		<div class="logo-carousel-container content">
-			<h2 class="logo-carousel-title">Zilveren Band Sponsors</h2>
+			<h2 class="logo-carousel-title">Band Sponsoren</h2>
 			${(data => {
 				if(data.length > 0) {
 					return html`
 					<div class="logo-carousel-items-wrapper">
-						<ul class="logo-carousel-items-container">
+						<div class="logo-carousel-items-container">
 						${data.map(sponsor => {
 							return html`
-							<li class="logo-carousel-item-container"><a href="${sponsor.websiteUrl}" target="_blank"><img src="${sponsor.logoSrc}"></a></li>
+							<div class="logo-carousel-item-container"><a href="${sponsor.websiteUrl}" target="_blank"><img src="${sponsor.logoSrc}"></a></div>
 							`
 						})}
-						</ul>
+						</div>
 					</div>`
 				}
 			})(data)}
