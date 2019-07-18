@@ -17,7 +17,7 @@ if( count( $events ) > 0 ) {
 				<div class="card-date">
 					<?php echo $event->getDate(); ?>
 				</div>
-				<?php the_excerpt(); ?>
+				<p><?php echo $event->getExcerpt(); ?></p>
 			</div>
 		</a>
 		<?php echo get_card_navigation(false, 'events.php', 'Lees verder', 'Agenda'); ?>
