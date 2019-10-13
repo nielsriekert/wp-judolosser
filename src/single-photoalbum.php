@@ -1,5 +1,7 @@
 <?php get_header(); the_post(); ?>
 <?php
+$photoalbum = PhotoalbumModel::getPhotoalbum( get_post() );
+
 if(has_post_thumbnail()){
 	$image_src = wp_get_attachment_image_src(get_post_thumbnail_id(), 'post')[0];
 	?>
@@ -20,17 +22,25 @@ if(has_post_thumbnail()){
 	}
 	the_content();
 
-	$photos = CFS()->get('p_photos');
-	//print_r($photos);
-	if($photos){?>
-	<div class="photos">
-		<?php
-		foreach($photos as $photo){
-			echo '<a class="photo" href="' . wp_get_attachment_image_src($photo['p_photo'], 'media-full')[0] . '"><img src="' . wp_get_attachment_image_src($photo['p_photo'], 'media-thumb')[0] . '" alt="' . get_post_meta($photo['p_photo'], '_wp_attachment_image_alt', true) . '"></a>';
-		}
-		?>
-	</div>
-		<?php
+	$photos = array();
+	$photo_thumbs = $photoalbum->getPhotoThumbs();
+	foreach( $photoalbum->getPhotos() as $photo ) {
+		$photos[] = (object) array(
+			'full' => $photo,
+			'thumb' => $photo_thumbs[count( $photos )]
+		);
+	}
+
+	if( count( $photos ) > 0 ) { ?>
+		<div class="photo-album-container">
+			<?php
+			foreach( $photos as $photo ) { ?>
+				<a class="photo-container" href="<?php echo $photo->full->getSrc(); ?>"><img src="<?php echo $photo->thumb->getSrc(); ?>"></a>
+			<?php
+			}
+			?>
+		</div>
+	<?php
 	}
 	?>
 </div>

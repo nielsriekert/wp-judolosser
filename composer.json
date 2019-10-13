@@ -1,0 +1,11 @@
+{
+    "name": "judolosser",
+    "description": "Judo Losser WordPress Theme",
+    "require-dev" : {
+        "tracy/tracy": "^2.7",
+        "hlavacm/wp-tracy": "^2.0"
+    },
+    "config": {
+		"vendor-dir": "dist/vendor"
+	}
+}

@@ -44,9 +44,8 @@ function isPostType(postTypes){
  *  Load al lightBoxes
  */
 window.addEventListener('DOMContentLoaded', function(){
-
-	if(isPostType('photoalbum')){
-		new VanilleLightbox(document.querySelectorAll('.photos a.photo'));
+	if( isPostType( 'photoalbum' ) ) {
+		new VanilleLightbox( document.querySelectorAll('.photo-album-container a.photo-container') );
 	}
 
 	if(isPostType(['post', 'event'])){

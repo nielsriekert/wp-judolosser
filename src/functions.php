@@ -1,4 +1,9 @@
 <?php
+require_once( 'vendor/autoload.php' );
+if( getenv("ENVIRONMENT") === 'development' ) {
+	\Tracy\Debugger::enable( \Tracy\Debugger::DEVELOPMENT );
+}
+
 // include required core files
 require_once('classes/class-webpack-helper.php');
 require_once('classes/class-users.php');

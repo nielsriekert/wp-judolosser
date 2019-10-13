@@ -25,6 +25,23 @@ class PhotoalbumModel {
 		return $photoalbums;
 	}
 
+
+	/**
+	 * @param int|WP_Post $wp_post or post id
+	 * @return Photoalbum
+	 */
+	public static function getPhotoalbum( $wp_post ) {
+		if( ctype_digit( $wp_post ) || is_int( $wp_post ) && $wp_post > 0 ) {
+			$wp_post = get_post( $wp_post );
+		}
+
+		if( ! $wp_post instanceof WP_Post ) {
+			throw new Exception( 'Cannot find WP_Post' );
+		}
+
+		return new Photoalbum( $wp_post );
+	}
+
 	/**
 	 * @param WP_Post $event. WP_Post instance with a post type of event.
 	 * @return Photoalbum instance.

@@ -11,7 +11,7 @@ class Photoalbum {
 	/**
 	 * @var Wp_Post
 	 */
-	public $post = null;
+	private $post = null;
 
 	/**
 	 * @var string
@@ -33,15 +33,18 @@ class Photoalbum {
 	 */
 	public $eventDate = '';
 
+	/**
+	 * @var array width Photo instances
+	 */
+	private $photos = array();
 
-	public function __construct( $post ) {
-		if( ctype_digit( $post ) && (integer) $post > 1 ) {
-			$post = get_post( $post );
-		}
-		else if( ! $post instanceof WP_Post ) {
-			return false;
-		}
+	/**
+	 * @var array width Photo instances
+	 */
+	private $photoThumbs = array();
 
+
+	public function __construct( WP_Post $post ) {
 		$this->id = $post->ID;
 		$this->post = $post;
 		$this->name = $post->post_title;
@@ -102,6 +105,57 @@ class Photoalbum {
 
 		$this->featuredImageHtml = get_the_post_thumbnail( $this->id, 'post-thumb' );
 		return $this->featuredImageHtml;
+	}
+
+	private function getPhotosWithSize( $size = 'media-full' ) {
+		$acf_photos = get_field( 'photoalbum_photos', $this->id );
+
+		$photos = array();
+		if( is_array( $acf_photos ) ) {
+			foreach( $acf_photos as $photo ) {
+				$photos[] = new Photo(
+					$photo['photoalbum_photo']['sizes'][$size],
+					$photo['photoalbum_photo']['alt'],
+					$photo['photoalbum_photo']['sizes'][$size . '-width'],
+					$photo['photoalbum_photo']['sizes'][$size . '-height']
+				);
+			}
+		}
+
+		if( count( $photos ) < 0 ) {
+			$cfs_photos = CFS()->get( 'p_photos', $this->id );
+
+			if( is_array( $cfs_photos ) ) {
+				foreach( $cfs_photos as $photo ) {
+					$photos[] = Photo(
+						wp_get_attachment_image_src( $photo['p_photo'], $size )[0],
+						get_post_meta( $photo['p_photo'], '_wp_attachment_image_alt', true )
+					);
+				}
+			}
+		}
+
+		return is_array( $photos ) ? $photos : array();
+	}
+
+	public function getPhotos() {
+		if( count( $this->photos ) > 0 ) {
+			return $this->photos;
+		}
+
+		$this->photos = $this->getPhotosWithSize( 'media-full' );
+
+		return $this->photos;
+	}
+
+	public function getPhotoThumbs() {
+		if( count( $this->photoThumbs ) > 0 ) {
+			return $this->photoThumbs;
+		}
+
+		$this->photoThumbs = $this->getPhotosWithSize( 'media-thumb' );
+
+		return $this->photoThumbs;
 	}
 
 	public function getUrl() {

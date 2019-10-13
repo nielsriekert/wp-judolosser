@@ -267,44 +267,5 @@ ul.article-items-container {
 	margin-bottom: 0;
 }
 
-.photos {
-	margin: 0 -4px;
-	line-height: 0;
-}
-
-.photos .photo {
-	display: inline-block;
-	width: 33.3333%;
-	border: 2px solid transparent;
-	box-sizing: border-box;
-}
-
-@media (min-width: $break-middle) {
-	.photos .photo,
-	.photos .photo:nth-child(3n) {
-		width: 25%;
-	}
-
-	.photos .photo:nth-child(4n) {
-		margin-right: 0;
-	}
-}
-
-@media (min-width: $break-large - 5) {
-	.photos .photo,
-	.photos .photo:nth-child(3n),
-	.photos .photo:nth-child(4n) {
-		width: 20%;
-	}
-
-	.photos .photo:nth-child(5n) {
-		margin-right: 0;
-	}
-}
-
-.photos .photo img {
-	display: block;
-}
-
 @import 'layouts/layout-posts';
 @import 'layouts/layout-footer';

@@ -30,21 +30,14 @@ class Events {
 		define( 'EVENTS_ABSPATH', dirname( __FILE__ ) . '/' );
 	}
 
-	/**
-	 * Include required core files used in admin and on the frontend.
-	 */
 	public function includes() {
 		require_once( EVENTS_ABSPATH . 'event/class-event.php' );
 		require_once( EVENTS_ABSPATH . 'event/class-event-model.php' );
 		require_once( EVENTS_ABSPATH . 'event/class-event-view.php' );
 	}
 
-	/**
-	 * Hook into actions and filters.
-	 */
 	private function initHooks() {
 		add_action( 'init', array( $this, 'createPostTypes' ) );
-		add_action( 'acf/init', array( $this, 'addFields' ) );
 		add_filter( 'manage_edit-event_columns', array( $this, 'addAdminColumns' ), 10, 1 );
 		add_action( 'manage_event_posts_custom_column', array( $this, 'renderAdminRows' ), 10, 2 );
 		add_filter( 'manage_edit-event_sortable_columns', array( $this, 'addSortableColumns' ), 10, 1 );
@@ -57,8 +50,6 @@ class Events {
 		add_action( 'load-edit.php', function(){
 			add_filter( 'request', array( $this, 'sortByEventDate' ), 10, 1 );
 		} );
-
-		//add_action( 'template_redirect', array( $this, 'redirectPastEvent' ) );
 	}
 
 	public function createPostTypes() {
