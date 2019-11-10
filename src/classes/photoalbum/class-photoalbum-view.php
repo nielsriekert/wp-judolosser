@@ -2,7 +2,7 @@
 class PhotoalbumView {
 
 
-	public static function displayPhotoalbum( $photoalbum, $args = array() ) {
+	public static function displayPhotoalbum( Photoalbum $photoalbum, $args = array() ) {
 		if( ! isset( $args['wrapper-element'] ) ) {
 			$args['wrapper-element'] = 'li';
 		}
@@ -10,11 +10,11 @@ class PhotoalbumView {
 		$el = $args['wrapper-element'];
 		?>
 		<<?php echo $el; ?> class="article-item article-item-photoalbum<?php if( $args['label'] ) { echo ' is-label'; } ?>">
-			<a href="<?php echo $photoalbum->url; ?>">
+			<a href="<?php echo $photoalbum->getUrl(); ?>">
 				<?php
-				if( $photoalbum->featuredImage ) { ?>
+				if( $photoalbum->getFeaturedImageSrc() ) { ?>
 				<div class="article-item-thumb">
-					<img width="<?php echo $photoalbum->featuredImage->width; ?>" height="<?php echo $photoalbum->featuredImage->height; ?>" src="<?php echo $photoalbum->featuredImage->url; ?>" alt="<?php echo $photoalbum->featuredImage->alt; ?>">
+					<img src="<?php echo $photoalbum->getFeaturedImageSrc(); ?>">
 				</div>
 				<?php
 				}
@@ -22,9 +22,9 @@ class PhotoalbumView {
 				<div class="article-item-body">
 					<h2 class="article-item-title"><?php echo $photoalbum->getName(); ?></h2>
 					<?php
-					if( is_string( $photoalbum->eventDateHumanize ) ) { ?>
+					if( is_string( $photoalbum->getDate() ) ) { ?>
 					<div class="article-item-date">
-						<?php echo $photoalbum->eventDateHumanize; ?>
+						<?php echo $photoalbum->getDate(); ?>
 					</div>
 					<?php
 					}

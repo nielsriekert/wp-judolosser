@@ -37,12 +37,14 @@ while(have_posts()){ the_post();
 	$photoalbum = PhotoalbumModel::getPhotoalbumByPost( get_post() );
 
 	if( $photoalbum ) {?>
-	<div class="article-item-wrapper">
-		<ul class="article-items-container content">
-			<?php PhotoalbumView::displayPhotoalbum( $photoalbum, array(
-				'label' => true
-			) );?>
-		</ul>
+	<div class="photoalbum-item-wrapper is-server-renderd">
+		<div class="photoalbum-item-content content">
+			<ul class="photoalbum-items-container article-items-container items-item-container content">
+				<?php PhotoalbumView::displayPhotoalbum( $photoalbum, array(
+					'label' => true
+				) );?>
+			</ul>
+		</div>
 	</div>
 		<?php
 	}

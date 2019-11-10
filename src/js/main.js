@@ -151,7 +151,7 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 
 window.addEventListener('DOMContentLoaded', function() {
-	const photoalbumItemsWrapper = document.querySelector('.photoalbum-item-wrapper');
+	const photoalbumItemsWrapper = document.querySelector('.photoalbum-item-wrapper:not(.is-server-renderd)');
 
 	if (!photoalbumItemsWrapper) {
 		return;
