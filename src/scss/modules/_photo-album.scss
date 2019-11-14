@@ -1,7 +1,19 @@
 .photo-album-container {
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
+	grid-template-columns: repeat(3, 1fr);
 	grid-gap: 10px;
+}
+
+@media(min-width: $break-small) {
+	.photo-album-container {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+@media(min-width: $break-middle) {
+	.photo-album-container {
+		grid-template-columns: repeat(5, 1fr);
+	}
 }
 
 .photo-container img {

@@ -122,12 +122,12 @@ class Photoalbum {
 			}
 		}
 
-		if( count( $photos ) < 0 ) {
+		if( count( $photos ) <= 0 ) {
 			$cfs_photos = CFS()->get( 'p_photos', $this->id );
 
 			if( is_array( $cfs_photos ) ) {
 				foreach( $cfs_photos as $photo ) {
-					$photos[] = Photo(
+					$photos[] = new Photo(
 						wp_get_attachment_image_src( $photo['p_photo'], $size )[0],
 						get_post_meta( $photo['p_photo'], '_wp_attachment_image_alt', true )
 					);

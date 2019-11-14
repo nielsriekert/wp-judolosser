@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.6.2] - 2019-11-14
+### Fixed
+- Photoalbums not displaying photo's from Custom Field Suite fields.
+- Photo album grid layout on mobile.
+
 ## [1.6.1] - 2019-11-10
 ### Fixed
 - Connected photo albums single.php.
