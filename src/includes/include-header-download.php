@@ -42,7 +42,7 @@ $args_pages = array_merge(
 $events = new WP_Query($args_events);
 $pages = new WP_Query($args_pages);
 
-$post_items = array_merge($events->posts, $pages->posts);
+$post_items = array_merge( $events->posts, $pages->posts );
 
 if(count($post_items) > 0){?>
 <button class="header-nav-download-button" id="header-nav-download-button">Download</button>

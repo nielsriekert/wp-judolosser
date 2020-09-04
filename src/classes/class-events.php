@@ -158,6 +158,7 @@ class Events {
 			$columns_event[$key] = $value;
 			if( $key == 'title' || end( $columns ) == $value ) {
 				$columns_event['date-event'] = __( 'Event date', 'judo-losser' );
+				$columns_event['attachment'] = __( 'Attachment', 'judo-losser' );
 			}
 		}
 
@@ -172,6 +173,9 @@ class Events {
 					echo humanize_date(CFS()->get('e_datum', $post_id));
 				else
 					echo '-';
+				break;
+			case 'attachment':
+				echo CFS()->get('bl_bijlage', $post_id ) ? '&#10004' : '-';
 				break;
 			default :
 				break;
