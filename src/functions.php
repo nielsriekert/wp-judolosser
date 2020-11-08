@@ -1,14 +1,9 @@
 <?php
-require_once( 'vendor/autoload.php' );
-if( getenv("ENVIRONMENT") === 'development' ) {
-	\Tracy\Debugger::enable( \Tracy\Debugger::DEVELOPMENT );
-}
-
 // include required core files
 require_once('classes/class-webpack-helper.php');
 require_once('classes/class-users.php');
 require_once('classes/class-articles.php');
-require_once('classes/class-events.php');
+require_once('domains/class-events.php');
 require_once('classes/class-pages.php');
 require_once('classes/class-photoalbums.php');
 
@@ -54,7 +49,7 @@ function theme_setup() {
 	$webpack_helper = new WebpackHelper();
 	$editorcss = $webpack_helper->getHashedAssetUrl( 'editor-style.css' );
 
-	if($editorcss){
+	if( $editorcss ) {
 		add_editor_style(array($editorcss, google_fonts_url(true), fontscom_fonts_url()));
 	}
 }

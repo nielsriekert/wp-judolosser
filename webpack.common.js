@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const buildDir = './dist/';
+const buildDir = './web/app/themes/judo-losser';
 
 module.exports = {
 	entry: {
@@ -121,7 +121,7 @@ module.exports = {
 		function(){
 			this.plugin('done', stats => {
 				require('fs').writeFileSync(
-					path.join(__dirname, buildDir + 'manifest.json'),
+					path.join(__dirname, buildDir, 'manifest.json'),
 					JSON.stringify(stats.toJson().assets)
 				);
 			})

@@ -207,7 +207,7 @@ class Events {
 	}
 
 	public function createJsGlobals() {
-		wp_localize_script( 'main', 'ajax_get_events', admin_url( 'admin-ajax.php?action=get_events&nonce=' . wp_create_nonce( 'get_events' ) ) );
+		wp_localize_script( 'main', 'ajax_get_events', admin_url( 'admin-ajax.php?action=get_events' ) );
 	}
 
 	public function redirectPastEvent() {
@@ -230,7 +230,7 @@ class Events {
 }
 
 /**
- * Returns the main instance of Events to prevent the need to use globals.
+ * Returns the main instance of Events.
  */
 function EVENTS() {
 	return Events::instance();
