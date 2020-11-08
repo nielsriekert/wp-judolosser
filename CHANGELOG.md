@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Bedrock setup (for local development).
 - Vertrouwenspersonen to committees.
 - Contactpersoon to committee roles.
+- Updated npm packages.
 
 ## [1.7.0] - 2019-09-04
 ### Added
