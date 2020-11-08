@@ -33,10 +33,6 @@ class EventModel {
 	}
 
 	public static function getEventsAjax() {
-		if( ! wp_verify_nonce( $_REQUEST['nonce'], 'get_events' ) ) {
-			wp_die( 'No naughty business please' );
-		}
-
 		$events = self::getEvents();
 
 		$events_json = array();
@@ -57,7 +53,6 @@ class EventModel {
 
 			$events_json[] = $event_json;
 		}
-
 
 		header('Content-Type: application/json');
 		echo json_encode( $events_json );
