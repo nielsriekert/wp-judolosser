@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.8.0] - 2020-11-08
+### Added
+- Bedrock setup (for local development).
+- Vertrouwenspersonen to committees.
+- Contactpersoon to committee roles.
+- Updated npm packages.
+
 ## [1.7.0] - 2019-09-04
 ### Added
 - Attachment admin column for event and page post type.

@@ -264,7 +264,8 @@ class Users {
 			'Selectiecommissie',
 			'Dojo / Wedstrijd commissie',
 			'Trainers',
-			'Ledenadministratie'
+			'Ledenadministratie',
+			'Vertrouwenspersonen'
 		);
 	}
 
@@ -278,7 +279,8 @@ class Users {
 			'Wedstrijdsecretariaat',
 			'Algemeen',
 			'Coach',
-			'Assistent trainer / coach'
+			'Assistent trainer / coach',
+			'Contactpersoon'
 		);
 	}
 }

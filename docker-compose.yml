@@ -1,26 +1,51 @@
-version: "3"
+version: "3.2"
 
 services:
+  php-fpm:
+    build:
+      context: './docker/php/'
+    networks:
+      - backend
+    volumes:
+      - ./web/:/var/www/web/:delegated
+      - ./vendor/:/var/www/vendor/:delegated
+      - ./config/:/var/www/config/:delegated
+      - ${PWD}/.env:/var/www/.env:delegated
+    container_name: judolosser-php
 
-  wordpress:
-    image: wordpress:php7.1-apache
+  apache:
+    build:
+      context: './docker/apache/'
+    depends_on:
+      - php-fpm
+      - mariadb
+    networks:
+      - frontend
+      - backend
+    volumes:
+      - ./web/:/var/www/web/:delegated
+      - ./vendor/:/var/www/vendor/:delegated
+      - ./config/:/var/www/config/:delegated
+      - ${PWD}/.env:/var/www/.env:delegated
     ports:
       - 8080:80
-    volumes:
-      - ./dist/:/var/www/html/wp-content/themes/judolosser/
-      - ./wordpress/plugins/:/var/www/html/wp-content/plugins/
-      - ./wordpress/uploads/:/var/www/html/wp-content/uploads/
-    links:
-      - mariadb:mysql
-    environment:
-      WORDPRESS_DB_PASSWORD: root
-      WORDPRESS_DEBUG: 1
-      ENVIRONMENT: ${ENVIRONMENT}
+    container_name: judolosser-apache
+
   mariadb:
-    image: mariadb:10.2.11
+    image: mariadb:10.5
+    networks:
+      - backend
     ports:
       - 3307:3306
     volumes:
-      - ./mariadb:/var/lib/mysql
+      - ./docker/mariadb:/var/lib/mysql:delegated
     environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
       MYSQL_ROOT_PASSWORD: root
+    container_name: judolosser-mariadb
+
+networks:
+  frontend:
+  backend:

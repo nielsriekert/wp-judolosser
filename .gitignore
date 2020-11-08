@@ -9,10 +9,6 @@
 *.map
 dist
 
-# Libraries #
-#############
-lib
-
 # Packages #
 ############
 # it's better to unpack these files and commit the raw source
@@ -43,6 +39,19 @@ lib
 ehthumbs.db
 Thumbs.db
 
+# Application
+web/app/plugins/*
+!web/app/plugins/.gitkeep
+web/app/mu-plugins/*/
+web/app/upgrade
+web/app/uploads/*
+!web/app/uploads/.gitkeep
+web/app/themes/**/
+
+# WordPress
+web/wp
+web/.htaccess
+
 # NPM #
 ######################
 node_modules
@@ -51,9 +60,15 @@ node_modules
 
 # Docker #
 ##########
-wordpress
 mariadb
 
-# ENVIRONMENT #
-###############
+# Dotenv
 .env
+.env.*
+!.env.example
+
+# Composer
+/vendor
+
+# WP-CLI
+wp-cli.local.yml
