@@ -349,7 +349,7 @@ function connection_types() {
 	));
 }
 
-// add_action( 'p2p_init', 'connection_types' );
+add_action( 'p2p_init', 'connection_types' );
 
 
 /* ////////////// */
