@@ -30,6 +30,15 @@ class ArticleModel {
 		return $articles;
 	}
 
+	/**
+	 * @return Article|null
+	 */
+	public static function getNextArticle() {
+		$articles = self::getArticles();
+
+		return count( $articles ) > 0 ? current( $articles ) : null;
+	}
+
 	public static function getArticlesAjax() {
 		if( ! wp_verify_nonce( $_REQUEST['nonce'], 'get_articles' ) ) {
 			wp_die( 'No naughty business please' );

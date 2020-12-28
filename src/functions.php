@@ -12,6 +12,8 @@ require_once('domains/class-locations.php');
 require_once('classes/class-pages.php');
 require_once('classes/class-photoalbums.php');
 
+require_once('utils/class-cards.php');
+
 /* /////// */
 /* SCRIPTS */
 /* /////// */

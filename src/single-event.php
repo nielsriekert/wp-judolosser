@@ -41,7 +41,7 @@ while( have_posts() ) { the_post();
 		?>
 	</article>
 	<?php
-	$photoalbum = PhotoalbumModel::getPhotoalbumByPost( get_post() );
+	$photoalbum = PhotoAlbumModel::getPhotoalbumByPost( get_post() );
 
 	if( $photoalbum ) {?>
 	<div class="photoalbum-item-wrapper is-server-renderd">

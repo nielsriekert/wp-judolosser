@@ -1,12 +1,12 @@
 <?php
-class PhotoalbumModel {
+class PhotoAlbumModel {
 
 	/**
 	 * Get all photoalbums.
 	 *
 	 * @return array with Photoalbum instances.
 	 */
-	public static function getPhotoalbums() {
+	public static function getPhotoAlbums() {
 		// To do: sorting should be on event date followed by photoalbum published date
 		$wp_photoalbums = new WP_Query(array(
 			'post_type' => 'photoalbum',
@@ -18,17 +18,24 @@ class PhotoalbumModel {
 
 		if( $wp_photoalbums->post_count > 0 ) {
 			foreach( $wp_photoalbums->posts as $photoalbum ) {
-				$photoalbums[] = new Photoalbum( $photoalbum );
+				$photoalbums[] = new PhotoAlbum( $photoalbum );
 			}
 		}
 
 		return $photoalbums;
 	}
 
+	/**
+	 * @return PhotoAlbum|null
+	 */
+	public static function getRandomPhotoAlbum() {
+		$photo_albums = self::getPhotoAlbums();
+		return count( $photo_albums ) > 0 ?  $photo_albums[array_rand( $photo_albums )] : null;
+	}
 
 	/**
 	 * @param int|WP_Post $wp_post or post id
-	 * @return Photoalbum
+	 * @return PhotoAlbum
 	 */
 	public static function getPhotoalbum( $wp_post ) {
 		if( ctype_digit( $wp_post ) || is_int( $wp_post ) && $wp_post > 0 ) {
@@ -39,12 +46,12 @@ class PhotoalbumModel {
 			throw new Exception( 'Cannot find WP_Post' );
 		}
 
-		return new Photoalbum( $wp_post );
+		return new PhotoAlbum( $wp_post );
 	}
 
 	/**
 	 * @param WP_Post $event. WP_Post instance with a post type of event.
-	 * @return Photoalbum instance.
+	 * @return PhotoAlbum instance.
 	 */
 	public static function getPhotoalbumByEvent( $event ) {
 		if( ! $event instanceof WP_Post ) {
@@ -60,7 +67,7 @@ class PhotoalbumModel {
 		));
 
 		if( $wp_photoalbums->post_count == 1 ) {
-			return new Photoalbum( current( $wp_photoalbums->posts ) );
+			return new PhotoAlbum( current( $wp_photoalbums->posts ) );
 		}
 
 		return false;
@@ -70,7 +77,7 @@ class PhotoalbumModel {
 	 * Get all photoalbums.
 	 *
 	 * @param WP_Post $post. WP_Post instance with a post type of post.
-	 * @return Photoalbum instance.
+	 * @return PhotoAlbum instance.
 	 */
 	public static function getPhotoalbumByPost( $post ) {
 		if( ! $post instanceof WP_Post ) {
@@ -86,7 +93,7 @@ class PhotoalbumModel {
 		));
 
 		if( $wp_photoalbums->post_count == 1 ) {
-			return new Photoalbum( current( $wp_photoalbums->posts ) );
+			return new PhotoAlbum( current( $wp_photoalbums->posts ) );
 		}
 
 		return false;
@@ -97,7 +104,7 @@ class PhotoalbumModel {
 			wp_die( 'No naughty business please' );
 		}
 
-		$photoalbums = self::getPhotoalbums();
+		$photoalbums = self::getPhotoAlbums();
 
 		$photoalbums_json = array();
 		foreach( $photoalbums as $photoalbum ) {
