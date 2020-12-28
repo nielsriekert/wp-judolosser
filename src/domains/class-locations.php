@@ -80,7 +80,7 @@ class Locations {
 			'show_ui' => true,
 			'rewrite' => false,
 			'show_in_menu' => 'edit.php?post_type=event',
-			'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'revisions' ),
+			'supports' => array( 'title', 'author', 'revisions' ),
 			'capability_type' => 'location',
 			'map_meta_cap' => true,
 		);

@@ -120,6 +120,10 @@ module.exports = {
 				context: 'src',
 				from: '*.css',
 			},
+			{
+				context: 'src',
+				from: '.htaccess',
+			}
 		]),
 		function() {
 			// generate mo files from po files
@@ -145,14 +149,6 @@ module.exports = {
 				});
 			});
 		},
-		new WebpackManifestPlugin(),
-		// function() {
-		// 	this.plugin('done', stats => {
-		// 		require('fs').writeFileSync(
-		// 			path.join(__dirname, buildDir, 'manifest.json'),
-		// 			JSON.stringify(stats.toJson().assets)
-		// 		);
-		// 	})
-		// },
+		new WebpackManifestPlugin()
 	]
 };

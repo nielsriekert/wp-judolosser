@@ -2,6 +2,7 @@
 // include required core files
 require_once('utils/class-webpack-helper.php');
 require_once('utils/class-theme-setup.php');
+require_once('utils/class-customizer.php');
 require_once('utils/class-tracking.php');
 
 require_once('classes/class-users.php');
@@ -467,24 +468,6 @@ add_action( 'init', 'create_post_types' );
 /* ///////////// */
 
 function customize_template( $wp_customize ) {
-	class WP_Customize_Textarea_Control extends WP_Customize_Control {
-		public $type = 'textarea';
-		public function render_content() {
-			?>
-			<label>
-				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-				<textarea rows="5" style="width:100%;" <?php $this->link(); ?>><?php echo esc_textarea( $this->value() ); ?></textarea>
-			</label>
-			<?php
-		}
-	}
-	class WP_Customize_Image_Control_SVG extends WP_Customize_Image_Control {
-		public function __construct( $manager, $id, $args = array()) {
-			parent::__construct( $manager, $id, $args );
-			$this->remove_tab('uploaded');
-			$this->extensions = array( 'jpg', 'jpeg', 'gif', 'png', 'svg' );
-		}
-	}
 
 	/*// SOCIAL //*/
 
@@ -512,34 +495,6 @@ function customize_template( $wp_customize ) {
 		'label' => 'Twitter account',
 		'section' => 'social',
 		'settings' => 'twitter',
-	)));
-
-	/*// CODE //*/
-
-	$wp_customize->add_section('tracking_code' , array(
-		'title' => 'Tracking code',
-		'priority' => 50,
-		'capability' => 'administrator'
-	));
-
-	/* tracking code */
-
-	$wp_customize->add_setting('code-head');
-
-	$wp_customize->add_control( new WP_Customize_Textarea_Control($wp_customize, 'code-head', array(
-		'label' => 'Plaats (tracking) code (head)',
-		'section' => 'tracking_code',
-		'settings' => 'code-head',
-		'type' => 'textarea'
-	)));
-
-	$wp_customize->add_setting('code-body');
-
-	$wp_customize->add_control( new WP_Customize_Textarea_Control($wp_customize, 'code-body', array(
-		'label' => 'Plaats (tracking) code (body)',
-		'section' => 'tracking_code',
-		'settings' => 'code-body',
-		'type' => 'textarea'
 	)));
 }
 
