@@ -1,0 +1,26 @@
+.location-container {
+	display: flex;
+	flex-direction: column;
+}
+
+@media(min-width: 42em) {
+	.location-container {
+		flex-direction: row;
+	}
+}
+
+.location-info-container {
+	flex-grow: 1;
+	padding: 1.5em;
+	background-color: $color-quaternary;
+}
+
+.location-image-container {
+	width: 100%;
+}
+
+@media(min-width: 42em) {
+	.location-image-container {
+		width: 50%;
+	}
+}

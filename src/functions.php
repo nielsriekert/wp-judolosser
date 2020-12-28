@@ -1,60 +1,16 @@
 <?php
 // include required core files
-require_once('classes/class-webpack-helper.php');
+require_once('utils/class-webpack-helper.php');
+require_once('utils/class-theme-setup.php');
+require_once('utils/class-customizer.php');
+require_once('utils/class-tracking.php');
+
 require_once('classes/class-users.php');
 require_once('classes/class-articles.php');
 require_once('domains/class-events.php');
+require_once('domains/class-locations.php');
 require_once('classes/class-pages.php');
 require_once('classes/class-photoalbums.php');
-
-function theme_setup() {
-	add_theme_support('menus');
-
-	add_theme_support('post-thumbnails');
-	set_post_thumbnail_size( 500, 375, true );
-
-	add_post_type_support( 'page', 'excerpt' );
-
-	register_nav_menus(array(
-		'headernav' => 'Hoofdmenu',
-		'footernav' => 'Footermenu'
-	));
-
-	/*
-	 * Let WordPress manage the document title.
-	 * By adding theme support, we declare that this theme does not use a
-	 * hard-coded <title> tag in the document head, and expect WordPress to
-	 * provide it for us.
-	 */
-	add_theme_support( 'title-tag' );
-
-	/*
-	 * Switch default core markup for search form, comment form, and comments
-	 * to output valid HTML5.
-	 */
-	add_theme_support('html5', array(
-		'search-form',
-		'comment-form',
-		'comment-list',
-		'gallery',
-		'caption'
-	));
-
-	add_image_size('post-thumb', 500, 375, true);
-	add_image_size('post', 1920, 1080);
-	add_image_size('card', 400, 300, true);
-	add_image_size('media-thumb', 300, 200, true);
-	add_image_size('media-full', 1200, 1100);
-
-	$webpack_helper = new WebpackHelper();
-	$editorcss = $webpack_helper->getHashedAssetUrl( 'editor-style.css' );
-
-	if( $editorcss ) {
-		add_editor_style(array($editorcss, google_fonts_url(true), fontscom_fonts_url()));
-	}
-}
-add_action( 'after_setup_theme', 'theme_setup' );
-
 
 /* /////// */
 /* SCRIPTS */
@@ -244,29 +200,6 @@ function add_to_post_media_selecter( $sizes ) {
 			'bericht-thumb' => __('Bericht'),
 	) );
 }
-
-
-/* ////////// */
-/* ADMIN MENU */
-/* ////////// */
-
-/*function add_admin_menu_separators() {
-
-	$positions = array(21, 24);
-
-	global $menu;
-
-	foreach( $positions as $position ){
-		$menu[$position] = array('', 'read', 'separator' . $position, '', 'wp-menu-separator');
-	}
-
-}
-add_action( 'admin_menu', 'add_admin_menu_separators' );*/
-
-function judolosser_cleanup_menu() {
-	remove_menu_page( 'edit-comments.php' );
-}
-add_action( 'admin_menu', 'judolosser_cleanup_menu' );
 
 
 /* //////// */
@@ -535,24 +468,6 @@ add_action( 'init', 'create_post_types' );
 /* ///////////// */
 
 function customize_template( $wp_customize ) {
-	class WP_Customize_Textarea_Control extends WP_Customize_Control {
-		public $type = 'textarea';
-		public function render_content() {
-			?>
-			<label>
-				<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-				<textarea rows="5" style="width:100%;" <?php $this->link(); ?>><?php echo esc_textarea( $this->value() ); ?></textarea>
-			</label>
-			<?php
-		}
-	}
-	class WP_Customize_Image_Control_SVG extends WP_Customize_Image_Control {
-		public function __construct( $manager, $id, $args = array()) {
-			parent::__construct( $manager, $id, $args );
-			$this->remove_tab('uploaded');
-			$this->extensions = array( 'jpg', 'jpeg', 'gif', 'png', 'svg' );
-		}
-	}
 
 	/*// SOCIAL //*/
 
@@ -580,34 +495,6 @@ function customize_template( $wp_customize ) {
 		'label' => 'Twitter account',
 		'section' => 'social',
 		'settings' => 'twitter',
-	)));
-
-	/*// CODE //*/
-
-	$wp_customize->add_section('tracking_code' , array(
-		'title' => 'Tracking code',
-		'priority' => 50,
-		'capability' => 'administrator'
-	));
-
-	/* tracking code */
-
-	$wp_customize->add_setting('code-head');
-
-	$wp_customize->add_control( new WP_Customize_Textarea_Control($wp_customize, 'code-head', array(
-		'label' => 'Plaats (tracking) code (head)',
-		'section' => 'tracking_code',
-		'settings' => 'code-head',
-		'type' => 'textarea'
-	)));
-
-	$wp_customize->add_setting('code-body');
-
-	$wp_customize->add_control( new WP_Customize_Textarea_Control($wp_customize, 'code-body', array(
-		'label' => 'Plaats (tracking) code (body)',
-		'section' => 'tracking_code',
-		'settings' => 'code-body',
-		'type' => 'textarea'
 	)));
 }
 

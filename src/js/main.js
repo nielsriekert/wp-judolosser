@@ -117,15 +117,13 @@ window.addEventListener('DOMContentLoaded', function() {
 		return;
 	}
 
-	window.itemFilter = new ItemFilter(
+	new ItemFilter(
 		articleItemsWrapper,
 		{
 			items: ajax_get_articles,
-			//services: ajax_get_services,
 		},
 		{
 			itemsTemplate: itemFilterTemplateArticles,
-			//filterTemplate: itemFilterTemplateFilterServices
 		}
 	);
 });
@@ -137,15 +135,13 @@ window.addEventListener('DOMContentLoaded', function() {
 		return;
 	}
 
-	window.itemFilter = new ItemFilter(
+	new ItemFilter(
 		eventItemsWrapper,
 		{
 			items: ajax_get_events,
-			//services: ajax_get_services,
 		},
 		{
 			itemsTemplate: itemFilterTemplateEvents,
-			//filterTemplate: itemFilterTemplateFilterServices
 		}
 	);
 });
@@ -157,15 +153,13 @@ window.addEventListener('DOMContentLoaded', function() {
 		return;
 	}
 
-	window.itemFilter = new ItemFilter(
+	new ItemFilter(
 		photoalbumItemsWrapper,
 		{
 			items: ajax_get_photoalbums,
-			//services: ajax_get_services,
 		},
 		{
 			itemsTemplate: itemFilterTemplatePhotoalbums,
-			//filterTemplate: itemFilterTemplateFilterServices
 		}
 	);
 });
