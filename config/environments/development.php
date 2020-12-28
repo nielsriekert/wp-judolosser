@@ -13,5 +13,11 @@ Config::define('SCRIPT_DEBUG', true);
 
 ini_set('display_errors', '1');
 
+/**
+ * Debugging
+ */
+\Tracy\Debugger::enable( \Tracy\Debugger::DEVELOPMENT );
+\Tracy\Debugger::$maxLength = 200;
+
 // Enable plugin and theme updates and installation from the admin
 Config::define('DISALLOW_FILE_MODS', false);

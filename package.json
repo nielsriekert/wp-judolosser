@@ -7,7 +7,8 @@
     "start": "npm run docker && npm run dev",
     "dev": "webpack --progress --config webpack.development.js --watch",
     "production": "webpack --config webpack.production.js",
-    "translation": "webpack --mode production",
+    "localization:create-pot": "webpack --config webpack.pot.js && ./vendor/bin/wp i18n make-pot ./web/app/themes/judo-losser src/languages/judo-losser.pot --exclude=vendor,images,icons,languages",
+    "localization:create-json": "./vendor/bin/wp i18n make-json ./src/languages/ ./web/app/themes/judo-losser/languages --no-purge && node ./src/languages/fix-json-filename.js",
     "docker": "docker-compose up -d",
     "docker-remove": "docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)",
     "server-start": "docker-compose start",
@@ -29,14 +30,15 @@
     "vanillelightbox": "^1.0.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.3",
-    "@babel/preset-env": "^7.12.1",
+    "@babel/core": "^7.12.9",
+    "@babel/preset-env": "^7.12.7",
     "autoprefixer": "^9.8.6",
-    "babel-loader": "^8.1.0",
+    "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^2.0.0",
     "copy-webpack-plugin": "^5.1.2",
     "css-loader": "^3.6.0",
     "file-loader": "^4.3.0",
+    "gettext-parser": "^4.0.4",
     "img-loader": "^3.0.2",
     "mini-css-extract-plugin": "^0.7.0",
     "node-sass": "^4.14.1",
@@ -46,6 +48,7 @@
     "style-loader": "^1.3.0",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12",
-    "webpack-merge": "^5.3.0"
+    "webpack-manifest-plugin": "^3.0.0",
+    "webpack-merge": "^5.4.1"
   }
 }

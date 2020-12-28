@@ -1,0 +1,236 @@
+# Copyright (C) 2020 Niels Riekert
+# This file is distributed under the .
+msgid ""
+msgstr ""
+"Project-Id-Version: Judo Losser 1.8.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/judo-losser\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2020-12-28T13:56:33+00:00\n"
+"PO-Revision-Date: 2020-12-28 15:41+0100\n"
+"X-Generator: Poedit 2.4.2\n"
+"X-Domain: judo-losser\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: nl_NL\n"
+
+#. Theme Name of the theme
+msgid "Judo Losser"
+msgstr "Judo Losser"
+
+#. Theme URI of the theme
+msgid "judolosser.nl"
+msgstr ""
+
+#. Description of the theme
+msgid "Template voor Judo Losser"
+msgstr ""
+
+#. Author of the theme
+msgid "Niels Riekert"
+msgstr ""
+
+#: classes/class-pages.php:39 domains/class-events.php:172
+msgid "Attachment"
+msgstr ""
+
+#: classes/class-users.php:91
+msgid "Manager"
+msgstr "Manager"
+
+#. Template Name of the theme
+msgid "Contact"
+msgstr ""
+
+#: domains/class-events.php:59
+msgctxt "post type general name"
+msgid "Events"
+msgstr "Evenementen"
+
+#: domains/class-events.php:60
+msgctxt "post type singular name"
+msgid "Event"
+msgstr "Evenement"
+
+#: domains/class-events.php:61
+msgctxt "admin menu"
+msgid "Events"
+msgstr "Evenementen"
+
+#: domains/class-events.php:62
+msgctxt "add new on admin bar"
+msgid "Event"
+msgstr "Evenement"
+
+#: domains/class-events.php:63
+msgctxt "event"
+msgid "Add New"
+msgstr "Nieuw evenement"
+
+#: domains/class-events.php:64
+msgid "Add New Event"
+msgstr "Nieuw evenement"
+
+#: domains/class-events.php:65
+msgid "New Event"
+msgstr "Nieuwe evenement"
+
+#: domains/class-events.php:66
+msgid "Edit Event"
+msgstr "Bewerk evenement"
+
+#: domains/class-events.php:67
+msgid "View Event"
+msgstr "Bekijk evenement"
+
+#: domains/class-events.php:68
+msgid "All Events"
+msgstr "Alle evenementen"
+
+#: domains/class-events.php:69
+msgid "Search Events"
+msgstr "Zoek evenementen"
+
+#: domains/class-events.php:70
+msgid "Parent Events:"
+msgstr "Hoofd evenementen:"
+
+#: domains/class-events.php:71
+msgid "No events found."
+msgstr "Geen evenementen gevonden."
+
+#: domains/class-events.php:72
+msgid "No events found in Trash."
+msgstr "Geen evenementen gevonden in de prullenbak."
+
+#: domains/class-events.php:77
+msgid "Judo Losser Events"
+msgstr ""
+
+#: domains/class-events.php:80
+msgid "event"
+msgstr "evenement"
+
+#: domains/class-events.php:171
+msgid "Event date"
+msgstr "Datum evenement"
+
+#: domains/class-events.php:173 domains/class-locations.php:95
+msgid "Location"
+msgstr "Locatie"
+
+#: domains/class-locations.php:60
+msgctxt "post type general name"
+msgid "Locations"
+msgstr "Locaties"
+
+#: domains/class-locations.php:61
+msgctxt "post type singular name"
+msgid "Location"
+msgstr "Locatie"
+
+#: domains/class-locations.php:62
+msgctxt "admin menu"
+msgid "Locations"
+msgstr "Locaties"
+
+#: domains/class-locations.php:63
+msgctxt "add new on admin bar"
+msgid "Location"
+msgstr "Locatie"
+
+#: domains/class-locations.php:64
+msgctxt "location"
+msgid "Add New"
+msgstr "Nieuwe locatie"
+
+#: domains/class-locations.php:65
+msgid "Add New Location"
+msgstr "Voeg nieuwe locatie toe"
+
+#: domains/class-locations.php:66
+msgid "New Location"
+msgstr "Nieuwe locatie"
+
+#: domains/class-locations.php:67
+msgid "Edit Location"
+msgstr "Bewerk locatie"
+
+#: domains/class-locations.php:68
+msgid "View Location"
+msgstr "Bekijk locatie"
+
+#: domains/class-locations.php:69
+msgid "All Locations"
+msgstr "Alle locaties"
+
+#: domains/class-locations.php:70
+msgid "Search Locations"
+msgstr "Zoek locaties"
+
+#: domains/class-locations.php:71
+msgid "Parent Locations:"
+msgstr "Hoofd locaties:"
+
+#: domains/class-locations.php:72
+msgid "No locations found."
+msgstr "Geen locaties gevonden."
+
+#: domains/class-locations.php:73
+msgid "No locations found in Trash."
+msgstr "Geen locaties gevonden in de prullenbak."
+
+#: domains/class-locations.php:78
+msgid "Judo Losser Locations"
+msgstr ""
+
+#: domains/class-locations.php:99 domains/class-locations.php:196
+msgid "Address"
+msgstr "Adres"
+
+#: domains/class-locations.php:105
+msgid "Street"
+msgstr "Straat"
+
+#: domains/class-locations.php:108
+msgid "Street or alternative"
+msgstr ""
+
+#: domains/class-locations.php:112
+msgid "House number"
+msgstr "Huisnummer"
+
+#: domains/class-locations.php:125
+msgid "Postcode"
+msgstr "Postcode"
+
+#: domains/class-locations.php:131
+msgid "Locality"
+msgstr "Plaats"
+
+#: domains/class-locations.php:166 domains/class-locations.php:172
+#: domains/class-locations.php:197
+msgid "Photo"
+msgstr "Foto"
+
+#. Template Name of the theme
+msgid "Evenementen"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Fotoalbums"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Portaal"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Berichten"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Trainingstijden"
+msgstr ""

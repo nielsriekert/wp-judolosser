@@ -38,6 +38,8 @@ class Events {
 
 	private function initHooks() {
 		add_action( 'init', array( $this, 'createPostTypes' ) );
+		add_action( 'p2p_init', array( $this, 'setupRelations' ) );
+
 		add_filter( 'manage_edit-event_columns', array( $this, 'addAdminColumns' ), 10, 1 );
 		add_action( 'manage_event_posts_custom_column', array( $this, 'renderAdminRows' ), 10, 2 );
 		add_filter( 'manage_edit-event_sortable_columns', array( $this, 'addSortableColumns' ), 10, 1 );
@@ -78,8 +80,8 @@ class Events {
 				'slug' => __( 'event', 'judo-losser'),
 				'with_front' => false,
 			),
-			'menu_position' => 21,
-			'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'revisions' ),
+			'menu_position' => 22,
+			'supports' => array( 'title', 'editor', 'author', 'excerpt', 'revisions' ),
 			'menu_icon' => 'dashicons-calendar',
 			'capability_type' => 'event',
 			'map_meta_cap' => true,
@@ -88,6 +90,15 @@ class Events {
 		register_post_type( 'event', $args );
 	}
 
+	public function setupRelations() {
+		p2p_register_connection_type( array(
+			'name' => 'event_to_location',
+			'from' => 'event',
+			'to' => 'location',
+			'sortable' => 'to',
+			'cardinality' => 'many-to-one'
+		));
+	}
 
 	public function getFeaturedImage( $image = null ){
 		$featured_image = new stdClass();
@@ -159,6 +170,7 @@ class Events {
 			if( $key == 'title' || end( $columns ) == $value ) {
 				$columns_event['date-event'] = __( 'Event date', 'judo-losser' );
 				$columns_event['attachment'] = __( 'Attachment', 'judo-losser' );
+				$columns_event['location'] = __( 'Location', 'judo-losser' );
 			}
 		}
 
@@ -176,6 +188,15 @@ class Events {
 				break;
 			case 'attachment':
 				echo CFS()->get('bl_bijlage', $post_id ) ? '&#10004' : '-';
+				break;
+			case 'location':
+				$location = LocationModel::getLocationFromEvent( EventModel::getEvent( $post_id ) );
+				if( $location ) {
+					echo '<a href="' . get_edit_post_link( $location->getId() ) . '">' . $location->getName() . ' (' . $location->getLocality() . ')' . '</a>';
+				}
+				else {
+					echo '-';
+				}
 				break;
 			default :
 				break;

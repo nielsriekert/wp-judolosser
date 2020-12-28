@@ -52,7 +52,7 @@ class Event {
 	}
 
 	public function getId() {
-		return $this->id;
+		return $this->post->ID;
 	}
 
 	public function getName() {
@@ -80,12 +80,21 @@ class Event {
 		return $excerpt;
 	}
 
+	/**
+	 * @param string $size
+	 * @return string
+	 */
 	public function getFeaturedImageSrc( $size = 'post-thumb' ) {
 		if( isset( $this->featuredImageSources[$size] ) && $this->featuredImageSources[$size] ) {
 			return $this->featuredImageSources[$size];
 		}
 
-		$this->featuredImageSources[$size] = wp_get_attachment_image_src( get_post_thumbnail_id( $this->id ), $size )[0];
+		$feature_image_id = get_post_thumbnail_id( $this->id );
+		if( ! $feature_image_id ) {
+			return '';
+		}
+
+		$this->featuredImageSources[$size] = wp_get_attachment_image_src( $feature_image_id, $size )[0];
 		return $this->featuredImageSources[$size];
 	}
 
@@ -100,5 +109,9 @@ class Event {
 
 	public function getUrl() {
 		return get_permalink( $this->post );
+	}
+
+	public function getWpPost() {
+		return $this->post;
 	}
 }

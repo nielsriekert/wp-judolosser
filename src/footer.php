@@ -6,34 +6,25 @@
 			</div>
 			<div class="footer-column">
 			<?php
-			$events = new WP_Query(array(
-				'post_type' => 'event',
-				'posts_per_page' => 8,
-				'meta_key' => 'e_datum',
-				'orderby' => 'meta_value',
-				'order' => 'ASC',
-				'meta_query' => array(
-					array(
-						'key' => 'e_datum',
-						'value' => date('Y-m-d'),
-						'compare' => '>=',
-						'type' => 'DATE'
-					)
-				)
-			));
+			$events = array_slice( EventModel::getEvents(), 0, 8);
 
-			if($events->have_posts()){?>
+			if( count( $events ) > 0 ) { ?>
 				<h2>Agenda</h2>
 				<ul class="footer-events">
 				<?php
-				while($events->have_posts()){ $events->the_post();
-					echo '<li class="footer-event"><a href="' . get_permalink() . '">' . get_the_title() .  ' (' . humanize_date(CFS()->get('e_datum'), 'j F') . ')</a></li>';
+				foreach( $events as $event ) { ?>
+					<li class="footer-event">
+						<a href="<?php echo $event->getUrl(); ?>">
+							<?php echo $event->getName() ?> (<?php echo $event->getDate( 'j F' ); ?>)
+						</a>
+					</li>
+					<?php
 				}
 				?>
 				</ul>
 				<?php
 			}
-				?>
+			?>
 			</div>
 			<div class="footer-column">
 				<p>

@@ -10,7 +10,7 @@ function ItemFilter(containerElement, ajaxUrls, templates) {
 	this.services = []
 
 	this.props = {
-		itemsPerView: 6
+		itemsPerView: 9
 	}
 
 	this.state = {

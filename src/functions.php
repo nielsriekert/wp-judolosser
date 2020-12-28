@@ -1,60 +1,15 @@
 <?php
 // include required core files
-require_once('classes/class-webpack-helper.php');
+require_once('utils/class-webpack-helper.php');
+require_once('utils/class-theme-setup.php');
+require_once('utils/class-tracking.php');
+
 require_once('classes/class-users.php');
 require_once('classes/class-articles.php');
 require_once('domains/class-events.php');
+require_once('domains/class-locations.php');
 require_once('classes/class-pages.php');
 require_once('classes/class-photoalbums.php');
-
-function theme_setup() {
-	add_theme_support('menus');
-
-	add_theme_support('post-thumbnails');
-	set_post_thumbnail_size( 500, 375, true );
-
-	add_post_type_support( 'page', 'excerpt' );
-
-	register_nav_menus(array(
-		'headernav' => 'Hoofdmenu',
-		'footernav' => 'Footermenu'
-	));
-
-	/*
-	 * Let WordPress manage the document title.
-	 * By adding theme support, we declare that this theme does not use a
-	 * hard-coded <title> tag in the document head, and expect WordPress to
-	 * provide it for us.
-	 */
-	add_theme_support( 'title-tag' );
-
-	/*
-	 * Switch default core markup for search form, comment form, and comments
-	 * to output valid HTML5.
-	 */
-	add_theme_support('html5', array(
-		'search-form',
-		'comment-form',
-		'comment-list',
-		'gallery',
-		'caption'
-	));
-
-	add_image_size('post-thumb', 500, 375, true);
-	add_image_size('post', 1920, 1080);
-	add_image_size('card', 400, 300, true);
-	add_image_size('media-thumb', 300, 200, true);
-	add_image_size('media-full', 1200, 1100);
-
-	$webpack_helper = new WebpackHelper();
-	$editorcss = $webpack_helper->getHashedAssetUrl( 'editor-style.css' );
-
-	if( $editorcss ) {
-		add_editor_style(array($editorcss, google_fonts_url(true), fontscom_fonts_url()));
-	}
-}
-add_action( 'after_setup_theme', 'theme_setup' );
-
 
 /* /////// */
 /* SCRIPTS */
@@ -246,29 +201,6 @@ function add_to_post_media_selecter( $sizes ) {
 }
 
 
-/* ////////// */
-/* ADMIN MENU */
-/* ////////// */
-
-/*function add_admin_menu_separators() {
-
-	$positions = array(21, 24);
-
-	global $menu;
-
-	foreach( $positions as $position ){
-		$menu[$position] = array('', 'read', 'separator' . $position, '', 'wp-menu-separator');
-	}
-
-}
-add_action( 'admin_menu', 'add_admin_menu_separators' );*/
-
-function judolosser_cleanup_menu() {
-	remove_menu_page( 'edit-comments.php' );
-}
-add_action( 'admin_menu', 'judolosser_cleanup_menu' );
-
-
 /* //////// */
 /* UTILITY  */
 /* //////// */
@@ -416,7 +348,7 @@ function connection_types() {
 	));
 }
 
-add_action( 'p2p_init', 'connection_types' );
+// add_action( 'p2p_init', 'connection_types' );
 
 
 /* ////////////// */

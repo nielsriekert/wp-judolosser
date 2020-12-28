@@ -67,7 +67,12 @@ class Article {
 			return $this->featuredImageSources[$size];
 		}
 
-		$this->featuredImageSources[$size] = wp_get_attachment_image_src( get_post_thumbnail_id( $this->id ), $size )[0];
+		$feature_image_id = get_post_thumbnail_id( $this->id );
+		if( ! $feature_image_id ) {
+			return '';
+		}
+
+		$this->featuredImageSources[$size] = wp_get_attachment_image_src( $feature_image_id, $size )[0];
 		return $this->featuredImageSources[$size];
 	}
 

@@ -7,7 +7,9 @@
 *.o
 *.so
 *.map
-dist
+*.pot
+src/**/*.mo
+*.
 
 # Packages #
 ############
@@ -72,3 +74,7 @@ mariadb
 
 # WP-CLI
 wp-cli.local.yml
+
+# IDE #
+#######
+.vscode

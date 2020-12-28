@@ -44,15 +44,6 @@ if (file_exists($root_dir . '/.env')) {
 define('WP_ENV', env('WP_ENV') ?: 'production');
 
 /**
- * Debugging
- */
-if( getenv('WP_ENV') === 'development' ) {
-    \Tracy\Debugger::enable( \Tracy\Debugger::DEVELOPMENT );
-    \Tracy\Debugger::$strictMode = E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED; // all errors except deprecated notices
-    \Tracy\Debugger::$maxLength = 200;
-}
-
-/**
  * URLs
  */
 Config::define('WP_HOME', env('WP_HOME'));

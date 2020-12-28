@@ -4,6 +4,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
+
+const gettextParser = require('gettext-parser');
 
 const buildDir = './web/app/themes/judo-losser';
 
@@ -118,13 +121,38 @@ module.exports = {
 				from: '*.css',
 			},
 		]),
-		function(){
-			this.plugin('done', stats => {
-				require('fs').writeFileSync(
-					path.join(__dirname, buildDir, 'manifest.json'),
-					JSON.stringify(stats.toJson().assets)
-				);
-			})
+		function() {
+			// generate mo files from po files
+			this.plugin('done', () => {
+				const fs = require('fs');
+				const glob = require('glob');
+
+				const poFiles = glob.sync('./src/languages/*.po');
+
+				const sourcePath = path.join(__dirname, './web/app/themes/judo-losser/languages');
+
+				if (!fs.existsSync(sourcePath)){
+					fs.mkdirSync(sourcePath);
+				}
+
+				// compile to mo files and write in build dir
+				poFiles.forEach(filePath => {
+					const file = fs.readFileSync(path.join(__dirname, filePath));
+					const fileName = path.basename(filePath, path.extname(filePath));
+
+					const output = gettextParser.mo.compile(gettextParser.po.parse(file));
+					fs.writeFileSync(path.join(sourcePath, fileName + '.mo'), output);
+				});
+			});
 		},
+		new WebpackManifestPlugin(),
+		// function() {
+		// 	this.plugin('done', stats => {
+		// 		require('fs').writeFileSync(
+		// 			path.join(__dirname, buildDir, 'manifest.json'),
+		// 			JSON.stringify(stats.toJson().assets)
+		// 		);
+		// 	})
+		// },
 	]
 };

@@ -51,8 +51,6 @@ class Users {
 
 	/**
 	 * Adds all the user roles for the backend
-	 *
-	 * @author Niels Riekert
 	 */
 	public function addBackendRoles() {
 
@@ -129,7 +127,6 @@ class Users {
 	 *
 	 * @param array custom post types. Defaults to all.
 	 * @return array capabilities.
-	 * @author Niels Riekert
 	 */
 	public function getCustomPostTypeCaps( $post_types = array() ) {
 		// generate all custom post type caps
@@ -148,6 +145,7 @@ class Users {
 
 		$custom_post_types = array(
 			'event',
+			'location'
 		);
 
 		$custom_post_type_caps = array();
@@ -166,8 +164,6 @@ class Users {
 
 	/**
 	 * Adds extra profile fields
-	 *
-	 * @author Niels Riekert
 	 */
 	public function addExtraProfileFields( $user ) {
 		?>
@@ -282,6 +278,20 @@ class Users {
 			'Assistent trainer / coach',
 			'Contactpersoon'
 		);
+	}
+
+	public function getAdministratorRoles() {
+		return array( 'administrator', 'manager' );
+	}
+
+	/**
+	 * @param WP_User $user
+	 * @return boolean
+	 */
+	public function isUserAnAdmin( $user ) {
+		$admin_roles = $this->getAdministratorRoles();
+
+		return count( array_intersect( $admin_roles, (array) $user->roles ) ) > 0;
 	}
 }
 
