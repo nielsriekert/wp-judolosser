@@ -1,5 +1,5 @@
 <?php
-class Photoalbum {
+class PhotoAlbum {
 
 	/**
 	 * WP post id

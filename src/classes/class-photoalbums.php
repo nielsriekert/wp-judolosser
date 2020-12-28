@@ -1,5 +1,5 @@
 <?php
-class Photoalbums {
+class PhotoAlbums {
 
 	/**
 	 * @var object Instance of this class
@@ -27,22 +27,22 @@ class Photoalbums {
 	}
 
 	private function defineConstants() {
-		define( 'PHOTOALBUMS_ABSPATH', dirname( __FILE__ ) . '/' );
+		define( 'PHOTO_ALBUMS_ABSPATH', dirname( __FILE__ ) . '/' );
 	}
 
 	public function includes() {
-		require_once( PHOTOALBUMS_ABSPATH . 'photoalbum/class-photoalbum.php' );
-		require_once( PHOTOALBUMS_ABSPATH . 'photoalbum/class-photoalbum-model.php' );
-		require_once( PHOTOALBUMS_ABSPATH . 'photoalbum/class-photoalbum-view.php' );
-		require_once( PHOTOALBUMS_ABSPATH . 'photoalbum/class-photo.php' );
+		require_once( PHOTO_ALBUMS_ABSPATH . 'photoalbum/class-photoalbum.php' );
+		require_once( PHOTO_ALBUMS_ABSPATH . 'photoalbum/class-photoalbum-model.php' );
+		require_once( PHOTO_ALBUMS_ABSPATH . 'photoalbum/class-photoalbum-view.php' );
+		require_once( PHOTO_ALBUMS_ABSPATH . 'photoalbum/class-photo.php' );
 	}
 
 	private function initHooks() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'createJsGlobals' ), 20 );
 		add_action( 'acf/init', array( $this, 'addFields' ) );
 
-		add_action( 'wp_ajax_nopriv_get_photoalbums', array( 'PhotoalbumModel', 'getPhotoalbumsAjax' ) );
-		add_action( 'wp_ajax_get_photoalbums', array( 'PhotoalbumModel', 'getPhotoalbumsAjax' ) );
+		add_action( 'wp_ajax_nopriv_get_photoalbums', array( 'PhotoAlbumModel', 'getAAjax' ) );
+		add_action( 'wp_ajax_get_photoalbums', array( 'PhotoAlbumModel', 'getPhotoalbumsAjax' ) );
 	}
 
 	public function createJsGlobals() {
@@ -81,11 +81,18 @@ class Photoalbums {
 			),
 		));
 	}
+
+	public function getOverviewUrl() {
+		$events_post = get_post_by_template( 'photo-albums.php' );
+		if( $events_post instanceof WP_Post) {
+			return get_permalink( $events_post );
+		}
+	}
 }
 
-function PHOTOALBUMS() {
-	return Photoalbums::instance();
+function PHOTO_ALBUMS() {
+	return PhotoAlbums::instance();
 }
 
-PHOTOALBUMS();
+PHOTO_ALBUMS();
 ?>

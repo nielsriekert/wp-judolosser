@@ -4,17 +4,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Judo Losser 1.8.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/judo-losser\n"
+"POT-Creation-Date: 2020-12-28T21:23:04+00:00\n"
+"PO-Revision-Date: 2020-12-28 22:26+0100\n"
+"Last-Translator: \n"
 "Language-Team: \n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-12-28T13:56:33+00:00\n"
-"PO-Revision-Date: 2020-12-28 15:41+0100\n"
 "X-Generator: Poedit 2.4.2\n"
 "X-Domain: judo-losser\n"
-"Last-Translator: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: nl_NL\n"
 
 #. Theme Name of the theme
 msgid "Judo Losser"
@@ -117,7 +117,7 @@ msgstr "evenement"
 msgid "Event date"
 msgstr "Datum evenement"
 
-#: domains/class-events.php:173 domains/class-locations.php:95
+#: domains/class-events.php:173 domains/class-locations.php:94
 msgid "Location"
 msgstr "Locatie"
 
@@ -186,32 +186,32 @@ msgstr "Geen locaties gevonden in de prullenbak."
 msgid "Judo Losser Locations"
 msgstr ""
 
-#: domains/class-locations.php:99 domains/class-locations.php:196
+#: domains/class-locations.php:98 domains/class-locations.php:195
 msgid "Address"
 msgstr "Adres"
 
-#: domains/class-locations.php:105
+#: domains/class-locations.php:104
 msgid "Street"
 msgstr "Straat"
 
-#: domains/class-locations.php:108
+#: domains/class-locations.php:107
 msgid "Street or alternative"
 msgstr ""
 
-#: domains/class-locations.php:112
+#: domains/class-locations.php:111
 msgid "House number"
 msgstr "Huisnummer"
 
-#: domains/class-locations.php:125
+#: domains/class-locations.php:124
 msgid "Postcode"
 msgstr "Postcode"
 
-#: domains/class-locations.php:131
+#: domains/class-locations.php:130
 msgid "Locality"
 msgstr "Plaats"
 
-#: domains/class-locations.php:166 domains/class-locations.php:172
-#: domains/class-locations.php:197
+#: domains/class-locations.php:165 domains/class-locations.php:171
+#: domains/class-locations.php:196
 msgid "Photo"
 msgstr "Foto"
 
@@ -224,8 +224,8 @@ msgid "Fotoalbums"
 msgstr ""
 
 #. Template Name of the theme
-msgid "Portaal"
-msgstr ""
+msgid "Portal"
+msgstr "Potaal"
 
 #. Template Name of the theme
 msgid "Berichten"
@@ -234,3 +234,75 @@ msgstr ""
 #. Template Name of the theme
 msgid "Trainingstijden"
 msgstr ""
+
+#: utils/card/class-card-event.php:15
+msgid "Agenda"
+msgstr "Agenda"
+
+#: utils/card/class-card-news-post.php:15
+msgid "News Posts"
+msgstr "Nieuwsberichten"
+
+#: utils/card/class-card-photo-album.php:23
+msgid "View photos"
+msgstr "Bekijk foto’s"
+
+#: utils/card/class-card-photo-album.php:28
+msgid "Photo albums"
+msgstr "Fotoalbums"
+
+#: utils/card/class-card-view.php:43
+msgid "News"
+msgstr "Nieuws"
+
+#: utils/card/class-card-view.php:70
+msgid "Events"
+msgstr "Evenementen"
+
+#: utils/card/class-card-view.php:97
+msgid "Photos"
+msgstr "Foto’s"
+
+#: utils/class-cards.php:54 utils/class-cards.php:58
+msgid "Cards"
+msgstr "Kaarten"
+
+#: utils/class-cards.php:61
+msgid "New card"
+msgstr "Nieuwe kaart"
+
+#: utils/class-cards.php:65
+msgid "News Post"
+msgstr "Nieuwsbericht"
+
+#: utils/class-cards.php:71
+msgid "Event"
+msgstr "Evenement"
+
+#: utils/class-cards.php:77
+msgid "Photo album"
+msgstr "Fotoalbum"
+
+#: utils/class-cards.php:83 utils/class-cards.php:89
+msgid "Page"
+msgstr "Pagina"
+
+#: utils/class-theme-setup.php:60
+msgid "Main navigation"
+msgstr "Hoofdnavigatie"
+
+#: utils/class-theme-setup.php:61
+msgid "Footer navigation"
+msgstr "Footer navigatie"
+
+#: utils/class-tracking.php:49
+msgid "Tracking code"
+msgstr "Traceercode"
+
+#: utils/class-tracking.php:60
+msgid "Insert (tracking) code (head)"
+msgstr "Invoegen (tracking) code (head)"
+
+#: utils/class-tracking.php:71
+msgid "Insert (tracking) code (body)"
+msgstr "Invoegen (tracking) code (body)"

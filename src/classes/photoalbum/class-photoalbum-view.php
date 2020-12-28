@@ -2,7 +2,7 @@
 class PhotoalbumView {
 
 
-	public static function displayPhotoalbum( Photoalbum $photoalbum, $args = array() ) {
+	public static function displayPhotoalbum( PhotoAlbum $photoalbum, $args = array() ) {
 		if( ! isset( $args['wrapper-element'] ) ) {
 			$args['wrapper-element'] = 'li';
 		}

@@ -36,9 +36,9 @@
 	margin-top: 0;
 }
 
-.card-post,
+.card-news-post,
 .card-event,
-.card-photo {
+.card-photo-album {
 	padding-bottom: 2em;
 }
 
@@ -94,7 +94,7 @@
 	border-color: rgba(darken($color-primary, 30%), .2);
 }
 
-.card.card-photo > a:not(.card-type):hover,
+.card.card-photo-album > a:not(.card-type):hover,
 .card.card-location > a:not(.card-type):hover,
 .card.card-type-image > a:not(.card-type):hover {
 	border-color: rgba($color-primary, .6);
@@ -117,7 +117,7 @@
 	border-radius: 3px;
 }
 
-.card.card-photo .card-date {
+.card.card-photo-album .card-date {
 	color: white;
 	background-color: rgba(0, 0, 0, .7);
 }
@@ -140,7 +140,7 @@
 	font-size: 1.5em;
 }
 
-.card-photo .card-body,
+.card-photo-album .card-body,
 .card-location .card-body,
 .card-type-image .card-body {
 	box-sizing: border-box;
@@ -150,13 +150,13 @@
 	transition: background-color .2s;
 }
 
-.card-photo > a:hover .card-body,
+.card-photo-album > a:hover .card-body,
 .card-location > a:hover .card-body,
 .card-type-image > a:hover .card-body {
 	background-color: rgba(0, 0, 0, .4);
 }
 
-.card-photo p,
+.card-photo-album p,
 .card-location p,
 .card-type-image p {
 	opacity: 0;
@@ -164,15 +164,15 @@
 	transition: opacity .2s, transform .2s;
 }
 
-.card-photo > a:hover p,
+.card-photo-album > a:hover p,
 .card-location > a:hover p,
 .card-type-image > a:hover p {
 	opacity: 1;
 	transform: translateY(0);
 }
 
-.card-photo h2,
-.card-photo p,
+.card-photo-album h2,
+.card-photo-album p,
 .card-location h2,
 .card-location p,
 .card-type-image h2,
@@ -181,6 +181,7 @@
 }
 
 .card-navigation {
+	display: flex;
 	position: absolute;
 	left: 0;
 	right: 0;
@@ -189,7 +190,7 @@
 }
 
 .card-navigation .card-button {
-	display: inline-block;
+	display: block;
 	position: relative;
 	text-align: center;
 	line-height: 2.5em;

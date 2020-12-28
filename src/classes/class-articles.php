@@ -121,7 +121,7 @@ class Articles {
 			'meta_query' => array(
 				array(
 					'key' => '_wp_page_template',
-					'value' => 'articles.php',
+					'value' => 'posts.php',
 				)
 			)
 		) );

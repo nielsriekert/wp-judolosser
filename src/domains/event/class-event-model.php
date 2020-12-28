@@ -12,6 +12,15 @@ class EventModel {
 		return self::wpPostToEventInstances( $wp_events->posts );
 	}
 
+	/**
+	 * @return Event|null
+	 */
+	public static function getNextEvent() {
+		$events = self::getEvents();
+
+		return count( $events ) > 0 ? current( $events ) : null;
+	}
+
 	public static function getEventDefaultWpQueryArgs() {
 		return array(
 			'post_type' => 'event',
@@ -46,7 +55,7 @@ class EventModel {
 		return $events;
 	}
 
-		/**
+	/**
 	 * @param WP_Post|int $wp_post or post id
 	 * @return Event
 	 * @throws Exception when cannot find WP_Post for id or WP_Post doens't have the right post type
