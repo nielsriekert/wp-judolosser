@@ -31,18 +31,18 @@ class PhotoAlbums {
 	}
 
 	public function includes() {
-		require_once( PHOTO_ALBUMS_ABSPATH . 'photoalbum/class-photoalbum.php' );
-		require_once( PHOTO_ALBUMS_ABSPATH . 'photoalbum/class-photoalbum-model.php' );
-		require_once( PHOTO_ALBUMS_ABSPATH . 'photoalbum/class-photoalbum-view.php' );
-		require_once( PHOTO_ALBUMS_ABSPATH . 'photoalbum/class-photo.php' );
+		require_once( PHOTO_ALBUMS_ABSPATH . 'photo-album/class-photo-album.php' );
+		require_once( PHOTO_ALBUMS_ABSPATH . 'photo-album/class-photo-album-model.php' );
+		require_once( PHOTO_ALBUMS_ABSPATH . 'photo-album/class-photo-album-view.php' );
+		require_once( PHOTO_ALBUMS_ABSPATH . 'photo-album/class-photo.php' );
 	}
 
 	private function initHooks() {
 		add_action( 'wp_enqueue_scripts', array( $this, 'createJsGlobals' ), 20 );
 		add_action( 'acf/init', array( $this, 'addFields' ) );
 
-		add_action( 'wp_ajax_nopriv_get_photoalbums', array( 'PhotoAlbumModel', 'getAAjax' ) );
-		add_action( 'wp_ajax_get_photoalbums', array( 'PhotoAlbumModel', 'getPhotoalbumsAjax' ) );
+		add_action( 'wp_ajax_nopriv_get_photoalbums', array( 'PhotoAlbumModel', 'getPhotoAlbumsAjax' ) );
+		add_action( 'wp_ajax_get_photoalbums', array( 'PhotoAlbumModel', 'getPhotoAlbumsAjax' ) );
 	}
 
 	public function createJsGlobals() {
@@ -52,7 +52,7 @@ class PhotoAlbums {
 	public function addFields() {
 		acf_add_local_field_group(array (
 			'key' => 'group_593a2fa413f4b',
-			'title' => 'Foto\'s',
+			'title' => __( 'Photos', 'judo-losser' ),
 			'fields' => array (
 				array (
 					'key' => 'field_59e436fc7281a',

@@ -9,8 +9,8 @@ require_once('classes/class-users.php');
 require_once('classes/class-articles.php');
 require_once('domains/class-events.php');
 require_once('domains/class-locations.php');
+require_once('domains/class-photo-albums.php');
 require_once('classes/class-pages.php');
-require_once('classes/class-photoalbums.php');
 
 require_once('utils/class-cards.php');
 

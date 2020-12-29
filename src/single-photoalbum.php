@@ -1,6 +1,6 @@
 <?php get_header(); the_post(); ?>
 <?php
-$photoalbum = PhotoAlbumModel::getPhotoalbum( get_post() );
+$photo_album = PhotoAlbumModel::getPhotoAlbum( get_post() );
 
 if(has_post_thumbnail()){
 	$image_src = wp_get_attachment_image_src(get_post_thumbnail_id(), 'post')[0];

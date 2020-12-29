@@ -37,7 +37,7 @@ class PhotoAlbumModel {
 	 * @param int|WP_Post $wp_post or post id
 	 * @return PhotoAlbum
 	 */
-	public static function getPhotoalbum( $wp_post ) {
+	public static function getPhotoAlbum( $wp_post ) {
 		if( ctype_digit( $wp_post ) || is_int( $wp_post ) && $wp_post > 0 ) {
 			$wp_post = get_post( $wp_post );
 		}
@@ -53,7 +53,7 @@ class PhotoAlbumModel {
 	 * @param WP_Post $event. WP_Post instance with a post type of event.
 	 * @return PhotoAlbum instance.
 	 */
-	public static function getPhotoalbumByEvent( $event ) {
+	public static function getPhotoAlbumByEvent( $event ) {
 		if( ! $event instanceof WP_Post ) {
 			return false;
 		}
@@ -79,7 +79,7 @@ class PhotoAlbumModel {
 	 * @param WP_Post $post. WP_Post instance with a post type of post.
 	 * @return PhotoAlbum instance.
 	 */
-	public static function getPhotoalbumByPost( $post ) {
+	public static function getPhotoAlbumByPost( $post ) {
 		if( ! $post instanceof WP_Post ) {
 			return false;
 		}
@@ -99,11 +99,7 @@ class PhotoAlbumModel {
 		return false;
 	}
 
-	public static function getPhotoalbumsAjax() {
-		if( ! wp_verify_nonce( $_REQUEST['nonce'], 'get_photoalbums' ) ) {
-			wp_die( 'No naughty business please' );
-		}
-
+	public static function getPhotoAlbumsAjax() {
 		$photoalbums = self::getPhotoAlbums();
 
 		$photoalbums_json = array();
