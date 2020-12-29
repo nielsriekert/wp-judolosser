@@ -23,8 +23,8 @@ if(has_post_thumbnail()){
 	the_content();
 
 	$photos = array();
-	$photo_thumbs = $photoalbum->getPhotoThumbs();
-	foreach( $photoalbum->getPhotos() as $photo ) {
+	$photo_thumbs = $photo_album->getPhotoThumbs();
+	foreach( $photo_album->getPhotos() as $photo ) {
 		$photos[] = (object) array(
 			'full' => $photo,
 			'thumb' => $photo_thumbs[count( $photos )]
