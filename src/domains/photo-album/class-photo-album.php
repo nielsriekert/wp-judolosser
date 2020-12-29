@@ -2,21 +2,9 @@
 class PhotoAlbum {
 
 	/**
-	 * WP post id
-	 *
-	 * @var integer
-	 */
-	private $id = null;
-
-	/**
 	 * @var Wp_Post
 	 */
-	private $post = null;
-
-	/**
-	 * @var string
-	 */
-	private $name = '';
+	private $wp_post = null;
 
 	/**
 	 * @var string
@@ -44,15 +32,13 @@ class PhotoAlbum {
 	private $photoThumbs = array();
 
 
-	public function __construct( WP_Post $post ) {
-		$this->id = $post->ID;
-		$this->post = $post;
-		$this->name = $post->post_title;
+	public function __construct( WP_Post $wp_post ) {
+		$this->wp_post = $wp_post;
 
 		// TODO: should not be here
 		$events = new WP_Query( array(
 			'connected_type' => 'event_to_photoalbum',
-			'connected_items' => $post,
+			'connected_items' => $wp_post,
 			'nopaging' => true,
 		));
 
@@ -62,11 +48,11 @@ class PhotoAlbum {
 	}
 
 	public function getId() {
-		return $this->id;
+		return $this->wp_post->ID;
 	}
 
 	public function getName() {
-		return $this->name;
+		return $this->wp_post->post_title;
 	}
 
 	public function getDate( $format = 'j F Y' ) {
@@ -79,9 +65,9 @@ class PhotoAlbum {
 	public function getExcerpt() {
 		global $post;
 		$post_temp = $post;
-		setup_postdata( $this->post );
+		setup_postdata( $this->wp_post );
 
-		$excerpt = get_the_excerpt( $this->post );
+		$excerpt = get_the_excerpt( $this->wp_post );
 
 		$post = $post_temp;
 		wp_reset_postdata();
@@ -94,7 +80,7 @@ class PhotoAlbum {
 			return $this->featuredImageSources[$size];
 		}
 
-		$this->featuredImageSources[$size] = wp_get_attachment_image_src( get_post_thumbnail_id( $this->id ), $size )[0];
+		$this->featuredImageSources[$size] = wp_get_attachment_image_src( get_post_thumbnail_id( $this->getId() ), $size )[0];
 		return $this->featuredImageSources[$size];
 	}
 
@@ -103,12 +89,12 @@ class PhotoAlbum {
 			return $this->featuredImageHtml;
 		}
 
-		$this->featuredImageHtml = get_the_post_thumbnail( $this->id, 'post-thumb' );
+		$this->featuredImageHtml = get_the_post_thumbnail( $this->getId(), 'post-thumb' );
 		return $this->featuredImageHtml;
 	}
 
 	private function getPhotosWithSize( $size = 'media-full' ) {
-		$acf_photos = get_field( 'photoalbum_photos', $this->id );
+		$acf_photos = get_field( 'photoalbum_photos', $this->getId() );
 
 		$photos = array();
 		if( is_array( $acf_photos ) ) {
@@ -123,7 +109,7 @@ class PhotoAlbum {
 		}
 
 		if( count( $photos ) <= 0 ) {
-			$cfs_photos = CFS()->get( 'p_photos', $this->id );
+			$cfs_photos = CFS()->get( 'p_photos', $this->getId() );
 
 			if( is_array( $cfs_photos ) ) {
 				foreach( $cfs_photos as $photo ) {
@@ -159,6 +145,6 @@ class PhotoAlbum {
 	}
 
 	public function getUrl() {
-		return get_permalink( $this->post );
+		return get_permalink( $this->wp_post );
 	}
 }

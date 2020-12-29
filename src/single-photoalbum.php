@@ -1,6 +1,6 @@
 <?php get_header(); the_post(); ?>
 <?php
-$photoalbum = PhotoAlbumModel::getPhotoalbum( get_post() );
+$photo_album = PhotoAlbumModel::getPhotoAlbum( get_post() );
 
 if(has_post_thumbnail()){
 	$image_src = wp_get_attachment_image_src(get_post_thumbnail_id(), 'post')[0];
@@ -23,8 +23,8 @@ if(has_post_thumbnail()){
 	the_content();
 
 	$photos = array();
-	$photo_thumbs = $photoalbum->getPhotoThumbs();
-	foreach( $photoalbum->getPhotos() as $photo ) {
+	$photo_thumbs = $photo_album->getPhotoThumbs();
+	foreach( $photo_album->getPhotos() as $photo ) {
 		$photos[] = (object) array(
 			'full' => $photo,
 			'thumb' => $photo_thumbs[count( $photos )]

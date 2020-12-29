@@ -41,13 +41,13 @@ while( have_posts() ) { the_post();
 		?>
 	</article>
 	<?php
-	$photoalbum = PhotoAlbumModel::getPhotoalbumByPost( get_post() );
+	$photo_album = PhotoAlbumModel::getPhotoAlbumByPost( get_post() );
 
-	if( $photoalbum ) {?>
+	if( $photo_album ) {?>
 	<div class="photoalbum-item-wrapper is-server-renderd">
 		<div class="photoalbum-item-content content">
 			<ul class="photoalbum-items-container article-items-container items-item-container content">
-				<?php PhotoalbumView::displayPhotoalbum( $photoalbum, array(
+				<?php PhotoAlbumView::displayPhotoAlbum( $photo_album, array(
 					'label' => true
 				) );?>
 			</ul>

@@ -6,7 +6,7 @@ class CardEvent extends Card {
 	}
 
 	public function getEventsOverviewUrl() {
-		return EVENTS()->getEventsOverviewUrl();
+		return EVENTS()->getOverviewUrl();
 	}
 
 	public function getNavButtons() {

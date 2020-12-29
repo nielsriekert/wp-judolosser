@@ -24,9 +24,6 @@ services:
       - backend
     volumes:
       - ./web/:/var/www/web/:delegated
-      - ./vendor/:/var/www/vendor/:delegated
-      - ./config/:/var/www/config/:delegated
-      - ${PWD}/.env:/var/www/.env:delegated
     ports:
       - 8080:80
     container_name: judolosser-apache

@@ -37,14 +37,14 @@ const template = (data) => html`
 		}
 		else {
 			return html`
-				<div class="articles-container-no-content items-container-no-content">Geen nieuwsberichten gevonden</div>
+				<div class="articles-container-no-content items-container-no-content">Geen items gevonden</div>
 			`
 		}
 	})(data)}
 	${(data => {
 		if(data.displayedItems.length < data.getMaxDisplayedItemsCount()) {
 			return html`
-				<button class="articles-more-button items-more-button">Meer nieuwsberichten</button>
+				<button class="articles-more-button items-more-button">Meer items</button>
 			`
 		}
 	})(data)}

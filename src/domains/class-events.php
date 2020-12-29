@@ -236,13 +236,13 @@ class Events {
 		if( get_post_type( $post ) == 'event' ) {
 			$event = new Event( $post );
 			if( $event->isPastEvent() ) {
-				wp_redirect( $this->getEventsOverviewUrl() );
+				wp_redirect( $this->getOverviewUrl() );
 				exit;
 			}
 		}
 	}
 
-	public function getEventsOverviewUrl() {
+	public function getOverviewUrl() {
 		$events_post = get_post_by_template( 'events.php' );
 		if( $events_post instanceof WP_Post) {
 			return get_permalink( $events_post );

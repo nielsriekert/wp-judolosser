@@ -18,7 +18,7 @@ import ScrollClasses from './scrollclasses.js';
 import ItemFilter from './item-filter';
 import itemFilterTemplateArticles from './item-filter/templates/template-articles'
 import itemFilterTemplateEvents from './item-filter/templates/template-events'
-import itemFilterTemplatePhotoalbums from './item-filter/templates/template-photoalbums'
+import itemFilterTemplatePhotoAlbums from './item-filter/templates/template-photo-albums'
 
 import LogoCarousel from './sponsors/logo-carousel'
 
@@ -159,7 +159,7 @@ window.addEventListener('DOMContentLoaded', function() {
 			items: ajax_get_photoalbums,
 		},
 		{
-			itemsTemplate: itemFilterTemplatePhotoalbums,
+			itemsTemplate: itemFilterTemplatePhotoAlbums,
 		}
 	);
 });

@@ -1,8 +1,8 @@
 <?php
-class PhotoalbumView {
+class PhotoAlbumView {
 
 
-	public static function displayPhotoalbum( PhotoAlbum $photoalbum, $args = array() ) {
+	public static function displayPhotoAlbum( PhotoAlbum $photoalbum, $args = array() ) {
 		if( ! isset( $args['wrapper-element'] ) ) {
 			$args['wrapper-element'] = 'li';
 		}
