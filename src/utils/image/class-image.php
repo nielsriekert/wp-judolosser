@@ -1,5 +1,5 @@
 <?php
-class LocationImage {
+class Image {
 
 	private $id = null;
 
@@ -18,7 +18,7 @@ class LocationImage {
 	 * @param int $width
 	 * @param int $height
 	 */
-	public function __construct( Int $id, String $src, $alt = '', Int $width = null, Int $height = null ) {
+	public function __construct( int $id, string $src, $alt = '', int $width = null, int $height = null ) {
 		$this->id = $id;
 		$this->src = $src;
 		$this->alt = $alt;

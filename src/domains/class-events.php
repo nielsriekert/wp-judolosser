@@ -82,7 +82,7 @@ class Events {
 				'with_front' => false,
 			),
 			'menu_position' => 22,
-			'supports' => array( 'title', 'editor', 'author', 'excerpt', 'thumbnail', 'revisions' ),
+			'supports' => array( 'title', 'editor', 'author', 'excerpt', 'revisions' ),
 			'menu_icon' => 'dashicons-calendar',
 			'capability_type' => 'event',
 			'map_meta_cap' => true,
@@ -94,13 +94,47 @@ class Events {
 	public function addRegisterFields() {
 		acf_add_local_field_group(array (
 			'key' => 'group_582f05e35a2f3',
-			'title' => __( 'Registration', 'judo-losser' ),
+			'title' => __( 'Event', 'judo-losser' ),
 			'fields' => array (
+				// array (
+				// 	'key' => 'field_59f5ae2d4b7e1',
+				// 	'label' => __( 'General', 'judo-losser' ),
+				// 	'name' => '',
+				// 	'type' => 'tab',
+				// ),
+				// array (
+				// 	'key' => 'field_57b2843f37cf2',
+				// 	'label' => __( 'Date', 'judo-losser' ),
+				// 	'name' => 'event_date',
+				// 	'type' => 'date_time_picker',
+				// 	'required' => 1,
+				// 	'display_format' => get_option( 'date_format' ) . ' ' . get_option( 'time_format' ),
+				// 	'return_format' => 'Y-m-d H:i:s',
+				// 	'first_day' => 1
+				// ),
+				array (
+					'key' => 'field_59fa3a3d3ff29',
+					'label' => __( 'Registration', 'judo-losser' ),
+					'name' => '',
+					'type' => 'tab',
+				),
 				array (
 					'key' => 'field_57b2843fa7c8f',
 					'label' => __( 'Enable registration', 'judo-losser' ),
 					'name' => 'event_registration_enable',
 					'type' => 'true_false',
+				),
+				array (
+					'key' => 'field_59c434ed34f2e',
+					'label' => __( 'Photo', 'judo-losser' ),
+					'name' => '',
+					'type' => 'tab',
+				),
+				array (
+					'key' => 'field_57128a3f2e18a',
+					'label' => __( 'Photo', 'judo-losser' ),
+					'name' => 'event_featured_photo',
+					'type' => 'image',
 				),
 			),
 			'location' => array (

@@ -108,11 +108,11 @@ class Location {
 
 	/**
 	 * @param string $size WordPress image size
-	 * @return LocationImage|null null when not found
+	 * @return Image|null null when not found
 	 */
 	public function getFeaturedPhoto( $size = 'location' ) {
 		return isset( $this->fields['location_featured_photo'] ) && is_array( $this->fields['location_featured_photo'] ) ?
-			new LocationImage(
+			new Image(
 				$this->fields['location_featured_photo']['id'],
 				$this->fields['location_featured_photo']['sizes'][$size],
 				$this->fields['location_featured_photo']['alt'],

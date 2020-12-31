@@ -13,7 +13,7 @@ const template = (data) => html`
 							if(item.data.featuredImage) {
 								return html`
 								<div class="article-item-thumb">
-									<img class="item-main-image" src="${item.data.featuredImage.src}" alt="" @load="${data}">
+									<img class="item-main-image" src="${item.data.featuredImage.src}" width="${item.data.featuredImage.width}" height="${item.data.featuredImage.height}" alt="${item.data.featuredImage.alt}" @load="${data}">
 								</div>
 								`
 							}

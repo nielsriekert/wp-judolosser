@@ -32,7 +32,6 @@ class Locations {
 
 	public function includes() {
 		require_once( LOCATIONS_ABSPATH . 'location/class-location.php' );
-		require_once( LOCATIONS_ABSPATH . 'location/class-location-image.php' );
 
 		require_once( LOCATIONS_ABSPATH . 'location/class-location-model.php' );
 		require_once( LOCATIONS_ABSPATH . 'location/class-location-view.php' );

@@ -95,6 +95,16 @@ class EventModel {
 				);
 			}
 
+			if( $event->hasFeaturedPhoto() ) {
+				$photo = $event->getFeaturedPhoto();
+				$event_json['featuredImage'] = array(
+					'src' => $photo->getSrc(),
+					'width' => $photo->getWidth(),
+					'height' => $photo->getHeight(),
+					'alt' => $photo->getAlt(),
+				);
+			}
+
 			$events_json[] = $event_json;
 		}
 

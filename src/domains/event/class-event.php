@@ -46,6 +46,7 @@ class Event {
 	}
 
 	public function getDate( $format = 'j F Y' ) {
+		// TODO: no dependency like this
 		return humanize_date( $this->dateTimeTimestamp, $format );
 	}
 
@@ -70,9 +71,29 @@ class Event {
 		return $excerpt;
 	}
 
+	public function hasFeaturedPhoto() {
+		return isset( $this->fields['event_featured_photo'] ) && is_array( $this->fields['event_featured_photo'] );
+	}
+
+	/**
+	 * @param string $size WordPress image size
+	 * @return Image|null null when not found
+	 */
+	public function getFeaturedPhoto( $size = 'post-thumb' ) {
+		return isset( $this->fields['event_featured_photo'] ) && is_array( $this->fields['event_featured_photo'] ) ?
+			new Image(
+				$this->fields['event_featured_photo']['id'],
+				$this->fields['event_featured_photo']['sizes'][$size],
+				$this->fields['event_featured_photo']['alt'],
+				$this->fields['event_featured_photo']['sizes'][$size . '-width'],
+				$this->fields['event_featured_photo']['sizes'][$size . '-height']
+			) : null;
+	}
+
 	/**
 	 * @param string $size
 	 * @return string
+	 * @deprecated 1.13.0
 	 */
 	public function getFeaturedImageSrc( $size = 'post-thumb' ) {
 		if( isset( $this->featuredImageSources[$size] ) && $this->featuredImageSources[$size] ) {
@@ -88,6 +109,9 @@ class Event {
 		return $this->featuredImageSources[$size];
 	}
 
+	/**
+	 * @deprecated 1.13.0
+	 */
 	public function getFeaturedImageHtml( $classes = array() ) {
 		if( $this->featuredImageHtml ) {
 			return $this->featuredImageHtml;

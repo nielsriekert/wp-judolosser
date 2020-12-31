@@ -30,7 +30,7 @@ class LocationView {
 		<?php
 	}
 
-	public static function viewLocationImage( LocationImage $location_image ) { ?>
+	public static function viewLocationImage( Image $location_image ) { ?>
 		<img class="location-image" src="<?php echo $location_image->getSrc(); ?>" />
 		<?php
 	}

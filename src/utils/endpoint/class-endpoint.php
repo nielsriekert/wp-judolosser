@@ -86,12 +86,20 @@ class Endpoint {
 	 * @return object
 	 */
 	private static function prepareEventForJson( Event $event ) {
-		return (object) array(
+		$featured_photo = $event->getFeaturedPhoto( 'post' );
+
+		return (object) [
 			'id' => $event->getId(),
 			'name' => $event->getName(),
 			'date' => $event->getDate('U'),
 			'shortDescription' => html_entity_decode( $event->getExcerpt() ),
-			'registrationEnabled' => $event->isRegistrationEnabled()
-		);
+			'registrationEnabled' => $event->isRegistrationEnabled(),
+			'featuredPhoto' => $event->hasFeaturedPhoto() ? [
+				'src' => $featured_photo->getSrc(),
+				'width' => $featured_photo->getWidth(),
+				'height' => $featured_photo->getHeight(),
+				'alt' => $featured_photo->getAlt()
+			] : null
+		];
 	}
 }
