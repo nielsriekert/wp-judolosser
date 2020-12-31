@@ -1,0 +1,67 @@
+.button {
+	position: relative;
+	padding: .75em 1.75em;
+	font-weight: 700;
+	text-transform: uppercase;
+	background-color: var(--color-quaternary);
+	border-radius: 4px;
+	border: none;
+}
+
+.button::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	border-radius: 4px;
+	background-color: rgba(0, 0, 0, 0);
+	transition: background-color .1s;
+}
+
+.button:hover::before {
+	background-color: rgba(0, 0, 0, .1);
+}
+
+.button::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	z-index: -1;
+	filter: blur(3px);
+	border-radius: 4px;
+	background-color: rgba(0, 0, 0, 0);
+	transform: translateY(0);
+	transition: background-color .1s, transform .1s;
+	pointer-events: none;
+}
+
+.button:hover::after {
+	transform: translateY(.125em);
+	background-color: rgba(0, 0, 0, .2);
+}
+
+.button-label {
+	position: relative;
+}
+
+.button.is-ghost {
+	color: var(--color-text);
+	background-color: white;
+	border: 2px solid var(--color-text);
+}
+
+.button.is-primary {
+	color: white;
+	background-color: var(--color-primary);
+}
+
+.button.is-primary.is-ghost {
+	color: var(--color-primary);
+	background-color: white;
+	border-color: var(--color-primary);
+}

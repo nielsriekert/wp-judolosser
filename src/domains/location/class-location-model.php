@@ -26,7 +26,7 @@ class LocationModel {
 		return count( $wp_locations->posts ) === 1 ? self::getLocation( current( $wp_locations->posts ) ) : null;
 	}
 
-	public static function getLocationDefaultWpQueryArgs() {
+	private static function getLocationDefaultWpQueryArgs() {
 		return array(
 			'post_type' => 'location',
 			'orderby' => 'title',
@@ -40,7 +40,7 @@ class LocationModel {
 	 * @param array with WP_Post instances
 	 * @return array with Location instances
 	 */
-	public static function wpPostToLocationInstances( $wp_posts ) {
+	private static function wpPostToLocationInstances( $wp_posts ) {
 		$locations = array();
 
 		if( count( $wp_posts ) > 0 ) {

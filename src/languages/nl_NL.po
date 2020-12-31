@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Judo Losser 1.8.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/judo-losser\n"
-"POT-Creation-Date: 2020-12-28T21:23:04+00:00\n"
-"PO-Revision-Date: 2020-12-28 22:26+0100\n"
+"POT-Creation-Date: 2020-12-29T11:15:57+00:00\n"
+"PO-Revision-Date: 2020-12-29 12:16+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -215,6 +215,10 @@ msgstr "Plaats"
 msgid "Photo"
 msgstr "Foto"
 
+#: domains/class-photo-albums.php:55 utils/card/class-card-view.php:97
+msgid "Photos"
+msgstr "Foto’s"
+
 #. Template Name of the theme
 msgid "Evenementen"
 msgstr ""
@@ -243,6 +247,10 @@ msgstr "Agenda"
 msgid "News Posts"
 msgstr "Nieuwsberichten"
 
+#: utils/card/class-card-page.php:11
+msgid "More"
+msgstr "Meer"
+
 #: utils/card/class-card-photo-album.php:23
 msgid "View photos"
 msgstr "Bekijk foto’s"
@@ -258,10 +266,6 @@ msgstr "Nieuws"
 #: utils/card/class-card-view.php:70
 msgid "Events"
 msgstr "Evenementen"
-
-#: utils/card/class-card-view.php:97
-msgid "Photos"
-msgstr "Foto’s"
 
 #: utils/class-cards.php:54 utils/class-cards.php:58
 msgid "Cards"
@@ -306,3 +310,6 @@ msgstr "Invoegen (tracking) code (head)"
 #: utils/class-tracking.php:71
 msgid "Insert (tracking) code (body)"
 msgstr "Invoegen (tracking) code (body)"
+
+#~ msgid "Read more"
+#~ msgstr "Verder lezen"

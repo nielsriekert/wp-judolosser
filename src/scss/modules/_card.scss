@@ -1,0 +1,61 @@
+.card-container {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+.card-container > a {
+	flex-grow: 1;
+}
+
+.card-container .card-body {
+	padding: 1.5em;
+}
+
+.card-navigation {
+	display: flex;
+	background-color: white;
+}
+
+.card-navigation .card-button {
+	display: block;
+	position: relative;
+	text-align: center;
+	line-height: 2.5em;
+	height: 2.5em;
+	width: 100%;
+	color: $color-text;
+	background-color: rgb(230, 230, 230);
+}
+
+.card-navigation .card-button:after {
+ 	content: "";
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	border: 2px solid darken(rgb(230, 230, 230), 5%);
+}
+
+.card-navigation .card-button:hover {
+	background-color: darken(rgb(230, 230, 230), 5%);
+}
+
+.card-navigation .card-button.card-navigation-all {
+	color: white;
+	background-color: $color-secondary;
+}
+
+.card-navigation .card-button.card-navigation-all:after {
+	border-color: darken($color-secondary, 5%);
+}
+
+.card-navigation .card-button.card-navigation-all:hover {
+	background-color: darken($color-secondary, 5%);
+}
+
+.card-navigation.card-navigation-count-2 .card-button {
+	width: 50%;
+}

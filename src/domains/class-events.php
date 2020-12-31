@@ -38,6 +38,7 @@ class Events {
 
 	private function initHooks() {
 		add_action( 'init', array( $this, 'createPostTypes' ) );
+		add_action( 'acf/init', array( $this, 'addRegisterFields' ) );
 		add_action( 'p2p_init', array( $this, 'setupRelations' ) );
 
 		add_filter( 'manage_edit-event_columns', array( $this, 'addAdminColumns' ), 10, 1 );
@@ -81,13 +82,37 @@ class Events {
 				'with_front' => false,
 			),
 			'menu_position' => 22,
-			'supports' => array( 'title', 'editor', 'author', 'excerpt', 'revisions' ),
+			'supports' => array( 'title', 'editor', 'author', 'excerpt', 'thumbnail', 'revisions' ),
 			'menu_icon' => 'dashicons-calendar',
 			'capability_type' => 'event',
 			'map_meta_cap' => true,
 		);
 
 		register_post_type( 'event', $args );
+	}
+
+	public function addRegisterFields() {
+		acf_add_local_field_group(array (
+			'key' => 'group_582f05e35a2f3',
+			'title' => __( 'Registration', 'judo-losser' ),
+			'fields' => array (
+				array (
+					'key' => 'field_57b2843fa7c8f',
+					'label' => __( 'Enable registration', 'judo-losser' ),
+					'name' => 'event_registration_enable',
+					'type' => 'true_false',
+				),
+			),
+			'location' => array (
+				array (
+					array (
+						'param' => 'post_type',
+						'operator' => '==',
+						'value' => 'event',
+					),
+				),
+			),
+		));
 	}
 
 	public function setupRelations() {
@@ -234,7 +259,7 @@ class Events {
 	public function redirectPastEvent() {
 		global $post;
 		if( get_post_type( $post ) == 'event' ) {
-			$event = new Event( $post );
+			$event = EventModel::getEvent( $post );
 			if( $event->isPastEvent() ) {
 				wp_redirect( $this->getOverviewUrl() );
 				exit;
@@ -247,6 +272,14 @@ class Events {
 		if( $events_post instanceof WP_Post) {
 			return get_permalink( $events_post );
 		}
+	}
+
+	public function getEventRegistrationUrl( int $event_id ) {
+		if( ! getenv( 'EVENT_REGISTRATION_APP_URL' ) ) {
+			return null;
+		}
+
+		return add_query_arg( 'event-id', $event_id, getenv( 'EVENT_REGISTRATION_APP_URL' ) );
 	}
 }
 
