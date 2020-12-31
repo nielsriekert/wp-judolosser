@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Evenementen
+Template Name: Events
 */
 get_header(); ?>
 <div class="content articles-content">

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Judo Losser 1.8.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/judo-losser\n"
-"POT-Creation-Date: 2020-12-29T11:15:57+00:00\n"
-"PO-Revision-Date: 2020-12-29 12:16+0100\n"
+"POT-Creation-Date: 2020-12-31T10:36:19+00:00\n"
+"PO-Revision-Date: 2020-12-31 11:36+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -32,7 +32,7 @@ msgstr ""
 msgid "Niels Riekert"
 msgstr ""
 
-#: classes/class-pages.php:39 domains/class-events.php:172
+#: classes/class-pages.php:39 domains/class-events.php:197
 msgid "Attachment"
 msgstr ""
 
@@ -44,80 +44,88 @@ msgstr "Manager"
 msgid "Contact"
 msgstr ""
 
-#: domains/class-events.php:59
+#: domains/class-events.php:60
 msgctxt "post type general name"
 msgid "Events"
 msgstr "Evenementen"
 
-#: domains/class-events.php:60
+#: domains/class-events.php:61
 msgctxt "post type singular name"
 msgid "Event"
 msgstr "Evenement"
 
-#: domains/class-events.php:61
+#: domains/class-events.php:62
 msgctxt "admin menu"
 msgid "Events"
 msgstr "Evenementen"
 
-#: domains/class-events.php:62
+#: domains/class-events.php:63
 msgctxt "add new on admin bar"
 msgid "Event"
 msgstr "Evenement"
 
-#: domains/class-events.php:63
+#: domains/class-events.php:64
 msgctxt "event"
 msgid "Add New"
 msgstr "Nieuw evenement"
 
-#: domains/class-events.php:64
+#: domains/class-events.php:65
 msgid "Add New Event"
 msgstr "Nieuw evenement"
 
-#: domains/class-events.php:65
+#: domains/class-events.php:66
 msgid "New Event"
 msgstr "Nieuwe evenement"
 
-#: domains/class-events.php:66
+#: domains/class-events.php:67
 msgid "Edit Event"
 msgstr "Bewerk evenement"
 
-#: domains/class-events.php:67
+#: domains/class-events.php:68
 msgid "View Event"
 msgstr "Bekijk evenement"
 
-#: domains/class-events.php:68
+#: domains/class-events.php:69
 msgid "All Events"
 msgstr "Alle evenementen"
 
-#: domains/class-events.php:69
+#: domains/class-events.php:70
 msgid "Search Events"
 msgstr "Zoek evenementen"
 
-#: domains/class-events.php:70
+#: domains/class-events.php:71
 msgid "Parent Events:"
 msgstr "Hoofd evenementen:"
 
-#: domains/class-events.php:71
+#: domains/class-events.php:72
 msgid "No events found."
 msgstr "Geen evenementen gevonden."
 
-#: domains/class-events.php:72
+#: domains/class-events.php:73
 msgid "No events found in Trash."
 msgstr "Geen evenementen gevonden in de prullenbak."
 
-#: domains/class-events.php:77
+#: domains/class-events.php:78
 msgid "Judo Losser Events"
 msgstr ""
 
-#: domains/class-events.php:80
+#: domains/class-events.php:81
 msgid "event"
 msgstr "evenement"
 
-#: domains/class-events.php:171
+#: domains/class-events.php:97
+msgid "Registration"
+msgstr "Registratie"
+
+#: domains/class-events.php:101
+msgid "Enable registration"
+msgstr "Schakel registratie in"
+
+#: domains/class-events.php:196
 msgid "Event date"
 msgstr "Datum evenement"
 
-#: domains/class-events.php:173 domains/class-locations.php:94
+#: domains/class-events.php:198 domains/class-locations.php:94
 msgid "Location"
 msgstr "Locatie"
 
@@ -196,7 +204,7 @@ msgstr "Straat"
 
 #: domains/class-locations.php:107
 msgid "Street or alternative"
-msgstr ""
+msgstr "Straat of alternatief"
 
 #: domains/class-locations.php:111
 msgid "House number"
@@ -219,9 +227,14 @@ msgstr "Foto"
 msgid "Photos"
 msgstr "Foto’s"
 
+#: domains/event/class-event-view.php:9
+msgid "Sign Up"
+msgstr "Inschrijven"
+
 #. Template Name of the theme
-msgid "Evenementen"
-msgstr ""
+#: utils/card/class-card-view.php:70
+msgid "Events"
+msgstr "Evenementen"
 
 #. Template Name of the theme
 msgid "Fotoalbums"
@@ -263,10 +276,6 @@ msgstr "Fotoalbums"
 msgid "News"
 msgstr "Nieuws"
 
-#: utils/card/class-card-view.php:70
-msgid "Events"
-msgstr "Evenementen"
-
 #: utils/class-cards.php:54 utils/class-cards.php:58
 msgid "Cards"
 msgstr "Kaarten"
@@ -291,6 +300,22 @@ msgstr "Fotoalbum"
 msgid "Page"
 msgstr "Pagina"
 
+#: utils/class-endpoints.php:97
+msgid "No access with provided token"
+msgstr "Geen toegang met verstrekt token"
+
+#: utils/class-endpoints.php:97
+msgid "No access with specified ip-address %s."
+msgstr "Geen toegang met het opgegeven ip-adres %s."
+
+#: utils/class-endpoints.php:105
+msgid "This method is not allowed."
+msgstr "Deze methode is niet toegestaan."
+
+#: utils/class-endpoints.php:113
+msgid "An ssl connection needs to be used."
+msgstr "Er moet een ssl-verbinding worden gebruikt."
+
 #: utils/class-theme-setup.php:60
 msgid "Main navigation"
 msgstr "Hoofdnavigatie"
@@ -310,6 +335,18 @@ msgstr "Invoegen (tracking) code (head)"
 #: utils/class-tracking.php:71
 msgid "Insert (tracking) code (body)"
 msgstr "Invoegen (tracking) code (body)"
+
+#: utils/endpoint/class-endpoint.php:18
+msgid "The request is incorrect or the requested data doesn't exist."
+msgstr "Het verzoek is onjuist of de gevraagde gegevens bestaan niet."
+
+#: utils/endpoint/class-endpoint.php:68
+msgid "Something went wrong, contact us for support."
+msgstr "Er is iets misgegaan, neem contact met ons op voor ondersteuning."
+
+#: utils/endpoint/class-endpoint.php:75
+msgid "Resource not found."
+msgstr "Bron niet gevonden."
 
 #~ msgid "Read more"
 #~ msgstr "Verder lezen"
