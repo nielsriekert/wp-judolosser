@@ -1,3 +1,17 @@
+.event-header-content-container {
+	grid-area: bottom;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	max-width: 54em;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.event-footer-container {
+	margin-top: 50px;
+}
+
 .single-event .location-container:not(:first-child) {
 	margin-top: 50px;
 }

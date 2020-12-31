@@ -58,6 +58,7 @@ td {
 
 .article {
 	position: relative;
+	max-width: 64em;
 	padding-top: 40px;
 	padding-bottom: 50px;
 }
@@ -134,18 +135,20 @@ td {
 }
 
 .article-image-post-content {
-	display: table;
-	width: 100%;
+	display: grid;
+	grid-template-rows: 80px 1fr 80px;
+	grid-template-areas: 'top' 'middle' 'bottom';
 	height: 100%;
 }
 
 .article-image-post h1 {
-	display: table-cell;
+	grid-area: middle;
+	align-self: center;
+	margin: 0;
 	position: relative;
 	font-size: 2em;
 	color: white;
 	text-align: center;
-	vertical-align: middle;
 }
 
 @media (min-width: $break-small) {

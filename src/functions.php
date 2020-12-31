@@ -4,6 +4,7 @@ require_once('utils/class-webpack-helper.php');
 require_once('utils/class-theme-setup.php');
 require_once('utils/class-customizer.php');
 require_once('utils/class-tracking.php');
+require_once('utils/class-endpoints.php');
 
 require_once('classes/class-users.php');
 require_once('classes/class-articles.php');

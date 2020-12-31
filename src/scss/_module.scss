@@ -1,5 +1,4 @@
 .cards-wrapper {
-	display: flex;
 	padding-top: 80px;
 	background-image: url('../images/background-weekendkamp-2014.jpg');
 	background-size: cover;
@@ -7,24 +6,8 @@
 	background-color: rgb(240, 240, 240);
 }
 
-.cards-content {
-	display: flex;
-	flex-wrap: wrap;
-	padding-top: 80px;
-	padding-bottom: 80px;
-}
-
-.cards-content:after {
- content: "";
-	display: block;
-	clear: left;
-}
-
 .card {
-	position: relative;
-	min-height: 215px;
 	width: 100%;
-	margin-top: 60px;
 	background-color: white;
 	box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.1);
 	box-sizing: border-box;
@@ -32,58 +15,8 @@
 	background-position: center center;
 }
 
-.card:first-child {
-	margin-top: 0;
-}
-
-.card-news-post,
-.card-event,
-.card-photo-album {
-	padding-bottom: 2em;
-}
-
-@media (min-width: $break-small) {
-	.card,
-	.card:first-child {
-		float: left;
-		width: 47%;
-		margin-left: 6%;
-		margin-top: 60px;
-	}
-
-	.card:nth-child(2n+1) {
-		margin-left: 0;
-		clear: left;
-	}
-
-	.card:nth-child(-n+2) {
-		margin-top: 0;
-	}
-}
-
-@media (min-width: $break-middle) {
-	.card,
-	.card:first-child,
-	.card:nth-child(2n+1) {
-	 width: 30%;
-	 margin-left: 5%;
-	 margin-top: 60px;
-	 clear: none;
-	}
-
-	.card:nth-child(3n+1) {
-	 margin-left: 0;
-	 clear: left;
-	}
-
-	.card:nth-child(-n+3) {
-	 margin-top: 0;
-	}
-}
-
 .card > a:not(.card-type) {
 	display: block;
-	height: 100%;
 	box-sizing: border-box;
 	color: inherit;
 	border: 2px solid transparent;
@@ -99,14 +32,6 @@
 .card.card-type-image > a:not(.card-type):hover {
 	border-color: rgba($color-primary, .6);
 }
-
-.card .card-body {
-	padding: 1.5em;
-}
-
-/*.card .card-title {
- line-height: 2em;
-}*/
 
 .card .card-date {
 	display: inline-block;
@@ -180,58 +105,6 @@
 	color: white;
 }
 
-.card-navigation {
-	display: flex;
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: white;
-}
-
-.card-navigation .card-button {
-	display: block;
-	position: relative;
-	text-align: center;
-	line-height: 2.5em;
-	height: 2.5em;
-	width: 100%;
-	color: $color-text;
-	background-color: rgb(230, 230, 230);
-}
-
-.card-navigation .card-button:after {
- content: "";
-	display: block;
-	position: absolute;
-	left: 0;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	border: 2px solid darken(rgb(230, 230, 230), 5%);
-}
-
-.card-navigation .card-button:hover {
-	background-color: darken(rgb(230, 230, 230), 5%);
-}
-
-.card-navigation .card-button.card-navigation-all {
-	color: white;
-	background-color: $color-secondary;
-}
-
-.card-navigation .card-button.card-navigation-all:after {
-	border-color: darken($color-secondary, 5%);
-}
-
-.card-navigation .card-button.card-navigation-all:hover {
-	background-color: darken($color-secondary, 5%);
-}
-
-.card-navigation.card-navigation-count-2 .card-button {
-	width: 50%;
-}
-
 /* TRAININGSTIJDEN */
 
 td.trainingstijden-dag {
@@ -243,6 +116,7 @@ td.trainingstijden-dag {
 }
 
 @import 'module-wordpress';
+@import 'modules/button';
 @import 'modules/committees';
 @import 'modules/items';
 @import 'modules/item-filter';
@@ -251,3 +125,5 @@ td.trainingstijden-dag {
 @import 'modules/photo-albums';
 @import 'modules/photo-album';
 @import 'modules/location';
+@import 'modules/cards';
+@import 'modules/card';

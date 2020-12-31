@@ -141,15 +141,15 @@
 }
 
 .header-nav {
- position: fixed;
- top: 0;
- left: 0;
- bottom: 0;
- width: 17em;
- background-color: $color-text;
- box-shadow: 3px 0 6px rgba(0, 0, 0, .2);
- overflow-y: auto;
- transform: translateX(-17em) translateX(-9px);
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	width: 17em;
+	background-color: $color-text;
+	box-shadow: 3px 0 6px rgba(0, 0, 0, .2);
+	overflow-y: auto;
+	transform: translateX(-17em) translateX(-9px);
 }
 
 @media (min-width: $break-small) {

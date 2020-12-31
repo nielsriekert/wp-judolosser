@@ -1,0 +1,18 @@
+.cards-container {
+	display: grid;
+	gap: 60px;
+	padding-top: 80px;
+	padding-bottom: 80px;
+}
+
+@media (min-width: $break-small) {
+	.cards-container {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: $break-middle) {
+	.cards-container {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}

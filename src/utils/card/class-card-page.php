@@ -6,6 +6,12 @@ class CardPage extends Card {
 	}
 
 	public function getNavButtons() {
-		return $this->filterButtons([]);
+		return $this->filterButtons([
+			[
+				'label' => __( 'More', 'judo-losser' ),
+				'url' => get_permalink( $this->getPage() ),
+				'type' => 'article'
+			]
+		]);
 	}
 }

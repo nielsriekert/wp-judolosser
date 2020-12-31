@@ -9,6 +9,17 @@ $color-quaternary: rgb(238, 238, 238);
 $font-primary: 'Lato', sans-serif;
 $font-secondary: 'Roboto Slab', serif;
 
+:root {
+	--color-text: rgb(50, 50, 50);
+	--color-text-rgb: 50, 50, 50;
+	--color-primary: rgb(202, 33, 40);
+	--color-secondary: rgb(61, 125, 204);
+	--color-tertiary: rgb(234, 139, 3);
+	--color-quaternary: rgb(238, 238, 238);
+	--font-primary: 'Lato', sans-serif;
+	--font-secondary: 'Roboto Slab', serif;
+}
+
 //breakpoints
 $break-small: 36.5em;
 $break-middle: 55em;

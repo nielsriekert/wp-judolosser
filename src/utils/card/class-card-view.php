@@ -38,7 +38,7 @@ class CardView {
 	public static function viewNewsPostCard( CardNewsPost $card ) {
 		$news_post = $card->getNewsPost();
 		?>
-		<div class="card card-<?php echo $card->getType(); ?>">
+		<div class="card card-container card-<?php echo $card->getType(); ?>">
 			<?php
 			self::viewCardTab( __( 'News', 'judo-losser' ), $card->getNewsPostsOverviewUrl(), );
 			?>
@@ -65,7 +65,7 @@ class CardView {
 	public static function viewEventCard( CardEvent $card ) {
 		$event = $card->getEvent();
 		?>
-		<div class="card card-<?php echo $card->getType(); ?>">
+		<div class="card card-container card-<?php echo $card->getType(); ?>">
 			<?php
 			self::viewCardTab( __( 'Events', 'judo-losser' ), $card->getEventsOverviewUrl(), );
 			?>
@@ -92,7 +92,7 @@ class CardView {
 	public static function viewPhotoAlbumCard( CardPhotoAlbum $card ) {
 		$photo_album = $card->getPhotoAlbum();
 		?>
-		<div class="card card-<?php echo $card->getType(); ?>" style="background-image: url('<?php echo $photo_album->getFeaturedImageSrc( 'card' ); ?>');">
+		<div class="card card-container card-<?php echo $card->getType(); ?>" style="background-image: url('<?php echo $photo_album->getFeaturedImageSrc( 'card' ); ?>');">
 			<?php
 			self::viewCardTab( __( 'Photos', 'judo-losser' ), $card->getPhotoAlbumsOverviewUrl(), );
 			?>
@@ -119,7 +119,7 @@ class CardView {
 	public static function viewPageCard( CardPage $card ) {
 		$wp_post = $card->getPage();
 		?>
-		<div class="card card-<?php echo $card->getType(); ?>">
+		<div class="card card-container card-<?php echo $card->getType(); ?>">
 			<a href="<?php echo get_permalink( $wp_post ); ?>">
 				<div class="card-body">
 					<h2><?php echo get_the_title( $wp_post ); ?></h2>

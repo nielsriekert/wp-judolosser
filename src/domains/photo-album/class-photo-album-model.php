@@ -2,27 +2,15 @@
 class PhotoAlbumModel {
 
 	/**
-	 * Get all photoalbums.
-	 *
-	 * @return array with Photoalbum instances.
+	 * @return array with PhotoAlbum instances.
 	 */
 	public static function getPhotoAlbums() {
-		// To do: sorting should be on event date followed by photoalbum published date
-		$wp_photoalbums = new WP_Query(array(
-			'post_type' => 'photoalbum',
-			'nopaging' => true,
-			'no_found_rows' => true,
-		));
+		$wp_args = self::getPhotoAlbumDefaultWpQueryArgs();
 
-		$photoalbums = array();
+		// To do: sorting should be on event date followed by photo album published date
+		$wp_photo_albums = new WP_Query( $wp_args );
 
-		if( $wp_photoalbums->post_count > 0 ) {
-			foreach( $wp_photoalbums->posts as $photoalbum ) {
-				$photoalbums[] = new PhotoAlbum( $photoalbum );
-			}
-		}
-
-		return $photoalbums;
+		return self::wpPostToPhotoAlbumInstances( $wp_photo_albums->posts );
 	}
 
 	/**
@@ -46,64 +34,72 @@ class PhotoAlbumModel {
 			throw new Exception( 'Cannot find WP_Post' );
 		}
 
+		if( $wp_post->post_type !== 'photoalbum' ) {
+			throw new Exception( 'WP_Post doesn\'t have the right post_type value' );
+		}
+
 		return new PhotoAlbum( $wp_post );
 	}
 
 	/**
-	 * @param WP_Post $event. WP_Post instance with a post type of event.
+	 * @param Event $event.
 	 * @return PhotoAlbum instance.
 	 */
-	public static function getPhotoAlbumByEvent( $event ) {
-		if( ! $event instanceof WP_Post ) {
-			return false;
-		}
+	public static function getPhotoAlbumByEvent( Event $event ) {
+		$wp_args = self::getPhotoAlbumDefaultWpQueryArgs();
 
-		$wp_photoalbums = new WP_Query(array(
-			'post_type' => 'photoalbum',
-			'connected_type' => 'event_to_photoalbum',
-			'connected_items' => $event,
-			'nopaging' => true,
-			'no_found_rows' => true,
-		));
+		$wp_args['connected_type'] = 'event_to_photoalbum';
+		$wp_args['connected_items'] = $event->getWpPost();
 
-		if( $wp_photoalbums->post_count == 1 ) {
-			return new PhotoAlbum( current( $wp_photoalbums->posts ) );
-		}
+		$wp_photo_albums = new WP_Query( $wp_args );
 
-		return false;
+		return count( $wp_photo_albums->posts ) === 1 ? self::getPhotoAlbum( current( $wp_photo_albums->posts ) ) : null;
 	}
 
 	/**
-	 * Get all photoalbums.
-	 *
 	 * @param WP_Post $post. WP_Post instance with a post type of post.
 	 * @return PhotoAlbum instance.
 	 */
-	public static function getPhotoAlbumByPost( $post ) {
-		if( ! $post instanceof WP_Post ) {
-			return false;
-		}
+	public static function getPhotoAlbumByPost( WP_Post $wp_post ) {
+		$wp_args = self::getPhotoAlbumDefaultWpQueryArgs();
 
-		$wp_photoalbums = new WP_Query(array(
+		$wp_args['connected_type'] = 'post_to_photoalbum';
+		$wp_args['connected_items'] = $wp_post;
+
+		$wp_photo_albums = new WP_Query( $wp_args );
+
+		return count( $wp_photo_albums->posts ) === 1 ? self::getPhotoAlbum( current( $wp_photo_albums->posts ) ) : null;
+	}
+
+	private static function getPhotoAlbumDefaultWpQueryArgs() {
+		return array(
 			'post_type' => 'photoalbum',
-			'connected_type' => 'post_to_photoalbum',
-			'connected_items' => $post,
 			'nopaging' => true,
-			'no_found_rows' => true,
-		));
+			'no_found_rows' => true
+		);
+	}
 
-		if( $wp_photoalbums->post_count == 1 ) {
-			return new PhotoAlbum( current( $wp_photoalbums->posts ) );
+		/**
+	 * @param array with WP_Post instances
+	 * @return array with PhotoAlbum instances
+	 */
+	private static function wpPostToPhotoAlbumInstances( $wp_posts ) {
+		$photo_albums = array();
+
+		if( count( $wp_posts ) > 0 ) {
+			foreach( $wp_posts as $wp_post ) {
+				$photo_albums[] = self::getPhotoAlbum( $wp_post );
+			}
 		}
 
-		return false;
+		return $photo_albums;
 	}
 
 	public static function getPhotoAlbumsAjax() {
-		$photoalbums = self::getPhotoAlbums();
+		$photo_albums = self::getPhotoAlbums();
 
-		$photoalbums_json = array();
-		foreach( $photoalbums as $photoalbum ) {
+		$photo_albums_json = array();
+		foreach( $photo_albums as $photoalbum ) {
 			$photoalbum_json = array(
 				'id' => $photoalbum->getId(),
 				'name' => $photoalbum->getName(),
@@ -118,12 +114,12 @@ class PhotoAlbumModel {
 				);
 			}
 
-			$photoalbums_json[] = $photoalbum_json;
+			$photo_albums_json[] = $photoalbum_json;
 		}
 
 
 		header('Content-Type: application/json');
-		echo json_encode( $photoalbums_json );
+		echo json_encode( $photo_albums_json );
 
 		wp_die();
 	}
