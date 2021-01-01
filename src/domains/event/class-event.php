@@ -51,7 +51,7 @@ class Event {
 	}
 
 	public function isPastEvent() {
-		return ( date_i18n( 'Ymd', $this->dateTimeTimestamp ) < date_i18n( 'Ymd' ) );
+		return ( date_i18n( 'Ymd', strtotime( $this->dateTimeTimestamp ) ) < date_i18n( 'Ymd' ) );
 	}
 
 	public function isRegistrationEnabled() {
