@@ -28,18 +28,9 @@ while( have_posts() ) { the_post();
 	?>
 	<article class="article content">
 		<?php
-		if( has_post_thumbnail() && get_post_type() == 'post' ) {?>
-			<time class="article-date"><?php the_date('j F Y'); ?></time>
+		if( ! $event->hasFeaturedPhoto() ) { ?>
+			<h1 class="article-title"><?php echo $event->getName(); ?></h1>
 			<?php
-		}
-
-		if(!has_post_thumbnail()){?>
-			<h1 class="article-title"><?php the_title(); ?></h1>
-			<?php
-			if( get_post_type() == 'post' ) {?>
-			<time class="article-date"><?php the_date('j F Y'); ?></time>
-			<?php
-			}
 		}
 		the_content();
 
@@ -59,16 +50,16 @@ while( have_posts() ) { the_post();
 	<?php
 	$photo_album = PhotoAlbumModel::getPhotoAlbumByPost( get_post() );
 
-	if( $photo_album ) {?>
-	<div class="photoalbum-item-wrapper is-server-renderd">
-		<div class="photoalbum-item-content content">
-			<ul class="photoalbum-items-container article-items-container items-item-container content">
-				<?php PhotoAlbumView::displayPhotoAlbum( $photo_album, array(
-					'label' => true
-				) );?>
-			</ul>
+	if( $photo_album ) { //TODO: to view function ?>
+		<div class="photoalbum-item-wrapper is-server-renderd">
+			<div class="photoalbum-item-content content">
+				<ul class="photoalbum-items-container article-items-container items-item-container content">
+					<?php PhotoAlbumView::displayPhotoAlbum( $photo_album, array(
+						'label' => true
+					) );?>
+				</ul>
+			</div>
 		</div>
-	</div>
 		<?php
 	}
 }

@@ -94,6 +94,7 @@ class Endpoint {
 			'date' => $event->getDate('U'),
 			'shortDescription' => html_entity_decode( $event->getExcerpt() ),
 			'registrationEnabled' => $event->isRegistrationEnabled(),
+			'isPastEvent' => $event->isPastEvent(),
 			'featuredPhoto' => $event->hasFeaturedPhoto() ? [
 				'src' => $featured_photo->getSrc(),
 				'width' => $featured_photo->getWidth(),

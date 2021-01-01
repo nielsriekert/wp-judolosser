@@ -1,18 +1,14 @@
 {
   "name": "judolosser",
-  "version": "1.13.0",
+  "version": "1.14.0",
   "description": "WordPress theme for Judo Losser",
   "main": "webpack.config.js",
   "scripts": {
-    "start": "npm run docker && npm run dev",
+    "start": "npm run dev",
     "dev": "webpack --progress --config webpack.development.js --watch",
     "production": "webpack --config webpack.production.js",
     "localization:create-pot": "webpack --config webpack.pot.js && ./vendor/bin/wp i18n make-pot ./web/app/themes/judo-losser src/languages/judo-losser.pot --exclude=vendor,images,icons,languages",
-    "localization:create-json": "./vendor/bin/wp i18n make-json ./src/languages/ ./web/app/themes/judo-losser/languages --no-purge && node ./src/languages/fix-json-filename.js",
-    "docker": "docker-compose up -d",
-    "docker-remove": "docker stop $(docker ps -a -q) && docker rm $(docker ps -a -q)",
-    "server-start": "docker-compose start",
-    "server-stop": "docker-compose stop"
+    "localization:create-json": "./vendor/bin/wp i18n make-json ./src/languages/ ./web/app/themes/judo-losser/languages --no-purge && node ./src/languages/fix-json-filename.js"
   },
   "repository": {
     "type": "git",
