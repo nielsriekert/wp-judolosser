@@ -1,11 +1,10 @@
 import {render} from 'lit-html'
 import sanityClient from '@sanity/client'
 import template from './templates/template-logo-carousel'
-import CarouselSlider from './carousel'
 import Flickity from 'flickity'
 import 'flickity/dist/flickity.css'
 
-function LogoCarousel(containerElement) {
+export default function LogoCarousel(containerElement) {
 	this.containerElement = containerElement
 
 	if (!containerElement) {
@@ -77,5 +76,3 @@ LogoCarousel.prototype.setupCarousel = function() {
 		}
 	);
 }
-
-export default LogoCarousel
