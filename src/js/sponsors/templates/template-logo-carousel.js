@@ -1,7 +1,5 @@
 import {html} from 'lit-html';
 
-//const { __, _x, _n, _nx } = wp.i18n;
-
 const template = (data) => html`
 	<div class="logo-carousel-wrapper">
 		<div class="logo-carousel-container content">
@@ -11,11 +9,14 @@ const template = (data) => html`
 					return html`
 					<div class="logo-carousel-items-wrapper">
 						<div class="logo-carousel-items-container">
-						${data.map(sponsor => {
-							return html`
-							<div class="logo-carousel-item-container"><a href="${sponsor.websiteUrl}"><img src="${sponsor.logoSrc}"></a></div>
-							`
-						})}
+							${data.map(sponsor => (
+								html`
+								<div class="logo-carousel-item-container">
+									${sponsor.websiteUrl ?
+										html`<a href="${sponsor.websiteUrl}"><img src="${sponsor.logoSrc}"></a>`
+											: html`<div><img src="${sponsor.logoSrc}"></div>`}
+								</div>`
+							))}
 						</div>
 					</div>`
 				}
@@ -24,4 +25,4 @@ const template = (data) => html`
 	</div>
 `
 
-export default template
+export default template;
