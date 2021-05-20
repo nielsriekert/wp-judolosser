@@ -12,7 +12,7 @@ const template = (data) => html`
 							${data.map(sponsor => (
 								html`
 								<div class="logo-carousel-item-container">
-									${websiteUrl ?
+									${sponsor.websiteUrl ?
 										html`<a href="${sponsor.websiteUrl}"><img src="${sponsor.logoSrc}"></a>`
 											: html`<div><img src="${sponsor.logoSrc}"></div>`}
 								</div>`

@@ -27,7 +27,6 @@ export default function LogoCarousel(containerElement) {
 				return client.getDocument(sponsor.logo.asset._ref)
 			})
 		).then(sponsorLogos => {
-			console.log(sponsorLogos)
 			sponsorsData.map((sponsor, i) => {
 				sponsors.push({
 					name: sponsor.name,
