@@ -429,44 +429,6 @@ function shortcode_fotos( $atts ){
 add_shortcode( 'fotos', 'shortcode_fotos' );
 
 
-/* //////////////////////////////// */
-/* CUSTOM POST TYPES AND TAXONOMIES */
-/* //////////////////////////////// */
-
-function create_post_types() {
-
-	$labels = array(
-		'name' => 'Fotoalbums',
-		'singular_name' => 'Fotoalbum',
-		'add_new' => 'Nieuw fotoalbum', 'fotoalbum',
-		'add_new_item' => 'Voeg nieuw fotoalbum toe',
-		'edit_item' => 'Bewerk fotoalbum',
-		'new_item' => 'Nieuw fotoalbum',
-		'view_item' => 'Bekijk fotoalbum',
-		'search_items' => 'Zoek fotoalbums',
-		'not_found' => 'Geen fotoalbums gevonden',
-		'not_found_in_trash' => 'Geen fotoalbums gevonden in de prullenbak',
-		'all_items' => 'Alle fotoalbums',
-		'parent_item_colon'  => '',
-		'menu_name' => 'Fotoalbums'
-	);
-
-	$args = array(
-		'labels' => $labels,
-		'description' => 'Fotoalbums van Judo Losser',
-		'public' => true,
-		'rewrite' => array('slug' => 'fotoalbum'),
-		'menu_position' => 6,
-		'supports' => array( 'title', 'thumbnail', 'editor', 'excerpt', 'author', 'revisions'),
-		'menu_icon' => 'dashicons-format-gallery'
-	);
-
-	register_post_type('photoalbum', $args);
-}
-
-add_action( 'init', 'create_post_types' );
-
-
 /* ///////////// */
 /* SETTING PAGES */
 /* ///////////// */
