@@ -38,11 +38,42 @@ class PhotoAlbums {
 	}
 
 	private function initHooks() {
+		add_action( 'init', array( $this, 'createPostTypes' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'createJsGlobals' ), 20 );
 		add_action( 'acf/init', array( $this, 'addFields' ) );
 
 		add_action( 'wp_ajax_nopriv_get_photoalbums', array( 'PhotoAlbumModel', 'getPhotoAlbumsAjax' ) );
 		add_action( 'wp_ajax_get_photoalbums', array( 'PhotoAlbumModel', 'getPhotoAlbumsAjax' ) );
+	}
+
+	public function createPostTypes() {
+		$labels = array(
+			'name' => 'Fotoalbums',
+			'singular_name' => 'Fotoalbum',
+			'add_new' => 'Nieuw fotoalbum', 'fotoalbum',
+			'add_new_item' => 'Voeg nieuw fotoalbum toe',
+			'edit_item' => 'Bewerk fotoalbum',
+			'new_item' => 'Nieuw fotoalbum',
+			'view_item' => 'Bekijk fotoalbum',
+			'search_items' => 'Zoek fotoalbums',
+			'not_found' => 'Geen fotoalbums gevonden',
+			'not_found_in_trash' => 'Geen fotoalbums gevonden in de prullenbak',
+			'all_items' => 'Alle fotoalbums',
+			'parent_item_colon'  => '',
+			'menu_name' => 'Fotoalbums'
+		);
+
+		$args = array(
+			'labels' => $labels,
+			'description' => 'Fotoalbums van Judo Losser',
+			'public' => true,
+			'rewrite' => array('slug' => 'fotoalbum'),
+			'menu_position' => 6,
+			'supports' => array( 'title', 'thumbnail', 'excerpt', 'author', 'revisions'),
+			'menu_icon' => 'dashicons-format-gallery'
+		);
+
+		register_post_type( 'photoalbum', $args );
 	}
 
 	public function createJsGlobals() {
