@@ -1,7 +1,7 @@
 <?php
 class CardEvent extends Card {
 
-	public function getEvent() {
+	public function getEvent() : ?Event {
 		return EventModel::getNextEvent();
 	}
 

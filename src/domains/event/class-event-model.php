@@ -15,7 +15,7 @@ class EventModel {
 	/**
 	 * @return Event|null
 	 */
-	public static function getNextEvent() {
+	public static function getNextEvent() : ?Event {
 		$events = self::getEvents();
 
 		return count( $events ) > 0 ? current( $events ) : null;

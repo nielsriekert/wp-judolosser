@@ -64,6 +64,9 @@ class CardView {
 	 */
 	public static function viewEventCard( CardEvent $card ) {
 		$event = $card->getEvent();
+		if( ! $event ) {
+			return;
+		}
 		?>
 		<div class="card card-container card-<?php echo $card->getType(); ?>">
 			<?php
