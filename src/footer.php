@@ -5,16 +5,18 @@
 				<?php
 				$days = TrainingModel::getTrainingGroupedByDays();
 
-				TrainingView::viewTrainingTimes( $days, [
-					[
-						'label' => __( 'Time', 'judo-losser' ),
-						'view' => ['TrainingView', 'viewTrainingTimeCell']
-					],
-					[
-						'label' => __( 'Type of training', 'judo-losser' ),
-						'view' => ['TrainingView', 'viewTrainingTypeCell']
-					]
-				] );
+				if( is_array( $days ) ) {
+					TrainingView::viewTrainingTimes( $days, [
+						[
+							'label' => __( 'Time', 'judo-losser' ),
+							'view' => ['TrainingView', 'viewTrainingTimeCell']
+						],
+						[
+							'label' => __( 'Type of training', 'judo-losser' ),
+							'view' => ['TrainingView', 'viewTrainingTypeCell']
+						]
+					] );
+				}
 				?>
 			</div>
 			<div class="footer-column">

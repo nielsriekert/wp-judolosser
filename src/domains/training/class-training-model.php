@@ -1,10 +1,7 @@
 <?php
 class TrainingModel {
 
-	/**
-	 * @return array
-	 */
-	public static function getTrainingGroupedByDays() {
+	public static function getTrainingGroupedByDays() : ?array {
 		$pages = get_pages(array(
 			'meta_key' => '_wp_page_template',
 			'meta_value' => 'trainingstijden.php'

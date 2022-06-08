@@ -9,24 +9,26 @@ get_header(); ?>
 	<?php
 	$days = TrainingModel::getTrainingGroupedByDays();
 
-	TrainingView::viewTrainingTimes( $days, [
-		[
-			'label' => __( 'Time', 'judo-losser' ),
-			'view' => ['TrainingView', 'viewTrainingTimeCell']
-		],
-		[
-			'label' => __( 'Trainer', 'judo-losser' ),
-			'view' => ['TrainingView', 'viewTrainingTrainerCell']
-		],
-		[
-			'label' => __( 'Type of training', 'judo-losser' ),
-			'view' => ['TrainingView', 'viewTrainingTypeCell']
-		],
-		[
-			'label' => __( 'Location', 'judo-losser' ),
-			'view' => ['TrainingView', 'viewTrainingLocationCell']
-		]
-	] );
+	if( is_array( $days ) ) {
+		TrainingView::viewTrainingTimes( $days, [
+			[
+				'label' => __( 'Time', 'judo-losser' ),
+				'view' => ['TrainingView', 'viewTrainingTimeCell']
+			],
+			[
+				'label' => __( 'Trainer', 'judo-losser' ),
+				'view' => ['TrainingView', 'viewTrainingTrainerCell']
+			],
+			[
+				'label' => __( 'Type of training', 'judo-losser' ),
+				'view' => ['TrainingView', 'viewTrainingTypeCell']
+			],
+			[
+				'label' => __( 'Location', 'judo-losser' ),
+				'view' => ['TrainingView', 'viewTrainingLocationCell']
+			]
+		] );
+	}
 	?>
 </div>
 <?php get_footer(); ?>
