@@ -50,6 +50,14 @@ class Event {
 		return humanize_date( $this->dateTimeTimestamp, $format );
 	}
 
+	public function getStartDateTime( $format = 'j F Y H:i' ) {
+		if( ! isset( $this->fields['event_start_time'] ) ) {
+			throw new Exception( 'No start date time set for event with id ' . $this->getId() );
+		}
+
+		return date_i18n( $format, strtotime( $this->fields['event_start_time'] ) );
+	}
+
 	public function isPastEvent() {
 		return ( date_i18n( 'Ymd', strtotime( $this->dateTimeTimestamp ) ) < date_i18n( 'Ymd' ) );
 	}

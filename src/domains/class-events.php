@@ -249,10 +249,8 @@ class Events {
 	public function renderAdminRows( $column, $post_id ) {
 		switch( $column ) {
 			case 'date-event':
-				if(CFS()->get('e_datum', $post_id))
-					echo humanize_date(CFS()->get('e_datum', $post_id));
-				else
-					echo '-';
+				$event = EventModel::getEvent( $post_id );
+				echo $event->getStartDateTime( 'j F Y' );
 				break;
 			case 'attachment':
 				echo CFS()->get('bl_bijlage', $post_id ) ? '&#10004' : '-';
@@ -279,13 +277,11 @@ class Events {
 
 	public function sortByEventDate( $vars ) {
 		if ( isset( $vars['post_type'] ) && 'event' == $vars['post_type'] ) {
-
 			if ( isset( $vars['orderby'] ) && 'date-event' == $vars['orderby'] ) {
-
 				$vars = array_merge(
 					$vars,
 					array(
-						'meta_key' => 'e_date_time',
+						'meta_key' => 'event_start_time',
 						'orderby' => 'meta_value'
 					)
 				);
