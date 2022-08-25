@@ -30,7 +30,7 @@
 				foreach( $events as $event ) { ?>
 					<li class="footer-event">
 						<a href="<?php echo $event->getUrl(); ?>">
-							<?php echo $event->getName() ?> (<?php echo $event->getDate( 'j F' ); ?>)
+							<?php echo $event->getName() ?> (<?php echo $event->getStartDateTime( 'j F' ); ?>)
 						</a>
 					</li>
 					<?php

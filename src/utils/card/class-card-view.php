@@ -76,7 +76,7 @@ class CardView {
 				<div class="card-body">
 					<h2><?php echo $event->getName(); ?></h2>
 					<div class="card-date">
-						<?php echo $event->getDate(); ?>
+						<?php echo $event->getStartDateTime( 'j F Y'); ?>
 					</div>
 					<p><?php echo $event->getExcerpt(); ?></p>
 				</div>

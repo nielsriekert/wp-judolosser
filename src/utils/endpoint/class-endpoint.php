@@ -91,7 +91,7 @@ class Endpoint {
 		return (object) [
 			'id' => $event->getId(),
 			'name' => $event->getName(),
-			'date' => $event->getDate('U'),
+			'date' => $event->getStartDateTime('U'),
 			'shortDescription' => html_entity_decode( $event->getExcerpt() ),
 			'registrationEnabled' => $event->isRegistrationEnabled(),
 			'isPastEvent' => $event->isPastEvent(),
