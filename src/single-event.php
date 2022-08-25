@@ -1,7 +1,5 @@
 <?php get_header(); ?>
 <?php
-get_template_part('includes/include', 'schema');
-
 while( have_posts() ) { the_post();
 	$event = EventModel::getEvent( get_post() );
 
