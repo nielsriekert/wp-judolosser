@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.16.1] - 2022-06-09
+### Fixed
+- Type fatal error.
+
+## [1.16.0] - 2022-06-09
+### Changed
+- Refactored training times to ACF.
+
 ## [1.15.0] - 2021-11-09
 ### Changed
 - Updated npm packages.

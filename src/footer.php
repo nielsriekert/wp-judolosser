@@ -2,7 +2,22 @@
 		<footer class="content footer">
 			<div class="footer-column footer-training-times">
 				<h2>Trainingstijden</h2>
-				<?php echo get_training_times(false, array('tijd', 'training')); ?>
+				<?php
+				$days = TrainingModel::getTrainingGroupedByDays();
+
+				if( is_array( $days ) ) {
+					TrainingView::viewTrainingTimes( $days, [
+						[
+							'label' => __( 'Time', 'judo-losser' ),
+							'view' => ['TrainingView', 'viewTrainingTimeCell']
+						],
+						[
+							'label' => __( 'Type of training', 'judo-losser' ),
+							'view' => ['TrainingView', 'viewTrainingTypeCell']
+						]
+					] );
+				}
+				?>
 			</div>
 			<div class="footer-column">
 			<?php

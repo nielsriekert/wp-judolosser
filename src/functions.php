@@ -9,6 +9,7 @@ require_once('utils/class-endpoints.php');
 
 require_once('classes/class-users.php');
 require_once('classes/class-articles.php');
+require_once('domains/class-trainings.php');
 require_once('domains/class-events.php');
 require_once('domains/class-locations.php');
 require_once('domains/class-photo-albums.php');
@@ -113,71 +114,6 @@ function setup_judo_losser() {
 	echo '<p>Here is where the form would go if I actually had options.</p>';
 	echo '</div>';
 }*/
-
-function get_training_times($post_id = false, $columns = 'all'){
-	if(!$post_id){
-		wp_reset_query();
-		$pages = get_pages(array(
-			'meta_key' => '_wp_page_template',
-			'meta_value' => 'trainingstijden.php'
-		));
-		if(count($pages) == 1){
-			$post_id = current($pages)->ID;
-		}
-		else {
-			return false;
-		}
-	}
-	$trainingstijden = CFS()->get('t_trainingstijden', $post_id);
-	if($trainingstijden){
-	$rhtml = '<table class="trainingstijden">
-		<tr>
-			<th>Dag</th>';
-
-			if($columns == 'all' || array_search('tijd', $columns) !== false){
-				$rhtml .= '<th>Tijd</th>';
-			}
-			if($columns == 'all' || array_search('trainer', $columns) !== false){
-				$rhtml .= '<th>Trainer</th>';
-			}
-			if($columns == 'all' || array_search('training', $columns) !== false){
-				$rhtml .= '<th>Soort training</th>';
-			}
-			if($columns == 'all' || array_search('locatie', $columns) !== false){
-				$rhtml .= '<th>Locatie</th>';
-			}
-		$rhtml .= '</tr>' . "\n\r";
-		foreach($trainingstijden as $dag){
-			$counter = 0;
-			foreach($dag['t_training'] as $training){$counter ++;
-
-			$rhtml .= '<tr>' . "\n\r";
-			if($counter === 1){
-			$rhtml .= '<td class="trainingstijden-dag" data-column-name="Dag" rowspan="' . count($dag['t_training']) . '">' . current($dag['t_dag']) . '</td>';
-			}
-			if($columns == 'all' || array_search('tijd', $columns) !== false){
-				$rhtml .= '<td class="trainingstijden-tijd" data-column-name="Tijd">' . current($training['t_tijd_van_uren']) . ':' . current($training['t_tijd_van_minuten']) . ' t/m ' .  current($training['t_tijd_tot_uren']) . ':' . current($training['t_tijd_tot_minuten']) . '</td>' . "\n\r";
-			}
-			if($columns == 'all' || array_search('trainer', $columns) !== false){
-				$rhtml .= '<td class="trainingstijden-trainer" data-column-name="Trainer">' . $training['t_trainer'] . '</td>' . "\n\r";
-			}
-			if($columns == 'all' || array_search('training', $columns) !== false){
-				$rhtml .= '<td class="trainingstijden-training" data-column-name="Training">' . $training['t_soort_training'] . '</td>' . "\n\r";
-			}
-			if($columns == 'all' || array_search('locatie', $columns) !== false){
-				$rhtml .= '<td class="trainingstijden-locatie" data-column-name="Locatie">' . $training['t_locatie'] . '</td>' . "\n\r";
-			}
-		$rhtml .= '</tr>';
-			}
-		}
-	$rhtml .= '</table>'. "\n\r";
-	return $rhtml;
-	}
-	else {
-		return false;
-	}
-}
-
 
 /* ///// */
 /* OTHER */

@@ -96,22 +96,31 @@ class Events {
 			'key' => 'group_582f05e35a2f3',
 			'title' => __( 'Event', 'judo-losser' ),
 			'fields' => array (
-				// array (
-				// 	'key' => 'field_59f5ae2d4b7e1',
-				// 	'label' => __( 'General', 'judo-losser' ),
-				// 	'name' => '',
-				// 	'type' => 'tab',
-				// ),
-				// array (
-				// 	'key' => 'field_57b2843f37cf2',
-				// 	'label' => __( 'Date', 'judo-losser' ),
-				// 	'name' => 'event_date',
-				// 	'type' => 'date_time_picker',
-				// 	'required' => 1,
-				// 	'display_format' => get_option( 'date_format' ) . ' ' . get_option( 'time_format' ),
-				// 	'return_format' => 'Y-m-d H:i:s',
-				// 	'first_day' => 1
-				// ),
+				array (
+					'key' => 'field_59f5ae2d4b7e1',
+					'label' => __( 'General', 'judo-losser' ),
+					'name' => '',
+					'type' => 'tab',
+				),
+				array (
+					'key' => 'field_5a3e23bf2e8f5',
+					'label' => _x( 'Start time', 'WP admin field label', 'judo-losser' ),
+					'name' => 'event_start_time',
+					'type' => 'date_time_picker',
+					'required' => 1,
+					'display_format' => get_option( 'date_format' ) . ' ' . get_option( 'time_format' ),
+					'return_format' => 'Y-m-d H:i:s',
+					'first_day' => 1
+				),
+				array (
+					'key' => 'field_5a3ef34a2e80d',
+					'label' => _x( 'End time', 'WP admin field label', 'judo-losser' ),
+					'name' => 'event_end_time',
+					'type' => 'date_time_picker',
+					'display_format' => get_option( 'date_format' ) . ' ' . get_option( 'time_format' ),
+					'return_format' => 'Y-m-d H:i:s',
+					'first_day' => 1
+				),
 				array (
 					'key' => 'field_59fa3a3d3ff29',
 					'label' => __( 'Registration', 'judo-losser' ),

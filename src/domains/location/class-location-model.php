@@ -57,7 +57,7 @@ class LocationModel {
 	 * @return Location
 	 * @throws Exception when cannot find WP_Post for id or WP_Post doens't have the right post type
 	 */
-	public static function getLocation( $wp_post ) {
+	public static function getLocation( $wp_post ) : ?Location {
 		if( ctype_digit( $wp_post ) || is_int( $wp_post ) && $wp_post > 0 ) {
 			$wp_post = get_post( $wp_post );
 		}

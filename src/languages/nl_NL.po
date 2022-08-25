@@ -4,17 +4,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Judo Losser 1.8.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/judo-losser\n"
-"POT-Creation-Date: 2020-12-31T10:36:19+00:00\n"
-"PO-Revision-Date: 2020-12-31 11:36+0100\n"
+"POT-Creation-Date: 2022-06-08T22:04:57+00:00\n"
+"PO-Revision-Date: 2022-06-09 00:07+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.2\n"
-"X-Domain: judo-losser\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.1\n"
+"X-Domain: judo-losser\n"
 
 #. Theme Name of the theme
 msgid "Judo Losser"
@@ -32,7 +32,7 @@ msgstr ""
 msgid "Niels Riekert"
 msgstr ""
 
-#: classes/class-pages.php:39 domains/class-events.php:197
+#: classes/class-pages.php:39 domains/class-events.php:240
 msgid "Attachment"
 msgstr ""
 
@@ -113,128 +113,221 @@ msgstr ""
 msgid "event"
 msgstr "evenement"
 
-#: domains/class-events.php:97
+#: domains/class-events.php:97 utils/class-cards.php:71
+msgid "Event"
+msgstr "Evenement"
+
+#: domains/class-events.php:101 domains/class-trainings.php:44
+msgid "General"
+msgstr ""
+
+#: domains/class-events.php:107
+msgctxt "WP admin field label"
+msgid "Start time"
+msgstr ""
+
+#: domains/class-events.php:117
+msgctxt "WP admin field label"
+msgid "End time"
+msgstr ""
+
+#: domains/class-events.php:126
 msgid "Registration"
 msgstr "Registratie"
 
-#: domains/class-events.php:101
+#: domains/class-events.php:132
 msgid "Enable registration"
 msgstr "Schakel registratie in"
 
-#: domains/class-events.php:196
+#: domains/class-events.php:138 domains/class-events.php:144
+#: domains/class-locations.php:164 domains/class-locations.php:170
+#: domains/class-locations.php:195
+msgid "Photo"
+msgstr "Foto"
+
+#: domains/class-events.php:239
 msgid "Event date"
 msgstr "Datum evenement"
 
-#: domains/class-events.php:198 domains/class-locations.php:94
+#: domains/class-events.php:241 domains/class-locations.php:93
+#: domains/class-trainings.php:109 trainingstijden.php:26
 msgid "Location"
 msgstr "Locatie"
 
-#: domains/class-locations.php:60
+#: domains/class-locations.php:59
 msgctxt "post type general name"
 msgid "Locations"
 msgstr "Locaties"
 
-#: domains/class-locations.php:61
+#: domains/class-locations.php:60
 msgctxt "post type singular name"
 msgid "Location"
 msgstr "Locatie"
 
-#: domains/class-locations.php:62
+#: domains/class-locations.php:61
 msgctxt "admin menu"
 msgid "Locations"
 msgstr "Locaties"
 
-#: domains/class-locations.php:63
+#: domains/class-locations.php:62
 msgctxt "add new on admin bar"
 msgid "Location"
 msgstr "Locatie"
 
-#: domains/class-locations.php:64
+#: domains/class-locations.php:63
 msgctxt "location"
 msgid "Add New"
 msgstr "Nieuwe locatie"
 
-#: domains/class-locations.php:65
+#: domains/class-locations.php:64
 msgid "Add New Location"
 msgstr "Voeg nieuwe locatie toe"
 
-#: domains/class-locations.php:66
+#: domains/class-locations.php:65
 msgid "New Location"
 msgstr "Nieuwe locatie"
 
-#: domains/class-locations.php:67
+#: domains/class-locations.php:66
 msgid "Edit Location"
 msgstr "Bewerk locatie"
 
-#: domains/class-locations.php:68
+#: domains/class-locations.php:67
 msgid "View Location"
 msgstr "Bekijk locatie"
 
-#: domains/class-locations.php:69
+#: domains/class-locations.php:68
 msgid "All Locations"
 msgstr "Alle locaties"
 
-#: domains/class-locations.php:70
+#: domains/class-locations.php:69
 msgid "Search Locations"
 msgstr "Zoek locaties"
 
-#: domains/class-locations.php:71
+#: domains/class-locations.php:70
 msgid "Parent Locations:"
 msgstr "Hoofd locaties:"
 
-#: domains/class-locations.php:72
+#: domains/class-locations.php:71
 msgid "No locations found."
 msgstr "Geen locaties gevonden."
 
-#: domains/class-locations.php:73
+#: domains/class-locations.php:72
 msgid "No locations found in Trash."
 msgstr "Geen locaties gevonden in de prullenbak."
 
-#: domains/class-locations.php:78
+#: domains/class-locations.php:77
 msgid "Judo Losser Locations"
 msgstr ""
 
-#: domains/class-locations.php:98 domains/class-locations.php:195
+#: domains/class-locations.php:97 domains/class-locations.php:194
 msgid "Address"
 msgstr "Adres"
 
-#: domains/class-locations.php:104
+#: domains/class-locations.php:103
 msgid "Street"
 msgstr "Straat"
 
-#: domains/class-locations.php:107
+#: domains/class-locations.php:106
 msgid "Street or alternative"
 msgstr "Straat of alternatief"
 
-#: domains/class-locations.php:111
+#: domains/class-locations.php:110
 msgid "House number"
 msgstr "Huisnummer"
 
-#: domains/class-locations.php:124
+#: domains/class-locations.php:123
 msgid "Postcode"
 msgstr "Postcode"
 
-#: domains/class-locations.php:130
+#: domains/class-locations.php:129
 msgid "Locality"
 msgstr "Plaats"
 
-#: domains/class-locations.php:165 domains/class-locations.php:171
-#: domains/class-locations.php:196
-msgid "Photo"
-msgstr "Foto"
-
-#: domains/class-photo-albums.php:55 utils/card/class-card-view.php:97
+#: domains/class-photo-albums.php:86 utils/card/class-card-view.php:100
 msgid "Photos"
 msgstr "Foto’s"
+
+#: domains/class-trainings.php:40
+msgid "Training times"
+msgstr "Trainingstijden"
+
+#: domains/class-trainings.php:50
+msgctxt "WP admin field label"
+msgid "Training times"
+msgstr "Trainingstijden"
+
+#: domains/class-trainings.php:54
+msgid "Add day"
+msgstr "Dag toevoegen"
+
+#: domains/class-trainings.php:58 domains/training/class-training-view.php:10
+msgid "Day"
+msgstr "Dag"
+
+#: domains/class-trainings.php:63
+msgid "Monday"
+msgstr "Maandag"
+
+#: domains/class-trainings.php:64
+msgid "Tuesday"
+msgstr "Dinsdag"
+
+#: domains/class-trainings.php:65
+msgid "Wednesday"
+msgstr "Woensdag"
+
+#: domains/class-trainings.php:66
+msgid "Thursday"
+msgstr "Donderdag"
+
+#: domains/class-trainings.php:67
+msgid "Friday"
+msgstr "Vrijdag"
+
+#: domains/class-trainings.php:68
+msgid "Saturday"
+msgstr "Zaterdag"
+
+#: domains/class-trainings.php:69
+msgid "Sunday"
+msgstr "Zondag"
+
+#: domains/class-trainings.php:74
+msgid "Trainings"
+msgstr "Trainingen"
+
+#: domains/class-trainings.php:81
+msgid "From"
+msgstr "Van"
+
+#: domains/class-trainings.php:89
+msgid "To"
+msgstr "Tot"
+
+#: domains/class-trainings.php:97 trainingstijden.php:18
+msgid "Trainer"
+msgstr "Trainer"
+
+#: domains/class-trainings.php:103
+msgid "Type"
+msgstr "Type"
 
 #: domains/event/class-event-view.php:9
 msgid "Sign Up"
 msgstr "Inschrijven"
 
 #. Template Name of the theme
-#: utils/card/class-card-view.php:70
+#: utils/card/class-card-view.php:73
 msgid "Events"
 msgstr "Evenementen"
+
+#: footer.php:10 trainingstijden.php:14
+msgid "Time"
+msgstr "Tijd"
+
+#: footer.php:14 trainingstijden.php:22
+msgid "Type of training"
+msgstr "Soort training"
 
 #. Template Name of the theme
 msgid "Fotoalbums"
@@ -287,10 +380,6 @@ msgstr "Nieuwe kaart"
 #: utils/class-cards.php:65
 msgid "News Post"
 msgstr "Nieuwsbericht"
-
-#: utils/class-cards.php:71
-msgid "Event"
-msgstr "Evenement"
 
 #: utils/class-cards.php:77
 msgid "Photo album"
