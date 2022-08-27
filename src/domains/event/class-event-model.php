@@ -97,7 +97,7 @@ class EventModel {
 				'id' => $event->getId(),
 				'name' => $event->getName(),
 				'url' => $event->getUrl(),
-				'date' => $event->getDate(),
+				'date' => $event->getStartDateTime( 'j F Y' ),
 				'excerpt' => html_entity_decode( $event->getExcerpt() ),
 			);
 
