@@ -17,22 +17,12 @@ class Event {
 	private $featuredImageSources = array();
 
 	/**
-	 * Date time timestamp
-	 *
-	 * @var integer
-	 */
-	public $dateTimeTimestamp = null;
-
-	/**
 	 * @var array
 	 */
 	private $fields = array();
 
 	public function __construct( WP_Post $wp_post ) {
 		$this->wp_post = $wp_post;
-
-		$this->dateTimeTimestamp = CFS()->get( 'e_datum', $this->getId() );
-
 		$fields = get_fields( $wp_post->ID );
 		$this->fields = is_array( $fields ) ? $fields : array();
 	}
@@ -43,11 +33,6 @@ class Event {
 
 	public function getName() {
 		return $this->wp_post->post_title;
-	}
-
-	public function getDate( $format = 'j F Y' ) {
-		// TODO: no dependency like this
-		return humanize_date( $this->dateTimeTimestamp, $format );
 	}
 
 	public function getStartDateTime( $format = 'j F Y H:i' ) {
@@ -127,6 +112,19 @@ class Event {
 
 		$this->featuredImageHtml = get_the_post_thumbnail( $this->getId(), 'post-thumb' );
 		return $this->featuredImageHtml;
+	}
+
+	/**
+	 * @return Attachment[]
+	 */
+	public function getAttachments() : array {
+		if( ! isset( $this->fields['attachments'] ) || ! is_array( $this->fields['attachments'] ) ) {
+			return [];
+		}
+
+		return array_map( function( $acf_file ) {
+			return new Attachment( $acf_file );
+		}, $this->fields['attachments'] );
 	}
 
 	public function getUrl() {

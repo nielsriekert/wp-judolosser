@@ -39,6 +39,7 @@ class Events {
 	private function initHooks() {
 		add_action( 'init', array( $this, 'createPostTypes' ) );
 		add_action( 'acf/init', array( $this, 'addRegisterFields' ) );
+		add_action( 'acf/init', array( $this, 'addAttachmentFields' ) );
 		add_action( 'p2p_init', array( $this, 'setupRelations' ) );
 
 		add_filter( 'manage_edit-event_columns', array( $this, 'addAdminColumns' ), 10, 1 );
@@ -158,6 +159,47 @@ class Events {
 		));
 	}
 
+	public function addAttachmentFields() {
+		acf_add_local_field_group(array (
+			'key' => 'group_582fa5e3ca2f9',
+			'title' => __( 'Attachments', 'judo-losser' ),
+			'fields' => array (
+				array (
+					'key' => 'field_5a3e23cf2e8f9',
+					'label' => _x( 'Attachments', 'WP admin field label', 'judo-losser' ),
+					'name' => 'attachments',
+					'type' => 'repeater',
+					'button_label' => __('New attachments', 'judo-losser' ),
+					'sub_fields' => array (
+						array (
+							'key' => 'field_58ae1cf4af79a',
+							'label' => 'Attachment',
+							'name' => 'attachment',
+							'type' => 'file',
+						),
+					),
+				),
+			),
+			'location' => array (
+				array(
+					array(
+						'param' => 'post_type',
+						'operator' => '==',
+						'value' => 'event',
+					),
+				),
+				array(
+					array(
+						'param' => 'post_type',
+						'operator' => '==',
+						'value' => 'page',
+					),
+				),
+			),
+			'position' => 'side',
+		));
+	}
+
 	public function setupRelations() {
 		p2p_register_connection_type( array(
 			'name' => 'event_to_location',
@@ -253,7 +295,8 @@ class Events {
 				echo $event->getStartDateTime( 'j F Y' );
 				break;
 			case 'attachment':
-				echo CFS()->get('bl_bijlage', $post_id ) ? '&#10004' : '-';
+				$event = EventModel::getEvent( $post_id );
+				echo count( $event->getAttachments() ) > 0 ? '&#10004' : '-';
 				break;
 			case 'location':
 				$location = LocationModel::getLocationFromEvent( EventModel::getEvent( $post_id ) );

@@ -102,7 +102,7 @@ function sort_event_event_date( $vars ) {
 			$vars = array_merge(
 				$vars,
 				array(
-					'meta_key' => 'e_datum',
+					'meta_key' => 'event_start_time',
 					'orderby' => 'meta_value'
 				)
 			);

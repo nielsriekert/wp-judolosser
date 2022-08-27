@@ -43,7 +43,7 @@ class PhotoAlbum {
 		));
 
 		if( $events->post_count == 1 ){
-			$this->eventDate = CFS()->get( 'e_datum', current( $events->posts )->ID );
+			$this->eventDate = get_field( 'event_start_time', current( $events->posts )->ID );
 		}
 	}
 
@@ -96,7 +96,7 @@ class PhotoAlbum {
 	private function getPhotosWithSize( $size = 'media-full' ) {
 		$acf_photos = get_field( 'photoalbum_photos', $this->getId() );
 
-		$photos = array();
+		$photos = [];
 		if( is_array( $acf_photos ) ) {
 			foreach( $acf_photos as $photo ) {
 				$photos[] = new Photo(
@@ -108,20 +108,7 @@ class PhotoAlbum {
 			}
 		}
 
-		if( count( $photos ) <= 0 ) {
-			$cfs_photos = CFS()->get( 'p_photos', $this->getId() );
-
-			if( is_array( $cfs_photos ) ) {
-				foreach( $cfs_photos as $photo ) {
-					$photos[] = new Photo(
-						wp_get_attachment_image_src( $photo['p_photo'], $size )[0],
-						get_post_meta( $photo['p_photo'], '_wp_attachment_image_alt', true )
-					);
-				}
-			}
-		}
-
-		return is_array( $photos ) ? $photos : array();
+		return $photos;
 	}
 
 	public function getPhotos() {

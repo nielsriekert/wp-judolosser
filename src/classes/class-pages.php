@@ -47,7 +47,8 @@ class Page {
 	public function renderAdminRows( $column, $post_id ) {
 		switch( $column ) {
 			case 'attachment':
-				echo CFS()->get('bl_bijlagen', $post_id ) ? '&#10004' : '-';
+				$page = new Event( get_post( $post_id ) );
+				echo count( $page->getAttachments() ) > 0 ? '&#10004' : '-';
 				break;
 			default :
 				break;
