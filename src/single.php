@@ -1,7 +1,5 @@
 <?php get_header(); ?>
 <?php
-get_template_part('includes/include', 'schema');
-
 while(have_posts()){ the_post();
 	if(has_post_thumbnail()){
 		$image_src = wp_get_attachment_image_src(get_post_thumbnail_id(), 'post')[0];

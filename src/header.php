@@ -23,6 +23,8 @@ do_action( 'jl-theme/body' );
 				<?php wp_nav_menu(array('theme_location' => 'headernav', 'container' => ''));?>
 			</nav>
 		</div>
-		<?php get_template_part('includes/include', 'header-download'); ?>
+		<?php
+		AttachmentView::viewAttachmentsHeaderDropDown( AttachmentModel::getAttachments() );
+		?>
 	</div>
 </div>

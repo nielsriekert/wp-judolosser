@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.17.0] - 2022-08-27
+### Changed
+- Moved all fields to ACF instead of Custom Field Suite.
+
 ## [1.16.1] - 2022-06-09
 ### Fixed
 - Type fatal error.

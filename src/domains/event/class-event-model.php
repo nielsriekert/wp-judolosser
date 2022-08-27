@@ -2,11 +2,23 @@
 class EventModel {
 
 	/**
-	 * @return array with Event instances
+	 * @return Event[]
 	 */
 	public static function getEvents() {
 		$wp_args = self::getEventDefaultWpQueryArgs();
 
+		$wp_events = new WP_Query( $wp_args );
+
+		return self::wpPostToEventInstances( $wp_events->posts );
+	}
+
+	/**
+	 * @return Event[]
+	 */
+	public static function getAllEvents() {
+		$wp_args = self::getEventDefaultWpQueryArgs();
+
+		unset( $wp_args['meta_query'] );
 		$wp_events = new WP_Query( $wp_args );
 
 		return self::wpPostToEventInstances( $wp_events->posts );
@@ -26,12 +38,12 @@ class EventModel {
 			'post_type' => 'event',
 			'nopaging' => true,
 			'no_found_rows' => true,
-			'meta_key' => 'e_datum',
+			'meta_key' => 'event_start_time',
 			'orderby' => 'meta_value',
 			'order' => 'ASC',
 			'meta_query' => array(
 				array(
-					'key' => 'e_datum',
+					'key' => 'event_start_time',
 					'value' => date_i18n('Y-m-d'),
 					'compare' => '>='
 				)
@@ -41,7 +53,7 @@ class EventModel {
 
 	/**
 	 * @param array with WP_Post instances
-	 * @return array with Event instances
+	 * @return Event[]
 	 */
 	public static function wpPostToEventInstances( $wp_posts ) {
 		$events = array();
@@ -60,7 +72,7 @@ class EventModel {
 	 * @return Event
 	 * @throws Exception when cannot find WP_Post for id or WP_Post doens't have the right post type
 	 */
-	public static function getEvent( $wp_post ) {
+	public static function getEvent( $wp_post ) : Event {
 		if( ctype_digit( $wp_post ) || is_int( $wp_post ) && $wp_post > 0 ) {
 			$wp_post = get_post( $wp_post );
 		}

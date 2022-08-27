@@ -9,6 +9,7 @@ require_once('utils/class-endpoints.php');
 
 require_once('classes/class-users.php');
 require_once('classes/class-articles.php');
+require_once('domains/class-attachments.php');
 require_once('domains/class-trainings.php');
 require_once('domains/class-events.php');
 require_once('domains/class-locations.php');
